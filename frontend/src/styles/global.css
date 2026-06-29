@@ -1,0 +1,121 @@
+/* ==========================================
+   TerraSoil Global Styles
+   ========================================== */
+
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* Reset */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Base */
+
+body {
+    font-family: var(--font-family);
+    background: var(--background);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+input {
+    font-family: inherit;
+}
+
+/* Images */
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* Buttons */
+
+button {
+    cursor: pointer;
+    border: none;
+    border-radius: var(--radius-medium);
+    transition: var(--transition);
+}
+
+button:hover {
+    transform: translateY(-2px);
+}
+
+/* Inputs */
+
+input,
+select,
+textarea {
+
+    width: 100%;
+    padding: 14px 18px;
+
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-small);
+
+    font-size: var(--font-body);
+
+    outline: none;
+
+    transition: var(--transition);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+
+    border-color: var(--primary-green);
+
+    box-shadow: 0 0 0 3px rgba(107,142,35,.15);
+
+}
+
+/* Containers */
+
+.container {
+
+    width: 90%;
+    max-width: 1200px;
+
+    margin: auto;
+
+}
+
+/* Utility */
+
+.text-center {
+    text-align: center;
+}
+
+.shadow {
+
+    box-shadow: var(--shadow-medium);
+
+}
+
+.card {
+
+    background: var(--surface);
+
+    border-radius: var(--radius-large);
+
+    box-shadow: var(--shadow-small);
+
+}
+
+.section {
+
+    padding: 70px 0;
+
+}
