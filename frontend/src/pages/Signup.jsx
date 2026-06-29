@@ -1,10 +1,22 @@
 import { useState } from "react";
+import { useNavigate,} from "react-router-dom";
 import { Link } from "react-router-dom";
 
 export default function Signup() {
   const [role, setRole] = useState("");
+  const navigate = useNavigate();
 
   return (
+    <div>
+
+    {/* Header */}
+    <div>
+      <h2>FARM & SOIL HEALTH MONITORING APP</h2>
+
+      <button onClick={() => navigate(-1)}>Back</button>
+      <button onClick={() => navigate("/")}>Home</button>
+    </div>
+    
     <div className="signup-container">
       <h1>Create Your Account</h1>
 
@@ -21,27 +33,18 @@ export default function Signup() {
 
       {/* ROLE SELECTION */}
       <div className="roles">
-        <div
-          className={`card ${role === "farmer" ? "active" : ""}`}
-          onClick={() => setRole("farmer")}
-        >
-          <h4>Farmer</h4>
+        <div>
+          <button onClick={() => setRole("farmer")}>Farmer</button>
           <p>Track and manage your farm's soil health</p>
         </div>
 
-        <div
-          className={`card ${role === "advisor" ? "active" : ""}`}
-          onClick={() => setRole("advisor")}
-        >
-          <h4>Advisor</h4>
+        <div>
+         <button onClick={() => setRole("advisor")}>Advisor</button>
           <p>Guide and support farmers with insights</p>
         </div>
 
-        <div
-          className={`card ${role === "researcher" ? "active" : ""}`}
-          onClick={() => setRole("researcher")}
-        >
-          <h4>Researcher</h4>
+        <div>
+          <button onClick={() => setRole("researcher")}>Researcher</button>
           <p>Analyze data across multiple farms</p>
         </div>
       </div>
@@ -51,6 +54,7 @@ export default function Signup() {
       </button>
 
       <p className="login-link">Already have an account? <Link to="/login">Login</Link></p>
+    </div>
     </div>
   );
 }
