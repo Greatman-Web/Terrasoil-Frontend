@@ -63,9 +63,20 @@ export default function Login() {
             Selected Role: <strong>{role || "None"}</strong>
           </p>
 
-          <button className="login-btn" disabled={!role}>
-            Login
-          </button>
+          <button
+  className="login-btn"
+  disabled={!role}
+  onClick={() =>
+    navigate("/farmer-dashboard", {
+      state: {
+        username: "Tesfaye",
+        isNewUser: false,
+      },
+    })
+  }
+>
+  Login
+</button>
 
           <p className="signup-text">
             Don't have an account? <Link to="/signup">Sign Up</Link>

@@ -7,6 +7,7 @@ export default function Signup() {
   const [role, setRole] = useState("");
   // Hook for navigating between pages
   const navigate = useNavigate();
+  const [firstName, setFirstName] = useState("");
 
   return (
     <div className="signup-page">
@@ -41,7 +42,11 @@ export default function Signup() {
 
           <div className="signup-form">
 
-            <input type="text" placeholder="First Name" />
+            <input
+              type="text"
+              placeholder="First Name"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}/>
 
             <input
               type="text"
@@ -102,11 +107,18 @@ export default function Signup() {
           </div>
 
           <button
-            className="create-btn"
-            disabled={!role}
-          >
-            Create Account
-          </button>
+           className="create-btn"
+           disabled={!role}
+           onClick={() =>
+           navigate("/farmer-dashboard", {
+         state: {
+           username: firstName,
+           isNewUser: true,
+          },
+        })
+       }>
+       Create Account
+       </button>
 
           <p className="login-link">
             Already have an account?
