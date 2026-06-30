@@ -1,60 +1,122 @@
 import { useState } from "react";
-import { useNavigate,} from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import "../styles/Signup.css";
 
 export default function Signup() {
+  // Track the selected user role: farmer, advisor, or researcher
   const [role, setRole] = useState("");
+  // Hook for navigating between pages
   const navigate = useNavigate();
 
   return (
-    <div>
+    <div className="signup-page">
 
-    {/* Header */}
-    <div>
-      <h2>FARM & SOIL HEALTH MONITORING APP</h2>
+      {/* Header */}
 
-      <button onClick={() => navigate(-1)}>Back</button>
-      <button onClick={() => navigate("/")}>Home</button>
-    </div>
-    
-    <div className="signup-container">
-      <h1>Create Your Account</h1>
+      <header className="signup-header">
 
-      {/* FORM SECTION */}
-      <div className="form">
-        <input type="text" placeholder="First Name" />
-        <input type="text" placeholder="Middle Name (optional)" />
-        <input type="text" placeholder="Last Name" />
-        <input type="email" placeholder="Email Address" />
-        <input type="password" placeholder="Password" />
-      </div>
-
-      <h3>Select Your Role</h3>
-
-      {/* ROLE SELECTION */}
-      <div className="roles">
-        <div>
-          <button onClick={() => setRole("farmer")}>Farmer</button>
-          <p>Track and manage your farm's soil health</p>
+        <div className="signup-brand" onClick={() => navigate("/")}>
+          <div className="signup-logo">🌱</div>
+          <h2>TerraSoil</h2>
         </div>
 
-        <div>
-         <button onClick={() => setRole("advisor")}>Advisor</button>
-          <p>Guide and support farmers with insights</p>
+        <div className="signup-nav">
+          <button onClick={() => navigate(-1)}>Back</button>
+          <button onClick={() => navigate("/")}>Home</button>
         </div>
 
-        <div>
-          <button onClick={() => setRole("researcher")}>Researcher</button>
-          <p>Analyze data across multiple farms</p>
+      </header>
+
+      {/* Card */}
+
+      <main className="signup-container">
+
+        <div className="signup-card">
+
+          <h1>Create Your Account</h1>
+
+          <p className="signup-subtitle">
+            Join TerraSoil and start monitoring soil health with intelligent recommendations.
+          </p>
+
+          <div className="signup-form">
+
+            <input type="text" placeholder="First Name" />
+
+            <input
+              type="text"
+              placeholder="Middle Name (Optional)"
+            />
+
+            <input type="text" placeholder="Last Name" />
+
+            <input
+              type="tel"
+              placeholder="phone number"
+            />
+
+            <input
+              type="password"
+              placeholder="Password"
+            />
+
+          </div>
+
+          <h3>Select Your Role</h3>
+
+          <div className="role-cards">
+
+            <button
+              className={role === "farmer" ? "role-card active-role" : "role-card"}
+              onClick={() => setRole("farmer")}
+            >
+              <h4>🌾 Farmer</h4>
+
+              <p>
+                Track your farm, crops and soil health.
+              </p>
+            </button>
+
+            <button
+              className={role === "advisor" ? "role-card active-role" : "role-card"}
+              onClick={() => setRole("advisor")}
+            >
+              <h4>👨‍🌾 Advisor</h4>
+
+              <p>
+                Help farmers with recommendations.
+              </p>
+            </button>
+
+            <button
+              className={role === "researcher" ? "role-card active-role" : "role-card"}
+              onClick={() => setRole("researcher")}
+            >
+              <h4>🔬 Researcher</h4>
+
+              <p>
+                Analyse agricultural data and trends.
+              </p>
+            </button>
+
+          </div>
+
+          <button
+            className="create-btn"
+            disabled={!role}
+          >
+            Create Account
+          </button>
+
+          <p className="login-link">
+            Already have an account?
+            <Link to="/login"> Login</Link>
+          </p>
+
         </div>
-      </div>
 
-      <button className="create-btn" disabled={!role}>
-        Create Account
-      </button>
+      </main>
 
-      <p className="login-link">Already have an account? <Link to="/login">Login</Link></p>
-    </div>
     </div>
   );
 }
