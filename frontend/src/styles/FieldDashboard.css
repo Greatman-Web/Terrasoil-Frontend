@@ -1,0 +1,427 @@
+.field-dashboard-page {
+  min-height: 100vh;
+  background: #f5f0e6;
+  color: #1f2f1f;
+}
+
+.field-topbar {
+  width: 94%;
+  max-width: 1280px;
+  margin: 18px auto 0;
+  background: white;
+  border: 2px solid #d9d2c3;
+  border-radius: 14px;
+  padding: 18px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.topbar-brand,
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo-icon {
+  width: 52px;
+  height: 52px;
+  background: #8bb82e;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.topbar-brand h2 {
+  margin: 0;
+  font-size: 20px;
+  color: #172014;
+}
+
+.user-circle {
+  width: 38px;
+  height: 38px;
+  background: #e8ddc8;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+}
+
+.logout-btn {
+  background: white;
+  border: 2px solid #8bb82e;
+  color: #5f8f21;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.field-tabs {
+  width: 94%;
+  max-width: 1280px;
+  margin: 0 auto 28px;
+  padding: 18px 0 0;
+  display: flex;
+  gap: 40px;
+  border-bottom: 2px solid #d9d2c3;
+}
+
+.field-tabs button {
+  background: transparent;
+  border: none;
+  padding: 0 0 16px;
+  font-weight: 800;
+  color: #6b7166;
+  cursor: pointer;
+}
+
+.field-tabs button.active {
+  color: #172014;
+  border-bottom: 4px solid #8bb82e;
+}
+
+.field-main {
+  width: 94%;
+  max-width: 1280px;
+  margin: auto;
+}
+
+/* HERO */
+
+.field-hero {
+  background: white;
+  border-radius: 22px;
+  padding: 35px;
+  margin-bottom: 30px;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.08);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 35px;
+  align-items: center;
+}
+
+.small-title {
+  color: #5f8f21;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.field-hero-text h1 {
+  font-size: 42px;
+  margin: 10px 0 18px;
+}
+
+.field-hero-text p {
+  color: #5d6258;
+  line-height: 1.8;
+}
+
+.field-hero-image img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 18px;
+}
+
+/* FIELD OVERVIEW */
+
+.field-overview-card {
+  background: white;
+  border-radius: 22px;
+  padding: 32px;
+  margin-bottom: 28px;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.08);
+}
+
+.field-overview-card h2 {
+  margin-top: 0;
+  margin-bottom: 25px;
+}
+
+.field-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+}
+
+.overview-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #f5f0e6;
+  border-radius: 16px;
+  padding: 18px;
+}
+
+.overview-icon {
+  font-size: 28px;
+}
+
+.overview-item small {
+  display: block;
+  color: #5d6258;
+  margin-bottom: 6px;
+}
+
+.overview-item strong {
+  color: #172014;
+  font-size: 18px;
+}
+
+/* SOIL HEALTH + RECENT TESTS */
+
+.soil-dashboard-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 25px;
+  align-items: start;
+  margin-bottom: 28px;
+}
+
+.soil-health-card,
+.recent-tests-card,
+.soil-test-panel {
+  background: white;
+  border-radius: 22px;
+  padding: 32px;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.08);
+}
+
+.soil-health-card h2,
+.recent-tests-card h2,
+.soil-test-panel h2 {
+  margin-top: 0;
+}
+
+.soil-status-box {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.soil-face {
+  font-size: 45px;
+}
+
+.soil-status-box h3 {
+  color: #2f7d20;
+  font-size: 32px;
+  margin: 8px 0;
+}
+
+.soil-status-box p {
+  color: #5d6258;
+}
+
+.soil-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.soil-metrics-grid div {
+  background: #f5f0e6;
+  border-radius: 14px;
+  padding: 18px;
+  text-align: center;
+}
+
+.soil-metrics-grid small {
+  display: block;
+  color: #5d6258;
+  margin-bottom: 8px;
+}
+
+.soil-metrics-grid strong {
+  font-size: 20px;
+  color: #172014;
+}
+
+.start-test-btn {
+  width: 100%;
+  margin-top: 25px;
+  background: #3157e8;
+  color: white;
+  border: none;
+  padding: 18px;
+  border-radius: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.start-test-btn:hover {
+  background: #2446c9;
+}
+
+/* SOIL TEST PANEL */
+
+.soil-test-panel {
+  margin-top: 22px;
+}
+
+.test-method-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+  margin-top: 22px;
+}
+
+.method-card {
+  background: #f5f0e6;
+  border: 2px solid #e3decf;
+  border-radius: 18px;
+  padding: 28px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.method-card span {
+  font-size: 38px;
+}
+
+.method-card h3 {
+  margin-bottom: 8px;
+}
+
+.method-card p {
+  color: #5d6258;
+  line-height: 1.6;
+}
+
+.active-method {
+  border-color: #8bb82e;
+  background: #e8f4d4;
+}
+
+.scan-box,
+.manual-form {
+  margin-top: 25px;
+  background: #f5f0e6;
+  border-radius: 18px;
+  padding: 24px;
+}
+
+.scan-box input {
+  margin-top: 12px;
+}
+
+.scan-box p {
+  color: #5d6258;
+}
+
+.manual-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.manual-form input {
+  padding: 15px;
+  border: 2px solid #e3decf;
+  border-radius: 10px;
+  outline: none;
+}
+
+.manual-form input:focus {
+  border-color: #8bb82e;
+}
+
+.manual-form button {
+  grid-column: span 2;
+  background: #8bb82e;
+  color: white;
+  border: none;
+  padding: 16px;
+  border-radius: 10px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+/* RECENT TESTS */
+
+.recent-test-item {
+  display: grid;
+  grid-template-columns: 40px 1fr auto;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 0;
+  border-bottom: 1px solid #e3decf;
+}
+
+.date-icon {
+  font-size: 24px;
+}
+
+.recent-test-item p {
+  margin: 0;
+}
+
+.good {
+  background: #dff3d4;
+  color: #2f7d20;
+  padding: 8px 16px;
+  border-radius: 20px;
+}
+
+.fair {
+  background: #fff0cc;
+  color: #c47a00;
+  padding: 8px 16px;
+  border-radius: 20px;
+}
+
+.attention {
+  background: #ffe0dc;
+  color: #c52b1e;
+  padding: 8px 16px;
+  border-radius: 20px;
+}
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+  .field-topbar {
+    flex-direction: column;
+    gap: 18px;
+    text-align: center;
+  }
+
+  .field-tabs {
+    overflow-x: auto;
+    gap: 24px;
+  }
+
+  .field-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .field-hero-image {
+    order: -1;
+  }
+
+  .field-hero-image img {
+    height: 220px;
+  }
+
+  .field-overview-grid,
+  .soil-dashboard-grid,
+  .soil-metrics-grid,
+  .test-method-grid,
+  .manual-form {
+    grid-template-columns: 1fr;
+  }
+
+  .manual-form button {
+    grid-column: span 1;
+  }
+
+  .field-hero-text h1 {
+    font-size: 34px;
+  }
+}
