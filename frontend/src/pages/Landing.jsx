@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "../styles/Landing.css";
 import heroImage from "../assets/images/terrasoil-hero.png";
+import footerImage from "../assets/images/footer.png";
 
 export default function Landing() {
   // Navigation for landing page buttons
@@ -79,9 +80,12 @@ export default function Landing() {
               Get Started
             </button>
 
-            <button className="text-btn">
-              Learn More
-            </button>
+           <button
+             className="text-btn"
+             onClick={() => navigate("/about")}
+             >
+            Learn More
+           </button>
           </div>
 
         </div>
@@ -140,61 +144,42 @@ export default function Landing() {
       </section>
         {/* ================= FOOTER ================= */}
         <footer className="footer">
+  <div className="footer-brand">
+    <div className="footer-logo">🌱</div>
+    <h2>TerraSoil</h2>
+    <p>Smart Soil Health Monitoring Platform</p>
+  </div>
 
-  <div className="footer-container">
+  <div className="footer-links">
+    <h3>Quick Links</h3>
+    <a href="/">Home</a>
+    <a href="/about">About Us</a>
+    <a href="/signup">Sign Up</a>
+    <a href="/login">Login</a>
+  </div>
 
-    {/* Brand */}
-    <div className="footer-brand">
+  <div className="footer-links">
+    <h3>Resources</h3>
+    <a href="#">Privacy Policy</a>
+    <a href="#">FAQs</a>
+    <a href="#">Support</a>
+  </div>
 
-      <div className="footer-logo">🌱</div>
+  <div className="footer-links">
+    <h3>Contact Us</h3>
+    <p>+251 9XX XXX XXX</p>
+    <p>info@terrasoil.com</p>
+    <p>Hawassa, Ethiopia</p>
+  </div>
 
-      <h2>TerraSoil</h2>
-
-      <p>
-        Empowering sustainable agriculture through intelligent soil
-        monitoring and smart recommendations.
-      </p>
-
-    </div>
-
-    {/* Links Section */}
-    <div className="footer-links-wrapper">
-
-      <div className="footer-links">
-        <h3>Quick Links</h3>
-
-        <a href="#">Home</a>
-        <a href="#">Features</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
-      </div>
-
-      <div className="footer-links">
-        <h3>Resources</h3>
-
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
-        <a href="#">Help Center</a>
-        <a href="#">FAQs</a>
-      </div>
-
-      <div className="footer-links">
-        <h3>Contact</h3>
-
-        <a href="#">support@terrasoil.com</a>
-        <a href="#">+251 911 234 567</a>
-        <a href="#"> Hawassa, Ethiopia</a>
-      </div>
-
-    </div>
-
+  <div className="footer-image">
+    <img src={footerImage} alt="Growing plant in soil" />
   </div>
 
   <div className="footer-bottom">
     © 2026 TerraSoil. All rights reserved.
   </div>
-
 </footer>
-    </div>
+</div>
   );
 }
