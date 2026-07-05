@@ -4,12 +4,12 @@ import heroImage from "../assets/images/terrasoil-hero.png";
 import footerImage from "../assets/images/footer.png";
 
 export default function Landing() {
-  // Navigation for landing page buttons
+  // Navigation hook for the landing page actions
   const navigate = useNavigate();
 
   return (
     <div className="landing-page">
-      {/* ================= HEADER ================= */}
+      {/*HEADER */}
 
       <header className="landing-header">
         <div className="brand">

@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "../styles/Farmersdashboard.css";
 import farmerWelcome from "../assets/images/farmer-welcome.png";
 
+// Farmer dashboard for managing and registering fields
 export default function Farmersdashboard() {
   const navigate = useNavigate();
   const routeLocation = useLocation();

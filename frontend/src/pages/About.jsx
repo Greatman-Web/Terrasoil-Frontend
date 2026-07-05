@@ -7,6 +7,8 @@ import advisor from "../assets/images/advisor.Png";
 import missionImage from "../assets/images/mission.png";
 import visionImage from "../assets/images/vission.png";
 import footerImage from "../assets/images/footer.png";
+
+// About page content and sections
 export default function About() {
   const navigate = useNavigate();
 

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../styles/FieldDashboard.css";
 import selectedFieldImage from "../assets/images/selected-field.png";
 
+// Field dashboard view for monitoring soil and crop performance
 export default function FieldDashboard() {
   const navigate = useNavigate();
   const [showSoilTest, setShowSoilTest] = useState(false);

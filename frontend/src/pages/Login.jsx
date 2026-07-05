@@ -3,7 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import "../styles/Login.css";
 
 export default function Login() {
-  // Local state to track which dashboard role is selected
+  // Tracks the selected dashboard role for previewing
   const [role, setRole] = useState("");
   // Navigation hook for route changes
   const navigate = useNavigate();

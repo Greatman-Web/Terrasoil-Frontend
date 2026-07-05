@@ -3,7 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import "../styles/Signup.css";
 
 export default function Signup() {
-  // Track the selected user role: farmer, advisor, or researcher
+  // Tracks the selected account role: farmer, advisor, or researcher
   const [role, setRole] = useState("");
   // Hook for navigating between pages
   const navigate = useNavigate();

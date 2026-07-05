@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Landing from "../pages/Landing";
+
+// Route configuration for the application pages
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import Farmersdashboard from "../pages/Farmersdashboard";
