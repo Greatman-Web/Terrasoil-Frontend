@@ -295,4 +295,25 @@
   .field-form button {
     grid-column: span 1;
   }
+  .form-error {
+  grid-column: span 2;
+  color: #c52b1e;
+  background: #ffe0dc;
+  padding: 14px;
+  border-radius: 10px;
+  font-weight: 800;
+}
+.field-map {
+  grid-column: span 2;
+  height: 260px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 2px solid #e3decf;
+}
+
+@media (max-width: 900px) {
+  .field-map {
+    grid-column: span 1;
+  }
+}
 }

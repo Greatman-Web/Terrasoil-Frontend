@@ -28,6 +28,15 @@ export default function Landing() {
     <option value="am">🇪🇹 አማርኛ (Amharic)</option>
   </select>
 
+  <div className="landing-nav">
+
+  <button
+    className="text-btn"
+    onClick={() => navigate("/about")}
+  >
+    About
+  </button>
+
   <button
     className="nav-link"
     onClick={() => navigate("/login")}
@@ -41,6 +50,8 @@ export default function Landing() {
   >
     Sign Up
   </button>
+
+</div>
 
 </nav>
       </header>

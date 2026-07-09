@@ -3,10 +3,21 @@ import { useNavigate, Link } from "react-router-dom";
 import "../styles/Login.css";
 
 export default function Login() {
-  // Tracks the selected dashboard role for previewing
-  const [role, setRole] = useState("");
-  // Navigation hook for route changes
   const navigate = useNavigate();
+
+  const [role, setRole] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleLogin = () => {
+  navigate("/farmer-dashboard", {
+    state: {
+      username: "Tesfaye",
+      isNewUser: false,
+    },
+  });
+};
 
   return (
     <div className="login-page">
@@ -25,16 +36,30 @@ export default function Login() {
       <main className="login-container">
         <section className="login-card">
           <h1>Welcome back</h1>
+
           <p className="login-subtitle">
             Login to monitor your soil health and manage your farm insights.
           </p>
 
+          {error && <p className="login-error">{error}</p>}
+
           <div className="login-form">
-            <input type="email" placeholder="Phone Number" />
-            <input type="password" placeholder="Password" />
+            <input
+              type="tel"
+              placeholder="Phone Number"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+            />
+
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </div>
 
-          <h3>Preview dashboard as:</h3>
+          <h3>Select dashboard role:</h3>
 
           <div className="role-buttons">
             <button
@@ -63,20 +88,9 @@ export default function Login() {
             Selected Role: <strong>{role || "None"}</strong>
           </p>
 
-          <button
-  className="login-btn"
-  disabled={!role}
-  onClick={() =>
-    navigate("/farmer-dashboard", {
-      state: {
-        username: "Tesfaye",
-        isNewUser: false,
-      },
-    })
-  }
->
-  Login
-</button>
+          <button className="login-btn" onClick={handleLogin}>
+            Login
+          </button>
 
           <p className="signup-text">
             Don't have an account? <Link to="/signup">Sign Up</Link>

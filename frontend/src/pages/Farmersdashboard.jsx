@@ -3,15 +3,21 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "../styles/Farmersdashboard.css";
 import farmerWelcome from "../assets/images/farmer-welcome.png";
 
-// Farmer dashboard for managing and registering fields
+
 export default function Farmersdashboard() {
   const navigate = useNavigate();
   const routeLocation = useLocation();
+  
 
   const username = routeLocation.state?.username || "Farmer";
   const isNewUser = routeLocation.state?.isNewUser || false;
 
-  const [fields, setFields] = useState([]);
+  const [fields, setFields] = useState(() => {
+    const savedFields = localStorage.getItem("registeredFields");
+    return savedFields ? JSON.parse(savedFields) : [];
+  });
+
+  const [error, setError] = useState("");
 
   const [fieldName, setFieldName] = useState("");
   const [totalArea, setTotalArea] = useState("");
@@ -32,8 +38,10 @@ export default function Farmersdashboard() {
       !landOwnership ||
       !irrigationType ||
       !coordinates
-    )
+    ) {
+      setError("Please complete all field registration details.");
       return;
+    }
 
     const newField = {
       id: Date.now(),
@@ -44,9 +52,15 @@ export default function Farmersdashboard() {
       landOwnership,
       irrigationType,
       coordinates,
+      status: "Active",
     };
 
-    setFields([...fields, newField]);
+    const updatedFields = [...fields, newField];
+
+    setFields(updatedFields);
+    localStorage.setItem("registeredFields", JSON.stringify(updatedFields));
+
+    setError("");
 
     setFieldName("");
     setTotalArea("");
@@ -55,8 +69,14 @@ export default function Farmersdashboard() {
     setLandOwnership("");
     setIrrigationType("");
     setCoordinates("");
+  };
 
-    navigate("/field-dashboard");
+  const openFieldDashboard = (field) => {
+    navigate("/field-dashboard", {
+      state: {
+        field,
+      },
+    });
   };
 
   return (
@@ -78,56 +98,49 @@ export default function Farmersdashboard() {
 
       <nav className="farmer-tabs">
         <button className="active">Dashboard</button>
-        <button onClick={() => navigate("/field-dashboard")}>
-          My Fields
-        </button>
+       <button
+         onClick={() =>
+         document
+        .querySelector(".registered-fields")
+        ?.scrollIntoView({ behavior: "smooth" })}>
+        My Fields
+      </button>
         <button>Household</button>
         <button>Recommendations</button>
       </nav>
 
       <main className="farmer-dashboard-main">
         <section className="welcome-card">
+          <div className="welcome-content">
+            <div className="welcome-text">
+              <p className="small-title">Farmer Dashboard</p>
 
-  <div className="welcome-content">
+              <h1>
+                {isNewUser
+                  ? `Welcome, ${username} 👋`
+                  : `Welcome back, ${username} 👋`}
+              </h1>
 
-    <div className="welcome-text">
+              <p>
+                Here's an overview of your farm. Register your fields to begin
+                monitoring soil health and receive intelligent recommendations.
+              </p>
+            </div>
 
-      <p className="small-title">Farmer Dashboard</p>
-
-      <h1>
-        {isNewUser
-          ? `Welcome, ${username} 👋`
-          : `Welcome back, ${username} 👋`}
-      </h1>
-
-      <p>
-        Here's an overview of your farm. Register your fields to begin
-        monitoring soil health and receive intelligent recommendations.
-      </p>
-
-    </div>
-
-    <div className="welcome-image">
-
-      <img
-        src={farmerWelcome}
-        alt="Farmers working on a farm"
-      />
-
-    </div>
-
-  </div>
-
-</section>
+            <div className="welcome-image">
+              <img src={farmerWelcome} alt="Farmers working on a farm" />
+            </div>
+          </div>
+        </section>
 
         <section className="dashboard-section">
           <div className="section-header">
             <h2>Register New Field</h2>
             <p>
-              Register your farm field by providing the details below. 
-              Once registered, you'll be able to monitor soil health, 
-              record field observations, track crop performance, 
-              and receive smart recommendations tailored to your field.
+              Register your farm field by providing the details below. Once
+              registered, you'll be able to monitor soil health, record field
+              observations, track crop performance, and receive smart
+              recommendations tailored to your field.
             </p>
           </div>
 
@@ -146,7 +159,10 @@ export default function Farmersdashboard() {
               onChange={(e) => setTotalArea(e.target.value)}
             />
 
-            <select value={cropType} onChange={(e) => setCropType(e.target.value)}>
+            <select
+              value={cropType}
+              onChange={(e) => setCropType(e.target.value)}
+            >
               <option value="">Select Crop Type</option>
               <option value="Maize">Maize</option>
               <option value="Teff">Teff</option>
@@ -188,17 +204,15 @@ export default function Farmersdashboard() {
               type="text"
               placeholder="Location Coordinates"
               value={coordinates}
-              onChange={(e) => setCoordinates(e.target.value)}
-            />
-
-            <div className="map-placeholder">📍 Map Picker Placeholder</div>
+              onChange={(e) => setCoordinates(e.target.value)}/>
+           <div className="map-placeholder">📍 Map Picker Placeholder</div>
 
             <button type="submit">Register Field</button>
           </form>
         </section>
 
         <section className="registered-fields">
-          <h2>Registered Fields</h2>
+          <h2>My Fields</h2>
 
           {fields.length === 0 ? (
             <p className="empty-message">
@@ -207,16 +221,16 @@ export default function Farmersdashboard() {
           ) : (
             <div className="fields-grid">
               {fields.map((field) => (
-                <div
-                  className="field-card"
-                  key={field.id}
-                  onClick={() => navigate("/field-dashboard")}
-                >
+                <div className="field-card" key={field.id}>
                   <h3>{field.fieldName}</h3>
                   <p>Crop: {field.cropType}</p>
                   <p>Area: {field.totalArea} ha</p>
                   <p>Region: {field.region}</p>
-                  <button>Open Field Dashboard</button>
+                  <p>Status: {field.status}</p>
+
+                  <button onClick={() => openFieldDashboard(field)}>
+                    Open Field Dashboard
+                  </button>
                 </div>
               ))}
             </div>

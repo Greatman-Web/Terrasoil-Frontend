@@ -177,4 +177,12 @@
   .role-buttons {
     grid-template-columns: 1fr;
   }
+  .login-error {
+  background: #ffe0dc;
+  color: #c52b1e;
+  padding: 14px;
+  border-radius: 10px;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
 }
