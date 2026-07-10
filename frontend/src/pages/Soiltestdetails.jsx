@@ -9,8 +9,69 @@ export default function Soiltestdetails() {
   const selectedField = location.state?.field;
   const [started, setStarted] = useState(false);
   const [result, setResult] = useState("");
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState(false);
+
+
+const [fullResults, setFullResults] = useState({
+  structureQuality: "",
+  aggregateSize: "",
+  porosity: "",
+  roots: "",
+  vessScore: "",
+  rootDevelopment: "",
+  speciesCount: "",
+  individualsCount: "",
+  munsellHue: "",
+  munsellValue: "",
+  munsellChroma: "",
+  soilColour: "",
+  penetrationResistance: "",
+  pourOne: "",
+  pourTwo: "",
+  pourThree: "",
+  pourFour: "",
+  pourFive: "",
+  steadyStatePour: "",
+  totalWater: "",
+  waterPerBottle: "",
+  ringDiameter: "",
+  slakesTime: "",
+  slakesStability: "",
+  slakesAppTime: "",
+  slakesAppLocation: "",
+  slakesImageNumbers: "",
+  slakesAppStability: "",
+  phValue: "",
+  socColour: "",
+  socFeel: "",
+  socSmell: "",
+  socPhotoTaken: "",
+  socPhotoLocation: "",
+  socImageNumber: "",
+  teabagType: "",
+  massBefore: "",
+  massAfter: "",
+  daysInSoil: "",
+  decomposition: "",
+  cropArea: "",
+  cropType: "",
+  cropYield: "",
+  gullyInitialDistance: "",
+  numberOfPegs: "",
+  daysAfterInstallation: "",
+  gullyNewDistance: "",
+});
+
+const handleFullResultChange = (event) => {
+  const { name, value } = event.target;
+
+  setFullResults((previousResults) => ({
+    ...previousResults,
+    [name]: value,
+  }));
+};
+
+const [error, setError] = useState("");
+const [success, setSuccess] = useState(false);
 
   const testData = {
     "soil-ph": {
@@ -124,6 +185,246 @@ export default function Soiltestdetails() {
         "Avoid testing under direct extreme heat if possible.",
       ],
     },
+    "soil-structure": {
+  title: "Visual Evaluation of Soil Structure",
+  icon: "🧱",
+  meaning:
+    "This test checks the condition of the soil structure, aggregates, pores and roots.",
+  range:
+    "Structure quality ranges from Friable to Very compact, with a score from 1 to 5.",
+  matters:
+    "Good soil structure supports water movement, air circulation and healthy root growth.",
+  placeholder: "Enter structure score from 1 to 5",
+  instructions: [
+    "Collect a block of soil from the selected field.",
+    "Carefully break the soil apart without crushing it.",
+    "Observe the structure quality and aggregate size.",
+    "Check the amount of pores and the position of roots.",
+    "Give the soil a score between 1 and 5.",
+  ],
+},
+
+"root-development": {
+  title: "Root Development Test",
+  icon: "🌱",
+  meaning:
+    "This test checks the amount and distribution of roots inside the soil.",
+  range: "Low, Low Moderate, Moderate, High Moderate or High.",
+  matters:
+    "Healthy root development helps plants absorb water and nutrients effectively.",
+  placeholder: "Enter root development category",
+  instructions: [
+    "Dig carefully around the root zone of the crop.",
+    "Expose the roots without cutting them unnecessarily.",
+    "Observe the number of roots and fine roots.",
+    "Check whether the roots are restricted or spread freely.",
+    "Record the closest root development category.",
+  ],
+},
+
+"tsbf-test": {
+  title: "TSBF Test",
+  icon: "🪱",
+  meaning:
+    "The TSBF test checks the number and variety of visible soil organisms.",
+  range:
+    "Species count and individual count are recorded as Low, Medium or High.",
+  matters:
+    "A greater number and variety of soil organisms often indicates healthier biological activity.",
+  placeholder: "Enter TSBF result",
+  instructions: [
+    "Mark a small sampling area in the field.",
+    "Remove and inspect the soil carefully.",
+    "Count the different visible soil species.",
+    "Count the total number of individual organisms.",
+    "Record both counts as Low, Medium or High.",
+  ],
+},
+
+"soil-colour": {
+  title: "Soil Colour Test",
+  icon: "🎨",
+  meaning:
+    "Soil colour can provide information about organic matter, minerals and drainage.",
+  range:
+    "Dark brown/Black, Medium brown, Red, Yellowish brown or Grey/Mottled/Pale.",
+  matters:
+    "Dark soil may contain more organic matter, while grey or mottled soil may indicate drainage problems.",
+  placeholder: "Enter or select soil colour",
+  instructions: [
+    "Collect a fresh soil sample.",
+    "Remove stones, roots and crop residue.",
+    "Observe the soil in natural daylight.",
+    "Compare the colour with a Munsell chart if available.",
+    "Record the Munsell code or the closest visual colour category.",
+  ],
+},
+
+"penetration-resistance": {
+  title: "Penetration Resistance Test",
+  icon: "📏",
+  meaning:
+    "This test measures how easily a rod or tool can enter the soil.",
+  range: "Good: at least 20 cm, Fair: 5–20 cm, Poor: less than 5 cm.",
+  matters:
+    "High resistance may indicate compacted soil that restricts roots and water movement.",
+  placeholder: "Enter Good, Fair or Poor",
+  instructions: [
+    "Select a representative area of the field.",
+    "Push the testing rod vertically into the soil.",
+    "Measure how deeply it enters before strong resistance is felt.",
+    "Repeat the test in several locations.",
+    "Record the result as Good, Fair or Poor.",
+  ],
+},
+
+"beerkan-infiltration": {
+  title: "Beerkan Infiltration Test",
+  icon: "💧",
+  meaning:
+    "This test measures how quickly water enters the soil.",
+  range:
+    "Record the time for each pour, steady-state pour number, total water used and ring diameter.",
+  matters:
+    "Good infiltration helps reduce runoff and allows water to reach plant roots.",
+  placeholder: "Enter infiltration result",
+  instructions: [
+    "Place the infiltration ring firmly into the soil.",
+    "Pour a measured amount of water into the ring.",
+    "Record how long the water takes to infiltrate.",
+    "Repeat the pour until the infiltration time becomes steady.",
+    "Record the times, total water used and ring diameter.",
+  ],
+},
+
+"slakes-test": {
+  title: "Slakes Test",
+  icon: "🫧",
+  meaning:
+    "The slakes test checks whether soil aggregates remain stable when placed in water.",
+  range: "Poor or Good.",
+  matters:
+    "Stable soil aggregates resist erosion and help maintain soil structure.",
+  placeholder: "Enter Poor or Good",
+  instructions: [
+    "Collect a dry soil aggregate.",
+    "Place it gently into clean water.",
+    "Observe it for approximately 5 to 10 minutes.",
+    "Check whether it remains intact or falls apart.",
+    "Record Good if it remains stable or Poor if it breaks apart.",
+  ],
+},
+
+"slakes-app-test": {
+  title: "Slakes App Test",
+  icon: "📷",
+  meaning:
+    "This test records soil aggregate stability using photographs before and after water exposure.",
+  range: "Poor or Good, with before-and-after photographs.",
+  matters:
+    "Photographs make it easier to compare aggregate stability over time.",
+  placeholder: "Enter Poor or Good",
+  instructions: [
+    "Take a clear photograph of the dry soil aggregate.",
+    "Place the aggregate in water.",
+    "Wait approximately 10 minutes.",
+    "Take another photograph after water exposure.",
+    "Record the stability result and image numbers.",
+  ],
+},
+
+"soc-observation": {
+  title: "SOC Colour, Feel and Smell Test",
+  icon: "🌍",
+  meaning:
+    "This test estimates soil organic carbon by observing soil colour, texture and smell.",
+  range:
+    "Colour, Feel and Smell are each recorded separately.",
+  matters:
+    "Organic carbon improves soil fertility, structure, moisture retention and biological activity.",
+  placeholder: "Enter SOC observation",
+  instructions: [
+    "Collect a fresh topsoil sample.",
+    "Observe whether the soil is dark, brown, red, yellowish or grey.",
+    "Rub the soil between your fingers to assess how it feels.",
+    "Smell the soil carefully.",
+    "Record the colour, feel and smell categories.",
+  ],
+},
+
+"soc-app-test": {
+  title: "SOC App Test",
+  icon: "📱",
+  meaning:
+    "This test records a soil photograph for future soil organic carbon analysis.",
+  range: "Photo recorded inside the app or uploaded manually.",
+  matters:
+    "A consistent soil photograph can support future image-based SOC analysis.",
+  placeholder: "Enter image reference",
+  instructions: [
+    "Prepare a clean soil sample.",
+    "Place it under good, even lighting.",
+    "Take a clear photograph without shadows.",
+    "Use the app camera or upload an existing image.",
+    "Record the image number or reference.",
+  ],
+},
+
+"teabag-index": {
+  title: "Teabag Index Test",
+  icon: "🍵",
+  meaning:
+    "The teabag index measures how quickly organic material decomposes in the soil.",
+  range:
+    "Low, Medium or High decomposition based on mass loss.",
+  matters:
+    "Decomposition gives an indication of soil biological activity.",
+  placeholder: "Enter decomposition result",
+  instructions: [
+    "Record the type of teabag being used.",
+    "Measure and record its mass before burial.",
+    "Bury the teabag in the soil for the required period.",
+    "Remove, dry and measure its final mass.",
+    "Record the number of days and decomposition category.",
+  ],
+},
+
+"crop-yield-evaluation": {
+  title: "Crop Yield Evaluation",
+  icon: "🌾",
+  meaning:
+    "This test records the crop yield produced from a known field area.",
+  range: "Area in hectares, crop type and yield in tonnes.",
+  matters:
+    "Yield information helps compare soil condition with farm productivity.",
+  placeholder: "Enter crop yield result",
+  instructions: [
+    "Confirm the total area of the field.",
+    "Record the crop grown on the field.",
+    "Measure the total harvested crop.",
+    "Convert the harvest quantity into tonnes if needed.",
+    "Record the field area, crop type and yield.",
+  ],
+},
+
+"gully-retreat": {
+  title: "Gully Retreat Test",
+  icon: "📍",
+  meaning:
+    "This test monitors how the position of a gully changes over time.",
+  range:
+    "Record peg distance, number of pegs, elapsed days and the new distance.",
+  matters:
+    "Monitoring gully movement helps farmers understand and manage soil erosion.",
+  placeholder: "Enter gully measurement",
+  instructions: [
+    "Install fixed marker pegs near the gully.",
+    "Measure the initial distance between each peg and the gully edge.",
+    "Record the date and number of pegs.",
+    "Return after the monitoring period.",
+    "Measure and record the new distance to the gully edge.",
+  ],
+},
 
     "full-analysis": {
       title: "Complete Soil Analysis",
@@ -144,6 +445,8 @@ export default function Soiltestdetails() {
     },
   };
 
+  
+
   const currentTest = testData[testId] || testData["soil-ph"];
   const isFullAnalysis = testId === "full-analysis";
 
@@ -158,12 +461,38 @@ export default function Soiltestdetails() {
     return;
   }
 
+  if (isFullAnalysis) {
+    const requiredFullFields = [
+      fullResults.structureQuality,
+      fullResults.rootDevelopment,
+      fullResults.speciesCount,
+      fullResults.individualsCount,
+      fullResults.soilColour,
+      fullResults.penetrationResistance,
+      fullResults.slakesStability,
+      fullResults.phValue,
+      fullResults.socColour,
+      fullResults.socFeel,
+      fullResults.socSmell,
+    ];
+
+    const hasEmptyField = requiredFullFields.some(
+      (field) => String(field).trim() === ""
+    );
+
+    if (hasEmptyField) {
+      setError("Please complete the required full analysis fields.");
+      return;
+    }
+  }
+
   const newTest = {
     id: Date.now(),
     fieldId: selectedField.id,
     testName: currentTest.title,
-    result: isFullAnalysis ? "Full analysis recorded" : result,
-    status: "Good",
+    analysisType: isFullAnalysis ? "complete" : "quick",
+    result: isFullAnalysis ? fullResults : result,
+    status: "Recorded",
     date: new Date().toLocaleDateString(),
   };
 
@@ -224,7 +553,12 @@ export default function Soiltestdetails() {
         </section>
 
         {started && !success && (
-          <section className="test-content-grid">
+          <section
+            className={
+               isFullAnalysis
+                ? "test-content-grid full-analysis-layout"
+                : "test-content-grid"
+            }>
             <div className="instruction-card">
               <h2>Step-by-Step Instructions</h2>
 
@@ -238,17 +572,542 @@ export default function Soiltestdetails() {
             <div className="result-card">
               <h2>{isFullAnalysis ? "Enter Full Results" : "Enter Test Result"}</h2>
 
-              {isFullAnalysis ? (
-                <div className="full-analysis-form">
-                  <input type="number" placeholder="Soil pH" />
-                  <input type="number" placeholder="Moisture (%)" />
-                  <input type="text" placeholder="Nitrogen (N)" />
-                  <input type="text" placeholder="Phosphorus (P)" />
-                  <input type="text" placeholder="Potassium (K)" />
-                  <input type="text" placeholder="Organic Matter" />
-                  <input type="number" placeholder="Temperature (°C)" />
-                </div>
-              ) : (
+             {isFullAnalysis ? (
+  <div className="complete-analysis-form">
+
+    {/* VESS */}
+
+    <div className="analysis-group">
+      <h3>1. Visual Evaluation of Soil Structure</h3>
+
+      <div className="analysis-fields-grid">
+        <select
+          name="structureQuality"
+          value={fullResults.structureQuality}
+          onChange={handleFullResultChange}
+        >
+          <option value="">Structure Quality</option>
+          <option value="Friable">Friable</option>
+          <option value="Intact">Intact</option>
+          <option value="Firm">Firm</option>
+          <option value="Compact">Compact</option>
+          <option value="Very compact">Very compact</option>
+        </select>
+
+        <select
+          name="aggregateSize"
+          value={fullResults.aggregateSize}
+          onChange={handleFullResultChange}
+        >
+          <option value="">Aggregate Size</option>
+          <option value="Up to 6 mm">Up to 6 mm</option>
+          <option value="2 mm to 7 mm">2 mm to 7 mm</option>
+          <option value="2 mm to 10 cm">2 mm to 10 cm</option>
+          <option value="More than 10 cm">More than 10 cm</option>
+          <option value="Mostly more than 10 cm">
+            Mostly more than 10 cm
+          </option>
+        </select>
+
+        <select
+          name="porosity"
+          value={fullResults.porosity}
+          onChange={handleFullResultChange}
+        >
+          <option value="">Porosity</option>
+          <option value="Highly porous">Highly porous</option>
+          <option value="Mostly porous">Mostly porous</option>
+          <option value="Macropores">Macropores</option>
+          <option value="Few macropores">Few macropores</option>
+          <option value="May be macropores">May be macropores</option>
+        </select>
+
+        <select
+          name="roots"
+          value={fullResults.roots}
+          onChange={handleFullResultChange}
+        >
+          <option value="">Root Position</option>
+          <option value="Throughout">Throughout</option>
+          <option value="Within aggregates">Within aggregates</option>
+          <option value="In macropores">In macropores</option>
+          <option value="Few roots">Few roots</option>
+        </select>
+
+        <select
+          name="vessScore"
+          value={fullResults.vessScore}
+          onChange={handleFullResultChange}
+        >
+          <option value="">VESS Score</option>
+          <option value="1">1 — Very good</option>
+          <option value="2">2 — Good</option>
+          <option value="3">3 — Moderate</option>
+          <option value="4">4 — Poor</option>
+          <option value="5">5 — Very poor</option>
+        </select>
+      </div>
+    </div>
+
+    {/* ROOT DEVELOPMENT */}
+
+    <div className="analysis-group">
+      <h3>2. Root Development</h3>
+
+      <select
+        name="rootDevelopment"
+        value={fullResults.rootDevelopment}
+        onChange={handleFullResultChange}
+      >
+        <option value="">Select root development</option>
+        <option value="Low">Low</option>
+        <option value="Low Moderate">Low Moderate</option>
+        <option value="Moderate">Moderate</option>
+        <option value="High Moderate">High Moderate</option>
+        <option value="High">High</option>
+      </select>
+    </div>
+
+    {/* TSBF */}
+
+    <div className="analysis-group">
+      <h3>3. Simplified TSBF Test</h3>
+
+      <div className="analysis-fields-grid">
+        <select
+          name="speciesCount"
+          value={fullResults.speciesCount}
+          onChange={handleFullResultChange}
+        >
+          <option value="">Species Count</option>
+          <option value="Low">Low — 2 species or fewer</option>
+          <option value="Medium">Medium — 3 to 6 species</option>
+          <option value="High">High — More than 6 species</option>
+        </select>
+
+        <select
+          name="individualsCount"
+          value={fullResults.individualsCount}
+          onChange={handleFullResultChange}
+        >
+          <option value="">Individuals Count</option>
+          <option value="Low">Low — Fewer than 5</option>
+          <option value="Medium">Medium — 5 to 10</option>
+          <option value="High">High — More than 10</option>
+        </select>
+      </div>
+    </div>
+
+    {/* SOIL COLOUR */}
+
+    <div className="analysis-group">
+      <h3>4. Soil Colour</h3>
+
+      <div className="analysis-fields-grid">
+        <input
+          type="text"
+          name="munsellHue"
+          placeholder="Munsell Hue (optional)"
+          value={fullResults.munsellHue}
+          onChange={handleFullResultChange}
+        />
+
+        <input
+          type="text"
+          name="munsellValue"
+          placeholder="Munsell Value (optional)"
+          value={fullResults.munsellValue}
+          onChange={handleFullResultChange}
+        />
+
+        <input
+          type="text"
+          name="munsellChroma"
+          placeholder="Munsell Chroma (optional)"
+          value={fullResults.munsellChroma}
+          onChange={handleFullResultChange}
+        />
+
+        <select
+          name="soilColour"
+          value={fullResults.soilColour}
+          onChange={handleFullResultChange}
+        >
+          <option value="">Visual Soil Colour</option>
+          <option value="Dark brown/Black">Dark brown / Black</option>
+          <option value="Medium brown">Medium brown</option>
+          <option value="Red">Red</option>
+          <option value="Yellowish brown">Yellowish brown</option>
+          <option value="Grey/Mottled/Pale">Grey / Mottled / Pale</option>
+        </select>
+      </div>
+    </div>
+
+    {/* PENETRATION */}
+
+    <div className="analysis-group">
+      <h3>5. Penetration Resistance</h3>
+
+      <select
+        name="penetrationResistance"
+        value={fullResults.penetrationResistance}
+        onChange={handleFullResultChange}
+      >
+        <option value="">Select penetratability</option>
+        <option value="Good">Good — Easily reaches at least 20 cm</option>
+        <option value="Fair">Fair — Reaches 5 to 20 cm</option>
+        <option value="Poor">Poor — Reaches less than 5 cm</option>
+      </select>
+    </div>
+
+    {/* BEERKAN */}
+
+    <div className="analysis-group">
+      <h3>6. Beerkan Infiltration Test</h3>
+
+      <div className="analysis-fields-grid">
+        {["One", "Two", "Three", "Four", "Five"].map((number, index) => (
+          <input
+            key={number}
+            type="number"
+            name={`pour${number}`}
+            placeholder={`Pour ${index + 1} time (seconds)`}
+            value={fullResults[`pour${number}`]}
+            onChange={handleFullResultChange}
+          />
+        ))}
+
+        <input
+          type="number"
+          name="steadyStatePour"
+          placeholder="Steady state at pour number"
+          value={fullResults.steadyStatePour}
+          onChange={handleFullResultChange}
+        />
+
+        <input
+          type="number"
+          name="totalWater"
+          placeholder="Total water used (ml)"
+          value={fullResults.totalWater}
+          onChange={handleFullResultChange}
+        />
+
+        <input
+          type="number"
+          name="waterPerBottle"
+          placeholder="Water per bottle (ml)"
+          value={fullResults.waterPerBottle}
+          onChange={handleFullResultChange}
+        />
+
+        <input
+          type="number"
+          name="ringDiameter"
+          placeholder="Ring diameter (cm)"
+          value={fullResults.ringDiameter}
+          onChange={handleFullResultChange}
+        />
+      </div>
+    </div>
+
+    {/* SLAKES */}
+
+    <div className="analysis-group">
+      <h3>7. Slakes Test</h3>
+
+      <div className="analysis-fields-grid">
+        <input
+          type="number"
+          name="slakesTime"
+          placeholder="Observation time (minutes)"
+          value={fullResults.slakesTime}
+          onChange={handleFullResultChange}
+        />
+
+        <select
+          name="slakesStability"
+          value={fullResults.slakesStability}
+          onChange={handleFullResultChange}
+        >
+          <option value="">Select stability</option>
+          <option value="Poor">Poor — Falls apart, cloudy water</option>
+          <option value="Good">Good — Remains intact, clear water</option>
+        </select>
+      </div>
+    </div>
+
+    {/* SLAKES APP */}
+
+    <div className="analysis-group">
+      <h3>8. Slakes App Test</h3>
+
+      <div className="analysis-fields-grid">
+        <input
+          type="number"
+          name="slakesAppTime"
+          placeholder="Test time (minutes)"
+          value={fullResults.slakesAppTime}
+          onChange={handleFullResultChange}
+        />
+
+        <select
+          name="slakesAppLocation"
+          value={fullResults.slakesAppLocation}
+          onChange={handleFullResultChange}
+        >
+          <option value="">Where were photos taken?</option>
+          <option value="Inside app">Inside app</option>
+          <option value="Outside app">Manually outside app</option>
+        </select>
+
+        <input
+          type="text"
+          name="slakesImageNumbers"
+          placeholder="Image numbers"
+          value={fullResults.slakesImageNumbers}
+          onChange={handleFullResultChange}
+        />
+
+        <select
+          name="slakesAppStability"
+          value={fullResults.slakesAppStability}
+          onChange={handleFullResultChange}
+        >
+          <option value="">Select stability</option>
+          <option value="Poor">Poor</option>
+          <option value="Good">Good</option>
+        </select>
+      </div>
+    </div>
+
+    {/* PH */}
+
+    <div className="analysis-group">
+      <h3>9. Soil pH</h3>
+
+      <input
+        type="number"
+        step="0.1"
+        name="phValue"
+        placeholder="Enter pH value"
+        value={fullResults.phValue}
+        onChange={handleFullResultChange}
+      />
+    </div>
+
+    {/* SOC OBSERVATION */}
+
+    <div className="analysis-group">
+      <h3>10. SOC Colour, Feel and Smell</h3>
+
+      <div className="analysis-fields-grid">
+        <select
+          name="socColour"
+          value={fullResults.socColour}
+          onChange={handleFullResultChange}
+        >
+          <option value="">SOC Soil Colour</option>
+          <option value="Dark brown/Black">Dark brown / Black</option>
+          <option value="Medium brown">Medium brown</option>
+          <option value="Red">Red</option>
+          <option value="Yellowish brown">Yellowish brown</option>
+          <option value="Grey/Mottled/Pale">Grey / Mottled / Pale</option>
+        </select>
+
+        <select
+          name="socFeel"
+          value={fullResults.socFeel}
+          onChange={handleFullResultChange}
+        >
+          <option value="">Soil Feel</option>
+          <option value="Sandy (gritty)">Sandy — Gritty</option>
+          <option value="Silty (smooth)">Silty — Smooth</option>
+          <option value="Clay (sticky)">Clay — Sticky</option>
+          <option value="Loam (balance)">Loam — Balanced</option>
+          <option value="Organic">Organic</option>
+        </select>
+
+        <select
+          name="socSmell"
+          value={fullResults.socSmell}
+          onChange={handleFullResultChange}
+        >
+          <option value="">Soil Smell</option>
+          <option value="Sweet/earthy">Sweet / Earthy</option>
+          <option value="No smell">No smell</option>
+          <option value="Sour/rotten egg">Sour / Rotten egg</option>
+          <option value="Chemical smell">Chemical smell</option>
+        </select>
+      </div>
+    </div>
+
+    {/* SOC APP */}
+
+    <div className="analysis-group">
+      <h3>11. SOC App Test</h3>
+
+      <div className="analysis-fields-grid">
+        <select
+          name="socPhotoTaken"
+          value={fullResults.socPhotoTaken}
+          onChange={handleFullResultChange}
+        >
+          <option value="">Was a photo taken?</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+
+        <select
+          name="socPhotoLocation"
+          value={fullResults.socPhotoLocation}
+          onChange={handleFullResultChange}
+        >
+          <option value="">Photo location</option>
+          <option value="Inside app">Inside app</option>
+          <option value="Outside app">Manually outside app</option>
+        </select>
+
+        <input
+          type="text"
+          name="socImageNumber"
+          placeholder="Image number"
+          value={fullResults.socImageNumber}
+          onChange={handleFullResultChange}
+        />
+      </div>
+    </div>
+
+    {/* TEABAG */}
+
+    <div className="analysis-group">
+      <h3>12. Teabag Index</h3>
+
+      <div className="analysis-fields-grid">
+        <input
+          type="text"
+          name="teabagType"
+          placeholder="Teabag type"
+          value={fullResults.teabagType}
+          onChange={handleFullResultChange}
+        />
+
+        <input
+          type="number"
+          step="0.01"
+          name="massBefore"
+          placeholder="Mass before (g)"
+          value={fullResults.massBefore}
+          onChange={handleFullResultChange}
+        />
+
+        <input
+          type="number"
+          step="0.01"
+          name="massAfter"
+          placeholder="Mass after (g)"
+          value={fullResults.massAfter}
+          onChange={handleFullResultChange}
+        />
+
+        <input
+          type="number"
+          name="daysInSoil"
+          placeholder="Days in soil"
+          value={fullResults.daysInSoil}
+          onChange={handleFullResultChange}
+        />
+
+        <select
+          name="decomposition"
+          value={fullResults.decomposition}
+          onChange={handleFullResultChange}
+        >
+          <option value="">Decomposition</option>
+          <option value="Low">Low — Almost original</option>
+          <option value="Medium">Medium — Lost less than 50%</option>
+          <option value="High">High — Lost at least 50%</option>
+        </select>
+      </div>
+    </div>
+
+    {/* CROP YIELD */}
+
+    <div className="analysis-group">
+      <h3>13. Crop Yield Evaluation</h3>
+
+      <div className="analysis-fields-grid">
+        <input
+          type="number"
+          step="0.01"
+          name="cropArea"
+          placeholder="Area (ha)"
+          value={fullResults.cropArea}
+          onChange={handleFullResultChange}
+        />
+
+        <input
+          type="text"
+          name="cropType"
+          placeholder="Crop type"
+          value={fullResults.cropType}
+          onChange={handleFullResultChange}
+        />
+
+        <input
+          type="number"
+          step="0.01"
+          name="cropYield"
+          placeholder="Yield (tonnes)"
+          value={fullResults.cropYield}
+          onChange={handleFullResultChange}
+        />
+      </div>
+    </div>
+
+    {/* GULLY */}
+
+    <div className="analysis-group">
+      <h3>14. Gully Retreat</h3>
+
+      <div className="analysis-fields-grid">
+        <input
+          type="number"
+          step="0.01"
+          name="gullyInitialDistance"
+          placeholder="Initial distance to pegs (m)"
+          value={fullResults.gullyInitialDistance}
+          onChange={handleFullResultChange}
+        />
+
+        <input
+          type="number"
+          name="numberOfPegs"
+          placeholder="Number of pegs"
+          value={fullResults.numberOfPegs}
+          onChange={handleFullResultChange}
+        />
+
+        <input
+          type="number"
+          name="daysAfterInstallation"
+          placeholder="Days after installation"
+          value={fullResults.daysAfterInstallation}
+          onChange={handleFullResultChange}
+        />
+
+        <input
+          type="number"
+          step="0.01"
+          name="gullyNewDistance"
+          placeholder="New distance to pegs (m)"
+          value={fullResults.gullyNewDistance}
+          onChange={handleFullResultChange}
+        />
+      </div>
+    </div>
+  </div>
+) : (
                 <input
                   type="text"
                   placeholder={currentTest.placeholder}
@@ -274,7 +1133,7 @@ export default function Soiltestdetails() {
         {success && (
           <section className="success-card">
             <h2>✅ {currentTest.title} Saved Successfully</h2>
-            <p>Your soil test result has been recorded.</p>
+            <p>Your soil test result has been recorded and interpreted successfully.</p>
 
             <div className="success-actions">
               <button

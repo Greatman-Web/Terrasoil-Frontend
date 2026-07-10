@@ -11,14 +11,27 @@ export default function Soiltest() {
   const selectedField = location.state?.field;
 
   const tests = [
-    "Soil pH",
-    "Moisture",
-    "Nitrogen (N)",
-    "Phosphorus (P)",
-    "Potassium (K)",
-    "Organic Matter",
-    "Temperature",
-  ];
+  "Soil pH",
+  "Moisture",
+  "Nitrogen (N)",
+  "Phosphorus (P)",
+  "Potassium (K)",
+  "Organic Matter",
+  "Temperature",
+  "Soil Structure",
+  "Root Development",
+  "TSBF Test",
+  "Soil Colour",
+  "Penetration Resistance",
+  "Beerkan Infiltration",
+  "Slakes Test",
+  "Slakes App Test",
+  "SOC Observation",
+  "SOC App Test",
+  "Teabag Index",
+  "Crop Yield Evaluation",
+  "Gully Retreat",
+];
 
   const createTestRoute = (testName) => {
     return testName

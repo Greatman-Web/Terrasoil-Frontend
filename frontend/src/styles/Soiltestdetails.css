@@ -110,7 +110,13 @@
   grid-template-columns: 1fr 1fr;
   gap: 28px;
 }
-
+.full-analysis-layout {
+  grid-template-columns: 1fr;
+}
+.full-analysis-layout .instruction-card,
+.full-analysis-layout .result-card {
+  width: 100%;
+}
 .instruction-card h2,
 .result-card h2 {
   margin-top: 0;
@@ -253,6 +259,58 @@
   border-radius: 10px;
   font-weight: 900;
   cursor: pointer;
+}
+
+/* ==========================
+   Complete Analysis Sections
+========================== */
+
+.analysis-group {
+  margin-bottom: 30px;
+  padding: 24px;
+  background: #ffffff;
+  border-left: 5px solid #8bb82e;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.analysis-group h3 {
+  margin: 0 0 18px;
+  color: #2f5e2b;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.analysis-group p {
+  margin-bottom: 18px;
+  color: #5b6155;
+  line-height: 1.6;
+}
+
+.analysis-fields-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.analysis-group input,
+.analysis-group select,
+.analysis-group textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #d8e2d1;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background: #fff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.analysis-group input:focus,
+.analysis-group select:focus,
+.analysis-group textarea:focus {
+  outline: none;
+  border-color: #8bb82e;
+  box-shadow: 0 0 0 3px rgba(139, 184, 46, 0.15);
 }
 
 @media (max-width: 900px) {

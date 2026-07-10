@@ -424,4 +424,53 @@
   .field-hero-text h1 {
     font-size: 34px;
   }
+  .analysis-summary {
+  margin-top: 24px;
+  padding: 24px;
+  background: #f5f0e6;
+  border-radius: 18px;
+}
+
+.analysis-summary h3 {
+  margin: 0 0 18px;
+  color: #172014;
+}
+
+.analysis-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.analysis-summary-grid div {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.analysis-summary-grid small {
+  display: block;
+  color: #5d6258;
+  margin-bottom: 7px;
+}
+
+.analysis-summary-grid strong {
+  color: #172014;
+}
+
+.recent-test-information p {
+  margin: 0 0 4px;
+  font-weight: 800;
+  color: #172014;
+}
+
+.recent-test-information small {
+  color: #5d6258;
+}
+
+@media (max-width: 768px) {
+  .analysis-summary-grid {
+    grid-template-columns: 1fr;
+  }
+}
 }

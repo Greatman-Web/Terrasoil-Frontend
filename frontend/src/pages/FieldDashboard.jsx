@@ -15,7 +15,10 @@ export default function FieldDashboard() {
           <section className="field-hero">
             <div className="field-hero-text">
               <h1>No Field Selected</h1>
-              <p>Please go back to My Fields and select a registered field.</p>
+
+              <p>
+                Please go back to My Fields and select a registered field.
+              </p>
 
               <button
                 className="start-test-btn"
@@ -35,6 +38,20 @@ export default function FieldDashboard() {
 
   const latestTest = soilTests[0];
 
+  const isCompleteAnalysis =
+    latestTest?.analysisType === "complete" &&
+    typeof latestTest?.result === "object";
+
+  const displayQuickResult = (test) => {
+    if (!test) return "No result";
+
+    if (typeof test.result === "object") {
+      return "Complete Soil Analysis";
+    }
+
+    return test.result || "Recorded";
+  };
+
   return (
     <div className="field-dashboard-page">
       <header className="field-topbar">
@@ -45,6 +62,7 @@ export default function FieldDashboard() {
 
         <div className="topbar-actions">
           <div className="user-circle">F</div>
+
           <button className="logout-btn" onClick={() => navigate("/")}>
             Logout
           </button>
@@ -52,9 +70,14 @@ export default function FieldDashboard() {
       </header>
 
       <nav className="field-tabs">
-        <button onClick={() => navigate("/farmer-dashboard")}>Dashboard</button>
+        <button onClick={() => navigate("/farmer-dashboard")}>
+          Dashboard
+        </button>
+
         <button className="active">My Fields</button>
+
         <button>Household</button>
+
         <button>Recommendations</button>
       </nav>
 
@@ -82,6 +105,7 @@ export default function FieldDashboard() {
           <div className="field-overview-grid">
             <div className="overview-item">
               <span className="overview-icon">🌾</span>
+
               <div>
                 <small>Field Name</small>
                 <strong>{selectedField.fieldName}</strong>
@@ -90,6 +114,7 @@ export default function FieldDashboard() {
 
             <div className="overview-item">
               <span className="overview-icon">🌽</span>
+
               <div>
                 <small>Crop Type</small>
                 <strong>{selectedField.cropType}</strong>
@@ -98,6 +123,7 @@ export default function FieldDashboard() {
 
             <div className="overview-item">
               <span className="overview-icon">📐</span>
+
               <div>
                 <small>Total Area</small>
                 <strong>{selectedField.totalArea} ha</strong>
@@ -106,6 +132,7 @@ export default function FieldDashboard() {
 
             <div className="overview-item">
               <span className="overview-icon">📍</span>
+
               <div>
                 <small>Region</small>
                 <strong>{selectedField.region}</strong>
@@ -114,9 +141,10 @@ export default function FieldDashboard() {
 
             <div className="overview-item">
               <span className="overview-icon">✅</span>
+
               <div>
                 <small>Status</small>
-                <strong>{selectedField.status}</strong>
+                <strong>{selectedField.status || "Active"}</strong>
               </div>
             </div>
           </div>
@@ -129,8 +157,12 @@ export default function FieldDashboard() {
             {latestTest ? (
               <>
                 <div className="soil-status-box">
-                  <span className="soil-face">😊</span>
-                  <h3>{latestTest.status}</h3>
+                  <span className="soil-face">
+                    {latestTest.status === "Needs Attention" ? "⚠️" : "🧪"}
+                  </span>
+
+                  <h3>{latestTest.status || "Recorded"}</h3>
+
                   <p>Last updated: {latestTest.date}</p>
                 </div>
 
@@ -142,20 +174,75 @@ export default function FieldDashboard() {
 
                   <div>
                     <small>Result</small>
-                    <strong>{latestTest.result}</strong>
+                    <strong>{displayQuickResult(latestTest)}</strong>
                   </div>
 
                   <div>
                     <small>Status</small>
-                    <strong>{latestTest.status}</strong>
+                    <strong>{latestTest.status || "Recorded"}</strong>
                   </div>
                 </div>
+
+                {isCompleteAnalysis && (
+                  <div className="analysis-summary">
+                    <h3>Complete Analysis Summary</h3>
+
+                    <div className="analysis-summary-grid">
+                      <div>
+                        <small>Soil Structure</small>
+                        <strong>
+                          {latestTest.result.structureQuality || "Not recorded"}
+                        </strong>
+                      </div>
+
+                      <div>
+                        <small>Root Development</small>
+                        <strong>
+                          {latestTest.result.rootDevelopment || "Not recorded"}
+                        </strong>
+                      </div>
+
+                      <div>
+                        <small>Soil Colour</small>
+                        <strong>
+                          {latestTest.result.soilColour || "Not recorded"}
+                        </strong>
+                      </div>
+
+                      <div>
+                        <small>Penetration Resistance</small>
+                        <strong>
+                          {latestTest.result.penetrationResistance ||
+                            "Not recorded"}
+                        </strong>
+                      </div>
+
+                      <div>
+                        <small>Soil pH</small>
+                        <strong>
+                          {latestTest.result.phValue || "Not recorded"}
+                        </strong>
+                      </div>
+
+                      <div>
+                        <small>SOC Feel</small>
+                        <strong>
+                          {latestTest.result.socFeel || "Not recorded"}
+                        </strong>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </>
             ) : (
               <div className="soil-status-box">
                 <span className="soil-face">🧪</span>
+
                 <h3>No Soil Test Yet</h3>
-                <p>Start a soil test to see this field’s soil health.</p>
+
+                <p>
+                  Start a soil test to see this field’s soil health.
+                </p>
               </div>
             )}
 
@@ -163,7 +250,9 @@ export default function FieldDashboard() {
               className="start-test-btn"
               onClick={() =>
                 navigate("/soil-test", {
-                  state: { field: selectedField },
+                  state: {
+                    field: selectedField,
+                  },
                 })
               }
             >
@@ -182,8 +271,23 @@ export default function FieldDashboard() {
               soilTests.map((test) => (
                 <div className="recent-test-item" key={test.id}>
                   <span className="date-icon">📅</span>
-                  <p>{test.date}</p>
-                  <strong className="good">{test.status}</strong>
+
+                  <div className="recent-test-information">
+                    <p>{test.testName}</p>
+                    <small>{test.date}</small>
+                  </div>
+
+                  <strong
+                    className={
+                      test.status === "Needs Attention"
+                        ? "attention"
+                        : test.status === "Fair"
+                          ? "fair"
+                          : "good"
+                    }
+                  >
+                    {test.status || "Recorded"}
+                  </strong>
                 </div>
               ))
             )}
