@@ -84,7 +84,7 @@ export default function Farmersdashboard() {
       <header className="farmer-topbar">
         <div className="topbar-brand">
           <div className="logo-icon">🌱</div>
-          <h2>TerraSoil — Farmers Dashboard</h2>
+          <h2>Farmily — Farmers Dashboard</h2>
         </div>
 
         <div className="topbar-actions">
@@ -105,7 +105,7 @@ export default function Farmersdashboard() {
         ?.scrollIntoView({ behavior: "smooth" })}>
         My Fields
       </button>
-        <button>Household</button>
+        <button onClick={() => navigate("/household-dashboard")}>Household</button>
         <button>Recommendations</button>
       </nav>
 

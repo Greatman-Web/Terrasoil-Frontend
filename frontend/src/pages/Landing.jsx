@@ -16,7 +16,7 @@ export default function Landing() {
           <div className="brand-icon">🌱</div>
 
           <div className="brand-text">
-            <h2>TerraSoil</h2>
+            <h2>Farmily</h2>
             <p>Smart Soil Health Monitoring Platform</p>
           </div>
         </div>
@@ -56,14 +56,14 @@ export default function Landing() {
 </nav>
       </header>
 
-      {/* ================= HERO ================= */}
+      {/* HERO */}
 
       <section className="hero">
 
         <div className="hero-content">
 
           <p className="welcome-text">
-            Welcome to TerraSoil 👋
+            Welcome to Farmily 👋
           </p>
 
           <p className="hero-subtitle">
@@ -78,7 +78,7 @@ export default function Landing() {
 
           <p className="hero-description">
             Empowering sustainable agriculture through intelligent soil health
-            monitoring. TerraSoil helps farmers monitor soil conditions,
+            monitoring. Farmily helps farmers monitor soil conditions,
             receive smart recommendations, and make data-driven decisions for
             healthier crops and increased productivity.
           </p>
@@ -104,13 +104,13 @@ export default function Landing() {
         <div className="hero-image">
           <img
             src={heroImage}
-            alt="Farmer using TerraSoil"
+            alt="Farmer using smartphone to monitor soil health in a field"
           />
         </div>
 
       </section>
 
-      {/* ================= FEATURES ================= */}
+      {/* FEATURES*/}
 
       <section className="features">
 
@@ -153,11 +153,11 @@ export default function Landing() {
         </div>
 
       </section>
-        {/* ================= FOOTER ================= */}
+        {/* FOOTER */}
         <footer className="footer">
   <div className="footer-brand">
     <div className="footer-logo">🌱</div>
-    <h2>TerraSoil</h2>
+    <h2>Farmily</h2>
     <p>Smart Soil Health Monitoring Platform</p>
   </div>
 
@@ -179,7 +179,7 @@ export default function Landing() {
   <div className="footer-links">
     <h3>Contact Us</h3>
     <p>+251 9XX XXX XXX</p>
-    <p>info@terrasoil.com</p>
+    <p>info@Farmily.com</p>
     <p>Hawassa, Ethiopia</p>
   </div>
 
@@ -188,7 +188,7 @@ export default function Landing() {
   </div>
 
   <div className="footer-bottom">
-    © 2026 TerraSoil. All rights reserved.
+    © 2026 Farmily. All rights reserved.
   </div>
 </footer>
 </div>

@@ -24,7 +24,7 @@ export default function Login() {
       <header className="login-header">
         <div className="login-brand" onClick={() => navigate("/")}>
           <div className="login-logo">🌱</div>
-          <h2>TerraSoil</h2>
+          <h2>Farmily</h2>
         </div>
 
         <div className="login-nav">

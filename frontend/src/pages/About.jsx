@@ -24,7 +24,7 @@ export default function About() {
           <div className="brand-icon">🌱</div>
 
           <div>
-            <h2>TerraSoil</h2>
+            <h2>Farmily</h2>
             <p>Smart Soil Health Monitoring Platform</p>
           </div>
 
@@ -45,14 +45,14 @@ export default function About() {
 
         <div className="about-text">
 
-          <p className="small-title">ABOUT TERRASOIL</p>
+          <p className="small-title">ABOUT FARMILY</p>
 
           <h1>
             Empowering Farmers Through Smart Agriculture
           </h1>
 
           <p>
-            TerraSoil is a smart soil health monitoring platform designed to
+            Farmily is a smart soil health monitoring platform designed to
             help farmers make informed decisions through digital technologies,
             soil analysis, and data-driven recommendations. Our mission is to
             improve productivity while promoting sustainable farming practices.
@@ -62,7 +62,7 @@ export default function About() {
 
         <div className="about-image">
 
-         <img src={aboutHero} alt="TerraSoil farm landscape" />
+         <img src={aboutHero} alt="Farmily farm landscape" />
         </div>
 
       </section>
@@ -97,7 +97,7 @@ export default function About() {
 
       <section className="about-section">
 
-        <h2>What TerraSoil Offers</h2>
+        <h2>What Farmily Offers</h2>
 
         <div className="about-grid">
 
@@ -133,12 +133,12 @@ export default function About() {
 
       <section className="about-section">
 
-        <h2>Who Can Use TerraSoil?</h2>
+        <h2>Who Can Use Farmily?</h2>
 
         <div className="user-grid">
 
           <div className="user-card">
-  <img src={farmer} alt="Farmer using TerraSoil" />
+  <img src={farmer} alt="Farmer using Farmily" />
   <div>
     <h3>Farmers</h3>
     <p>Monitor soil health, improve productivity and increase yields.</p>
@@ -198,7 +198,7 @@ export default function About() {
 
     <p className="small-title">VIDEO GUIDE</p>
 
-    <h2>Watch How TerraSoil Works</h2>
+    <h2>Watch How Farmily Works</h2>
 
     <p>
       Learn how to register your field, perform soil tests,
@@ -242,7 +242,7 @@ export default function About() {
   <div>
     <h2>Ready to Start?</h2>
     <p>
-      Join farmers using TerraSoil to monitor soil health and improve productivity.
+      Join farmers using Farmily to monitor soil health and improve productivity.
     </p>
 
     <button className="blue-btn" onClick={() => navigate("/signup")}>
@@ -257,7 +257,7 @@ export default function About() {
 <footer className="about-footer">
   <div className="footer-brand">
     <div className="footer-logo">🌱</div>
-    <h2>TerraSoil</h2>
+    <h2>Farmily</h2>
     <p>Smart Soil Health Monitoring Platform</p>
   </div>
 
@@ -279,7 +279,7 @@ export default function About() {
   <div className="footer-links">
     <h3>Contact Us</h3>
     <p>+251 9XX XXX XXX</p>
-    <p>info@terrasoil.com</p>
+    <p>info@Farmily.com</p>
     <p>Hawassa, Ethiopia</p>
   </div>
 
@@ -288,7 +288,7 @@ export default function About() {
   </div>
 
   <div className="footer-bottom">
-    © 2026 TerraSoil. All rights reserved.
+    © 2026 Farmily. All rights reserved.
   </div>
 </footer>
 </div>

@@ -59,7 +59,7 @@ export default function Signup() {
 
         <div className="signup-brand">
           <div className="signup-logo">🌱</div>
-          <h2>TerraSoil</h2>
+          <h2>Farmily</h2>
         </div>
 
       </header>
@@ -76,7 +76,7 @@ export default function Signup() {
 
           <p className="success-message">
             Congratulations <strong>{firstName}</strong>,
-            your TerraSoil account has been created successfully.
+            your Farmily account has been created successfully.
           </p>
 
           <div className="success-details">
@@ -131,7 +131,7 @@ export default function Signup() {
       <header className="signup-header">
         <div className="signup-brand" onClick={() => navigate("/")}>
           <div className="signup-logo">🌱</div>
-          <h2>TerraSoil</h2>
+          <h2>Farmily</h2>
         </div>
 
         <div className="signup-nav">
@@ -145,7 +145,7 @@ export default function Signup() {
           <h1>Create Your Account</h1>
 
           <p className="signup-subtitle">
-            Join TerraSoil and start monitoring soil health with intelligent
+            Join Farmily and start monitoring soil health with intelligent
             recommendations.
           </p>
 

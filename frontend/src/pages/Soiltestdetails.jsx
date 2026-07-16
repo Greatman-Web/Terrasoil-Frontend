@@ -515,7 +515,7 @@ const [success, setSuccess] = useState(false);
         <div className="test-brand">
           <div className="test-logo">🌱</div>
           <div>
-            <h2>TerraSoil</h2>
+            <h2>Farmily</h2>
             <p>Soil Test Guide</p>
           </div>
         </div>

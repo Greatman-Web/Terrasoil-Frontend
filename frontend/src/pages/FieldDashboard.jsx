@@ -57,7 +57,7 @@ export default function FieldDashboard() {
       <header className="field-topbar">
         <div className="topbar-brand">
           <div className="logo-icon">🌱</div>
-          <h2>TerraSoil — Farmers Dashboard</h2>
+          <h2>Farmily — Farmers Dashboard</h2>
         </div>
 
         <div className="topbar-actions">
@@ -76,9 +76,13 @@ export default function FieldDashboard() {
 
         <button className="active">My Fields</button>
 
-        <button>Household</button>
+        <button onClick={() => navigate("/household-dashboard")}>
+          Household
+        </button>
 
-        <button>Recommendations</button>
+        <button onClick={() => navigate("/recommendations")}>
+          Recommendations
+        </button>
       </nav>
 
       <main className="field-main">

@@ -1,0 +1,944 @@
+/* ==========================
+   HOUSEHOLD DASHBOARD PAGE
+========================== */
+
+/* MAIN PAGE CONTAINER */
+
+.household-page {
+  min-height: 100vh;
+  background: #f5f0e6;
+  color: #172014;
+  padding: 24px 0 60px;
+}
+
+/* ==========================
+   HEADER
+========================== */
+
+/* TOP HEADER BAR */
+
+.household-header {
+  width: 92%;
+  max-width: 1280px;
+  margin: 0 auto 22px;
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 20px 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.07);
+}
+
+.household-brand {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.household-logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #8bb82e;
+  color: #ffffff;
+
+  display: grid;
+  place-items: center;
+
+  font-size: 28px;
+}
+
+.household-brand h2 {
+  margin: 0;
+  color: #5f8f21;
+  font-size: 28px;
+}
+
+.household-brand p {
+  margin: 4px 0 0;
+  color: #5d6258;
+}
+
+.household-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.household-header-actions button {
+  background: #ffffff;
+  color: #5f8f21;
+  border: 2px solid #8bb82e;
+  border-radius: 10px;
+  padding: 12px 22px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.household-header-actions button:hover {
+  background: #8bb82e;
+  color: #ffffff;
+}
+
+/* ==========================
+   NAVIGATION TABS
+========================== */
+
+/* SECTION TABS FOR DASHBOARD NAVIGATION */
+
+.household-tabs {
+  width: 92%;
+  max-width: 1280px;
+  margin: 0 auto 28px;
+  border-bottom: 2px solid #d9d2c3;
+
+  display: flex;
+  gap: 34px;
+  overflow-x: auto;
+}
+
+.household-tabs button {
+  flex-shrink: 0;
+  background: transparent;
+  border: none;
+  padding: 0 0 15px;
+  color: #6b7166;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.household-tabs button.active {
+  color: #172014;
+  border-bottom: 4px solid #8bb82e;
+}
+
+/* ==========================
+   MAIN CONTENT
+========================== */
+
+/* CONTENT WRAPPER FOR ALL MAJOR SECTIONS */
+
+.household-main {
+  width: 92%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* ==========================
+   INTRO CARD
+========================== */
+
+/* WELCOME / INTRODUCTION SECTION */
+
+.household-intro-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 36px;
+  margin-bottom: 28px;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.08);
+}
+
+.household-intro-card .small-title {
+  margin: 0 0 8px;
+  color: #5f8f21;
+  font-weight: 900;
+}
+
+.household-intro-card h1 {
+  margin: 0 0 14px;
+  color: #0f3d24;
+  font-size: 42px;
+}
+
+.household-intro-card p:last-child {
+  margin: 0;
+  max-width: 760px;
+  color: #5d6258;
+  line-height: 1.8;
+  font-size: 17px;
+}
+
+/* ==========================
+   SUMMARY CARDS
+========================== */
+
+/* QUICK STATISTICS SUMMARY BLOCKS */
+
+.household-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 28px;
+}
+
+.summary-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 25px;
+  min-height: 150px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.07);
+}
+
+.summary-card span {
+  font-size: 34px;
+  margin-bottom: 16px;
+}
+
+.summary-card small {
+  color: #5d6258;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.summary-card strong {
+  color: #172014;
+  font-size: 28px;
+  overflow-wrap: anywhere;
+}
+
+/* ==========================
+   MANAGEMENT CARDS
+========================== */
+
+/* FORM SECTION STYLING FOR HOUSEHOLD INPUTS */
+
+.household-management-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.management-card {
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 30px;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.08);
+}
+
+.management-card h2 {
+  margin: 0 0 24px;
+  color: #0f3d24;
+}
+
+.management-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.management-form.two-columns{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:20px;
+}
+
+.management-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #354431;
+  font-weight: 800;
+}
+
+.management-form input,
+.management-form select {
+  width: 100%;
+  padding: 14px 15px;
+  border: 2px solid #e3decf;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #172014;
+  font-size: 15px;
+  outline: none;
+  transition: 0.2s ease;
+}
+
+.management-form input:focus,
+.management-form select:focus {
+  border-color: #8bb82e;
+  box-shadow: 0 0 0 3px rgba(139, 184, 46, 0.14);
+}
+
+.management-result {
+  margin-top: 22px;
+  padding: 17px;
+  background: #f5f0e6;
+  border-radius: 12px;
+  color: #5d6258;
+  font-weight: 800;
+}
+
+.management-result strong {
+  color: #172014;
+  font-size: 20px;
+}
+
+/* ==========================
+   SAVE BUTTON
+========================== */
+
+/* BUTTON STYLES FOR SECTION SAVE ACTIONS */
+
+.save-household-btn {
+  width: 100%;
+  margin: 0 0 30px;
+  padding: 17px 24px;
+  background: #3157e8;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-weight: 900;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.save-household-btn:hover {
+  background: #2446c9;
+  transform: translateY(-2px);
+}
+
+/* ==========================
+   FIELD TEST PROGRESS
+========================== */
+
+/* SOIL-TEST PROGRESS DISPLAY FOR REGISTERED FIELDS */
+
+.field-progress-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.08);
+}
+
+.field-progress-card > h2 {
+  margin: 0 0 24px;
+  color: #0f3d24;
+}
+
+.progress-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.field-progress-item {
+  background: #f5f0e6;
+  border: 1px solid #e3decf;
+  border-radius: 18px;
+  padding: 22px;
+}
+
+.progress-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 18px;
+}
+
+.progress-heading h3 {
+  margin: 0 0 6px;
+  color: #172014;
+}
+
+.progress-heading p {
+  margin: 0;
+  color: #5d6258;
+}
+
+.progress-heading > strong {
+  min-width: 68px;
+  padding: 9px 12px;
+  border-radius: 20px;
+  background: #e8f4d4;
+  color: #2f7d20;
+  text-align: center;
+}
+
+.progress-track {
+  width: 100%;
+  height: 13px;
+  background: #ded8ca;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #8bb82e;
+  border-radius: inherit;
+  transition: width 0.4s ease;
+}
+
+.progress-percentage {
+  margin: 12px 0 18px;
+  color: #5d6258;
+  font-weight: 700;
+}
+
+.field-progress-item button {
+  width: 100%;
+  background: #ffffff;
+  color: #5f8f21;
+  border: 2px solid #8bb82e;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-weight: 900;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.field-progress-item button:hover {
+  background: #8bb82e;
+  color: #ffffff;
+}
+
+.empty-message {
+  padding: 24px;
+  background: #f5f0e6;
+  border-radius: 14px;
+  color: #5d6258;
+  text-align: center;
+}
+
+/* ==========================
+   TABLET
+========================== */
+
+@media (max-width: 1000px) {
+  .household-summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .household-management-grid,
+  .progress-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width: 700px) {
+  .household-page {
+    padding-top: 16px;
+  }
+
+  .household-header {
+    padding: 20px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .household-brand {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .household-header-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .household-header-actions button {
+    width: 100%;
+  }
+
+  .household-tabs {
+    gap: 22px;
+  }
+
+  .household-intro-card,
+  .management-card,
+  .field-progress-card {
+    padding: 24px 20px;
+  }
+
+  .household-intro-card h1 {
+    font-size: 33px;
+  }
+
+  .household-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .management-form.two-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .progress-heading {
+    flex-direction: column;
+  }
+
+  .progress-heading > strong {
+    align-self: flex-start;
+  }
+
+}
+
+/* ==========================
+   FARMER PERSONAL INFORMATION
+========================== */
+
+.farmer-personal-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 32px;
+  margin-bottom: 28px;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.08);
+}
+
+.personal-card-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 28px;
+  margin-bottom: 28px;
+}
+
+.personal-card-heading .small-title {
+  margin: 0 0 7px;
+  color: #5f8f21;
+  font-weight: 900;
+}
+
+.personal-card-heading h2 {
+  margin: 0 0 10px;
+  color: #0f3d24;
+  font-size: 30px;
+}
+
+.personal-card-heading p:last-child {
+  max-width: 720px;
+  margin: 0;
+  color: #5d6258;
+  line-height: 1.7;
+}
+
+.personal-card-icon {
+  width: 66px;
+  height: 66px;
+  border-radius: 18px;
+  background: #eef7dc;
+
+  display: grid;
+  place-items: center;
+
+  font-size: 34px;
+  flex-shrink: 0;
+}
+
+.personal-info-form {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 19px;
+}
+
+.personal-info-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #354431;
+  font-weight: 800;
+}
+
+.personal-info-form input,
+.personal-info-form select,
+.personal-info-form textarea {
+  width: 100%;
+  padding: 14px 15px;
+  border: 2px solid #e3decf;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #172014;
+  font: inherit;
+  outline: none;
+  transition: 0.2s ease;
+}
+
+.personal-info-form textarea {
+  resize: vertical;
+}
+
+.personal-info-form input:focus,
+.personal-info-form select:focus,
+.personal-info-form textarea:focus {
+  border-color: #8bb82e;
+  box-shadow: 0 0 0 3px rgba(139, 184, 46, 0.14);
+}
+
+.personal-address-field,
+.personal-form-actions {
+  grid-column: 1 / -1;
+}
+
+.personal-form-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.personal-save-message {
+  margin: 24px 0 0;
+  color: #2f7d20;
+  font-weight: 800;
+}
+
+@media (max-width: 1000px) {
+  .personal-info-form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .farmer-personal-card {
+    padding: 24px 20px;
+  }
+
+  .personal-card-heading {
+    flex-direction: column-reverse;
+  }
+
+  .personal-info-form {
+    grid-template-columns: 1fr;
+  }
+
+  .personal-address-field,
+  .personal-form-actions {
+    grid-column: auto;
+  }
+
+  .personal-form-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .personal-save-message {
+    margin-top: 0;
+    text-align: center;
+  }
+}
+
+/* ==========================
+   HOUSEHOLD ACCORDION
+========================== */
+
+/* COLLAPSIBLE HOUSEHOLD DATA SECTION STYLES */
+
+.household-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 30px;
+}
+
+.household-section {
+  background: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.07);
+}
+
+.accordion-header {
+  width: 100%;
+  padding: 22px 24px;
+  border: none;
+  background: #ffffff;
+  color: #172014;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+
+  text-align: left;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.accordion-header:hover {
+  background: #f7faef;
+}
+
+.active-accordion {
+  background: #eef7dc;
+  border-left: 5px solid #8bb82e;
+}
+
+.accordion-title {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.accordion-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: #f5f0e6;
+
+  display: grid;
+  place-items: center;
+
+  font-size: 26px;
+  flex-shrink: 0;
+}
+
+.accordion-title h2 {
+  margin: 0 0 6px;
+  color: #0f3d24;
+  font-size: 22px;
+}
+
+.accordion-title p {
+  margin: 0;
+  color: #5d6258;
+  line-height: 1.5;
+}
+
+.accordion-arrow {
+  color: #5f8f21;
+  font-size: 18px;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+
+.accordion-body {
+  padding: 28px 24px 30px;
+  border-top: 1px solid #ece7da;
+  background: #fffdfa;
+}
+
+/* ==========================
+   GENERATED FORM FIELDS
+========================== */
+
+/* INPUT LAYOUT AND UNIT LABELS FOR DYNAMIC FIELDS */
+
+.field-help {
+  display: block;
+  margin-top: 6px;
+  color: #7a8075;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.field-help code {
+  color: #5f8f21;
+  font-family: Consolas, monospace;
+}
+
+.input-with-unit {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+}
+
+.input-with-unit input {
+  flex: 1;
+  min-width: 0;
+  border-radius: 10px 0 0 10px;
+}
+
+.input-unit {
+  min-width: 82px;
+  padding: 0 12px;
+  background: #f5f0e6;
+  border: 2px solid #e3decf;
+  border-left: none;
+  border-radius: 0 10px 10px 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #5d6258;
+  font-size: 13px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.input-with-unit:focus-within .input-unit {
+  border-color: #8bb82e;
+}
+
+/* ==========================
+   BOOLEAN / CHECKBOX FIELDS
+========================== */
+
+/* STYLES FOR TRUE/FALSE HOUSEHOLD OPTIONS */
+
+.household-checkbox-field {
+  background: #f5f0e6;
+  border: 1px solid #e3decf;
+  border-radius: 12px;
+  padding: 16px;
+
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start;
+  gap: 12px;
+
+  cursor: pointer;
+}
+
+.household-checkbox-field input {
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  accent-color: #8bb82e;
+  flex-shrink: 0;
+}
+
+.household-checkbox-field span {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.household-checkbox-field strong {
+  color: #172014;
+}
+
+.household-checkbox-field small {
+  color: #6b7166;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+/* ==========================
+   SECTION SAVE BUTTON
+========================== */
+
+/* BUTTON STYLE FOR SAVING EACH HOUSEHOLD SECTION */
+
+.section-save-btn {
+  margin-top: 24px;
+  padding: 14px 24px;
+  background: #3157e8;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+
+  font-size: 15px;
+  font-weight: 900;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.section-save-btn:hover {
+  background: #2446c9;
+  transform: translateY(-2px);
+}
+
+.household-save-message {
+  margin: 0;
+  padding: 16px 18px;
+  background: #e8f5df;
+  color: #2f7d20;
+  border: 1px solid #bfdcae;
+  border-radius: 12px;
+  font-weight: 800;
+  text-align: center;
+}
+
+/* ==========================
+   FIELD VALIDATION STYLING
+========================== */
+
+/* VALID / INVALID INPUT STATE STYLES */
+
+.management-form input:invalid:not(:placeholder-shown),
+.management-form select:invalid {
+  border-color: #d98b82;
+}
+
+.management-form input:valid:not(:placeholder-shown),
+.management-form select:valid {
+  border-color: #8bb82e;
+}
+
+/* ==========================
+   TABLET
+========================== */
+
+@media (max-width: 900px) {
+  .accordion-header {
+    padding: 20px;
+  }
+
+  .accordion-body {
+    padding: 24px 20px;
+  }
+
+  .accordion-title h2 {
+    font-size: 20px;
+  }
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width: 700px) {
+  .accordion-header {
+    align-items: flex-start;
+    padding: 18px;
+  }
+
+  .accordion-title {
+    align-items: flex-start;
+  }
+
+  .accordion-icon {
+    width: 46px;
+    height: 46px;
+    font-size: 23px;
+  }
+
+  .accordion-title h2 {
+    font-size: 18px;
+  }
+
+  .accordion-title p {
+    font-size: 13px;
+  }
+
+  .accordion-body {
+    padding: 20px 16px;
+  }
+
+  .input-with-unit {
+    flex-direction: column;
+  }
+
+  .input-with-unit input {
+    border-radius: 10px;
+  }
+
+  .input-unit {
+    min-height: 38px;
+    width: 100%;
+    border: 2px solid #e3decf;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+  }
+
+  .section-save-btn {
+    width: 100%;
+  }
+}

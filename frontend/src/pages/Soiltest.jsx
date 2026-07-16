@@ -64,7 +64,7 @@ export default function Soiltest() {
           <div className="soil-logo">🌱</div>
 
           <div>
-            <h2>TerraSoil</h2>
+            <h2>Farmily</h2>
             <p>Smart Soil Health Monitoring Platform</p>
           </div>
         </div>
@@ -121,7 +121,7 @@ export default function Soiltest() {
             onClick={() => setTestType("single")}
           >
             <span>⚡</span>
-            <h2>Quick Test</h2>
+            <h2>Single Test</h2>
             <p>
               Test a single soil property such as Soil pH, Moisture, Nitrogen or
               Potassium.
