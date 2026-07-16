@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "../styles/Farmersdashboard.css";
 import farmerWelcome from "../assets/images/farmer-welcome.png";
 
-
+const REQUIRED_TESTS = 14;
 export default function Farmersdashboard() {
   const navigate = useNavigate();
   const routeLocation = useLocation();
@@ -26,39 +26,65 @@ export default function Farmersdashboard() {
   const [landOwnership, setLandOwnership] = useState("");
   const [irrigationType, setIrrigationType] = useState("");
   const [coordinates, setCoordinates] = useState("");
+  const [landUseType, setLandUseType] = useState("");
+  const [waterAvailability, setWaterAvailability] = useState("");
+  const [distanceToWaterSource, setDistanceToWaterSource] = useState("");
 
   const handleRegisterField = (e) => {
     e.preventDefault();
 
+    const trimmedFieldName = fieldName.trim();
+    const trimmedRegion = region.trim();
+    const trimmedCoordinates = coordinates.trim();
+    const numericArea = Number(totalArea);
+    const numericDistance = Number(distanceToWaterSource);
+
     if (
-      !fieldName ||
+      !trimmedFieldName ||
       !totalArea ||
       !cropType ||
-      !region ||
+      !trimmedRegion ||
       !landOwnership ||
       !irrigationType ||
-      !coordinates
+      !trimmedCoordinates ||
+      !landUseType ||
+      !waterAvailability ||
+      !distanceToWaterSource
     ) {
       setError("Please complete all field registration details.");
       return;
     }
 
+    if (!Number.isFinite(numericArea) || numericArea <= 0) {
+      setError("Total area must be a valid number greater than zero.");
+      return;
+    }
+
+    if (!Number.isFinite(numericDistance) || numericDistance < 0) {
+      setError("Distance to water source cannot be negative.");
+      return;
+    }
+
     const newField = {
       id: Date.now(),
-      fieldName,
-      totalArea,
+      fieldName: trimmedFieldName,
+      totalArea: numericArea,
       cropType,
-      region,
+      region: trimmedRegion,
       landOwnership,
       irrigationType,
-      coordinates,
+      coordinates: trimmedCoordinates,
+      landUseType,
+      waterAvailability,
+      distanceToWaterSource: numericDistance,
       status: "Active",
     };
 
-    const updatedFields = [...fields, newField];
-
-    setFields(updatedFields);
-    localStorage.setItem("registeredFields", JSON.stringify(updatedFields));
+    setFields((prevFields) => {
+      const updatedFields = [...prevFields, newField];
+      localStorage.setItem("registeredFields", JSON.stringify(updatedFields));
+      return updatedFields;
+    });
 
     setError("");
 
@@ -69,7 +95,27 @@ export default function Farmersdashboard() {
     setLandOwnership("");
     setIrrigationType("");
     setCoordinates("");
+    setLandUseType("");
+    setWaterAvailability("");
+    setDistanceToWaterSource("");
   };
+
+  const getFieldProgress = (fieldId) => {
+  const soilTests = JSON.parse(
+    localStorage.getItem(`soilTests_${fieldId}`) || "[]"
+  );
+
+  const completedTests = soilTests.length;
+
+  const percentage = Math.round(
+    (completedTests / REQUIRED_TESTS) * 100
+  );
+
+  return {
+    completedTests,
+    percentage: Math.min(percentage, 100),
+  };
+};
 
   const openFieldDashboard = (field) => {
     navigate("/field-dashboard", {
@@ -173,7 +219,7 @@ export default function Farmersdashboard() {
 
             <input
               type="text"
-              placeholder="Region / Barangay"
+              placeholder="Region"
               value={region}
               onChange={(e) => setRegion(e.target.value)}
             />
@@ -187,12 +233,32 @@ export default function Farmersdashboard() {
               <option value="Rented">Rented</option>
               <option value="Family Land">Family Land</option>
               <option value="Community Land">Community Land</option>
+            </select> 
+            
+            <select
+              value={landUseType}
+              onChange={(event) => setLandUseType(event.target.value)}>
+             <option value=""> Land Use Type</option>
+             <option value="Cropland">Cropland</option>
+             <option value="Pasture">Pasture</option>
+             <option value="Orchard">Orchard</option>
+             <option value="Forest">Forest</option>
+             <option value="Mixed">Mixed</option>
+             <option value="Fallow">Fallow</option>
             </select>
+
+           <select
+             value={waterAvailability}
+             onChange={(event) => setWaterAvailability(event.target.value)}>
+             <option value="">Water Availability</option>
+             <option value="Low">Low</option>
+             <option value="Medium">Medium</option>
+             <option value="High">High</option>
+           </select>
 
             <select
               value={irrigationType}
-              onChange={(e) => setIrrigationType(e.target.value)}
-            >
+              onChange={(e) => setIrrigationType(e.target.value)}>
               <option value="">Irrigation Type</option>
               <option value="Rain-fed">Rain-fed</option>
               <option value="Manual Irrigation">Manual Irrigation</option>
@@ -201,42 +267,80 @@ export default function Farmersdashboard() {
             </select>
 
             <input
+              type="number"
+              min="0"
+              step="0.1"
+              placeholder="Distance to Water Source (km)"
+              value={distanceToWaterSource}
+              onChange={(event) =>
+              setDistanceToWaterSource(event.target.value)}/>
+
+            <input
               type="text"
               placeholder="Location Coordinates"
               value={coordinates}
               onChange={(e) => setCoordinates(e.target.value)}/>
-           <div className="map-placeholder">📍 Map Picker Placeholder</div>
+            <div className="map-placeholder">📍 Map Picker Placeholder</div>
+
+            {error ? <p className="form-error">{error}</p> : null}
 
             <button type="submit">Register Field</button>
           </form>
         </section>
 
-        <section className="registered-fields">
-          <h2>My Fields</h2>
+       <section className="registered-fields">
+  <h2>My Fields</h2>
 
-          {fields.length === 0 ? (
-            <p className="empty-message">
-              No field registered yet. Register your first field above.
-            </p>
-          ) : (
-            <div className="fields-grid">
-              {fields.map((field) => (
-                <div className="field-card" key={field.id}>
-                  <h3>{field.fieldName}</h3>
-                  <p>Crop: {field.cropType}</p>
-                  <p>Area: {field.totalArea} ha</p>
-                  <p>Region: {field.region}</p>
-                  <p>Status: {field.status}</p>
+  {fields.length === 0 ? (
+    <p className="empty-message">
+      No field registered yet. Register your first field above.
+    </p>
+  ) : (
+    <div className="fields-grid">
+      {fields.map((field) => {
+        const progress = getFieldProgress(field.id);
 
-                  <button onClick={() => openFieldDashboard(field)}>
-                    Open Field Dashboard
-                  </button>
-                </div>
-              ))}
+        return (
+          <div className="field-card" key={field.id}>
+            <h3>{field.fieldName}</h3>
+
+            <p>Crop: {field.cropType}</p>
+            <p>Area: {field.totalArea} ha</p>
+            <p>Region: {field.region}</p>
+            <p>Status: {field.status}</p>
+            <p>Land Use: {field.landUseType}</p>
+            <p>Water Availability: {field.waterAvailability}</p>
+            <p>Distance to Water Source: {field.distanceToWaterSource} km</p>
+
+            <div className="field-progress-section">
+              <div className="field-progress-header">
+                <span>Soil Test Progress</span>
+                <strong>{progress.percentage}%</strong>
+              </div>
+
+              <div className="field-test-progress-track">
+                <div
+                  className="field-test-progress-fill"
+                  style={{
+                    width: `${Math.max(progress.percentage, 4)}%`,
+                  }}
+                />
+              </div>
+
+              <small>
+                {progress.completedTests} of {REQUIRED_TESTS} soil tests completed
+              </small>
             </div>
-          )}
-        </section>
-      </main>
+            <button onClick={() => openFieldDashboard(field)}>
+              Open Field Dashboard
+            </button>
+          </div>
+        );
+      })}
     </div>
+  )}
+</section>
+</main>
+</div>
   );
 }

@@ -112,63 +112,100 @@ export default function Soiltest() {
             before starting a soil test.
           </p>
         )}
+<div className="test-choice-grid">
+  <div
+    className={
+      testType === "single"
+        ? "choice-card active"
+        : "choice-card"
+    }
+    onClick={() => setTestType("single")}
+  >
+    <span>⚡</span>
+    <h2>Single Test</h2>
 
-        <div className="test-choice-grid">
-          <div
-            className={
-              testType === "single" ? "choice-card active" : "choice-card"
-            }
-            onClick={() => setTestType("single")}
-          >
-            <span>⚡</span>
-            <h2>Single Test</h2>
-            <p>
-              Test a single soil property such as Soil pH, Moisture, Nitrogen or
-              Potassium.
-            </p>
-          </div>
+    <p>
+      Test a single soil property such as Soil pH, Moisture,
+      Nitrogen or Potassium.
+    </p>
+  </div>
 
+  <div
+    className={
+      testType === "full"
+        ? "choice-card active"
+        : "choice-card"
+    }
+    onClick={() => setTestType("full")}
+  >
+    <span>🧪</span>
+    <h2>Complete Soil Analysis</h2>
+
+    <p>
+      Perform a complete soil assessment by entering all available
+      soil measurements.
+    </p>
+  </div>
+
+  <div
+    className={
+      testType === "compare"
+        ? "choice-card active"
+        : "choice-card"
+    }
+    onClick={() => setTestType("compare")}
+  >
+    <span>📊</span>
+    <h2>Comparative Analysis</h2>
+
+    <p>
+      Compare two or more fields with another to review
+      differences in soil characteristics and overall field
+      performance.
+    </p>
+  </div>
+</div>
+
+<div className="selected-test-content">
+  {testType === "single" && (
+    <section className="test-option-section">
+      <h2 className="section-title">Select a Soil Test</h2>
+
+      <p className="section-description">
+        Choose one soil property to test for the selected field.
+      </p>
+
+      <div className="test-grid">
+        {tests.map((item) => (
           <div
-            className={
-              testType === "full" ? "choice-card active" : "choice-card"
-            }
-            onClick={() => setTestType("full")}
+            key={item}
+            className="test-card"
+            onClick={() => goToTest(item)}
           >
-            <span>🧪</span>
-            <h2>Complete Soil Analysis</h2>
-            <p>
-              Perform a complete soil assessment by entering all available soil
-              measurements.
-            </p>
+            {item}
           </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {testType === "full" && (
+    <section className="test-option-section full-analysis-option">
+      <div className="selected-option-heading">
+        <h2>Complete Soil Analysis</h2>
+        <p>
+          Enter all available soil details to create a complete assessment
+          for this field.
+        </p>
+      </div>
+      <button className="continue-btn" onClick={goToFullAnalysis}>
+        Start Complete Analysis →
+      </button>
+    </section>
+  )}
         </div>
-
-        {testType === "single" && (
-          <>
-            <h2 className="section-title">Select a Soil Test</h2>
-
-            <div className="test-grid">
-              {tests.map((item) => (
-                <div
-                  key={item}
-                  className="test-card"
-                  onClick={() => goToTest(item)}
-                >
-                  {item}
-                </div>
-              ))}
-            </div>
-          </>
-        )}
-
-        {testType === "full" && (
-          <div className="next-section">
-            <button className="continue-btn" onClick={goToFullAnalysis}>
-              Start Complete Analysis →
-            </button>
-          </div>
-        )}
       </div>
     </div>
   );
 }
+

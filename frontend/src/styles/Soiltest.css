@@ -103,22 +103,29 @@
 
 .test-choice-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
   margin-top: 35px;
+  align-items: stretch;
 }
 
 .choice-card {
+  min-width: 0;
+  min-height: 220px;
   background: #f5f0e6;
   border: 2px solid #e3decf;
   border-radius: 20px;
-  padding: 30px;
+  padding: 22px;
   cursor: pointer;
   transition: 0.3s;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .choice-card span {
-  font-size: 42px;
+  font-size: 34px;
 }
 
 .choice-card:hover {
@@ -132,7 +139,15 @@
 }
 
 .choice-card h2 {
-  margin: 18px 0 10px;
+  margin: 16px 0 10px;
+  font-size: 21px;
+}
+
+.choice-card p {
+  margin: 0;
+  color: #5d6258;
+  font-size: 14px;
+  line-height: 1.6;
 }
 
 /* TEST CARDS */
@@ -172,6 +187,24 @@
   justify-content: flex-end;
 }
 
+.selected-test-content {
+  margin-top: 28px;
+}
+
+.test-option-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.full-analysis-option {
+  background: #f5f0e6;
+  border: 2px solid #e3decf;
+  border-radius: 20px;
+  padding: 28px;
+  align-items: flex-start;
+}
+
 .continue-btn {
   background: #3157e8;
   color: white;
@@ -180,9 +213,8 @@
   border-radius: 12px;
   font-weight: 900;
   cursor: pointer;
+  align-self: flex-start;
 }
-
-/* MOBILE */
 
 @media (max-width: 900px) {
   .soil-header {
@@ -204,9 +236,16 @@
     font-size: 36px;
   }
 
-  .test-choice-grid,
+  .test-choice-grid {
+    grid-template-columns: 1fr;
+  }
+
   .test-grid {
     grid-template-columns: 1fr;
+  }
+
+  .choice-card {
+    min-height: auto;
   }
 
   .next-section {

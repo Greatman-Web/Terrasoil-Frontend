@@ -256,6 +256,49 @@
   cursor: pointer;
 }
 
+.field-progress-section {
+  margin: 18px 0 0;
+  padding-top: 12px;
+  border-top: 1px solid #e3decf;
+  display: block;
+}
+
+.field-progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-weight: 800;
+  color: #172014;
+}
+
+.field-progress-section small {
+  display: block;
+  margin-top: 8px;
+  color: #666;
+}
+
+.field-test-progress-track {
+  display: block;
+  width: 100%;
+  height: 12px;
+  margin-top: 10px;
+  background-color: #ece7da;
+  border: 1px solid #d9d2c3;
+  border-radius: 999px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+.field-test-progress-fill {
+  display: block;
+  height: 100%;
+  min-width: 6px;
+  background: linear-gradient(90deg, #8bb82e 0%, #6fa41f 100%);
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
 /* MOBILE */
 
 @media (max-width: 900px) {
@@ -315,5 +358,4 @@
   .field-map {
     grid-column: span 1;
   }
-}
 }

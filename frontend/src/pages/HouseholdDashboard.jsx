@@ -1206,14 +1206,58 @@ export default function HouseholdDashboard() {
       return createInitialHouseholdData();
     }
   });
+  
 
+  // PERSONAL INFORMATION STATE AND AUMTOMATIC POPULATION FROM SIGNUP DATA
   const [personalInfo, setPersonalInfo] = useState(() => {
   try {
-    return JSON.parse(
+    const signupUser = JSON.parse(
+      localStorage.getItem("terraSoilUser") || "{}"
+    );
+
+    const savedPersonalInfo = JSON.parse(
       localStorage.getItem("farmilyFarmerPersonalInfo") || "{}"
     );
+
+    return {
+      firstName:
+        savedPersonalInfo.firstName ||
+        signupUser.firstName ||
+        "",
+
+      middleName:
+        savedPersonalInfo.middleName ||
+        signupUser.middleName ||
+        "",
+
+      lastName:
+        savedPersonalInfo.lastName ||
+        signupUser.lastName ||
+        "",
+
+      phoneNumber:
+        savedPersonalInfo.phoneNumber ||
+        signupUser.phoneNumber ||
+        "",
+
+      gender: savedPersonalInfo.gender || "",
+      dateOfBirth: savedPersonalInfo.dateOfBirth || "",
+      region: savedPersonalInfo.region || "",
+      village: savedPersonalInfo.village || "",
+      address: savedPersonalInfo.address || "",
+    };
   } catch {
-    return {};
+    return {
+      firstName: "",
+      middleName: "",
+      lastName: "",
+      phoneNumber: "",
+      gender: "",
+      dateOfBirth: "",
+      region: "",
+      village: "",
+      address: "",
+    };
   }
 });
 
@@ -1310,14 +1354,19 @@ const [personalInfoSaved, setPersonalInfoSaved] = useState(false);
 const savePersonalInfo = (event) => {
   event.preventDefault();
 
+  const updatedPersonalInfo = {
+    ...personalInfo,
+    updatedAt: new Date().toISOString(),
+  };
+
   localStorage.setItem(
     "farmilyFarmerPersonalInfo",
-    JSON.stringify(personalInfo)
+    JSON.stringify(updatedPersonalInfo)
   );
 
+  setPersonalInfo(updatedPersonalInfo);
   setPersonalInfoSaved(true);
 };
-
 
   const saveHouseholdData = (categoryTitle = "Household") => {
     localStorage.setItem(
@@ -1737,66 +1786,12 @@ const savePersonalInfo = (event) => {
             </p>
           )}
         </section>
-
-        {/* =========================
-            FIELD SOIL-TEST PROGRESS
-        ========================= */}
-        <section className="field-progress-card">
-          <h2>🧪 Field Soil-Test Progress</h2>
-
-          {fieldProgress.length === 0 ? (
-            <p className="empty-message">
-              No registered fields are available yet.
-            </p>
-          ) : (
-            <div className="progress-list">
-              {fieldProgress.map((field) => (
-                <article
-                  className="field-progress-item"
-                  key={field.id}
-                >
-                  <div className="progress-heading">
-                    <div>
-                      <h3>{field.fieldName}</h3>
-
-                      <p>
-                        {field.cropType} · {field.totalArea} ha
-                      </p>
-                    </div>
-
-                    <strong>
-                      {field.completedTests}/{REQUIRED_TESTS}
-                    </strong>
-                  </div>
-
-                  <div className="progress-track">
-                    <div
-                      className="progress-fill"
-                      style={{
-                        width: `${field.percentage}%`,
-                      }}
-                    />
-                  </div>
-
-                  <p className="progress-percentage">
-                    {field.percentage}% of required tests completed
-                  </p>
-
-                  <button
-                    type="button"
-                    onClick={() =>
-                      navigate("/field-dashboard", {
-                        state: { field },
-                      })
-                    }
-                  >
-                    Open Field
-                  </button>
-                </article>
-              ))}
-            </div>
-          )}
-        </section>
+        <button
+          type="button"
+          className="view-summary-btn"
+          onClick={() => navigate("/household-summary")}>
+          Continue to Household Summary →
+        </button>
       </main>
     </div>
   );

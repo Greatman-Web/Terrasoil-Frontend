@@ -46,7 +46,7 @@ export default function Login() {
           <div className="login-form">
             <input
               type="tel"
-              placeholder="Phone Number"
+              placeholder="+251 9XXXXXXXX"
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
             />

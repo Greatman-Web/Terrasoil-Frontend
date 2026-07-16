@@ -2,6 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "../styles/FieldDashboard.css";
 import selectedFieldImage from "../assets/images/selected-field.png";
 
+const REQUIRED_TESTS = 14;
 export default function FieldDashboard() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -37,6 +38,21 @@ export default function FieldDashboard() {
     JSON.parse(localStorage.getItem(`soilTests_${selectedField.id}`)) || [];
 
   const latestTest = soilTests[0];
+
+  const uniqueTests = new Set(
+  soilTests.map((test) => test.testName).filter(Boolean)
+);
+
+const completedTests = Math.min(
+  uniqueTests.size,
+  REQUIRED_TESTS
+);
+
+const testProgressPercentage = Math.round(
+  (completedTests / REQUIRED_TESTS) * 100
+);
+
+const remainingTests = REQUIRED_TESTS - completedTests;
 
   const isCompleteAnalysis =
     latestTest?.analysisType === "complete" &&
@@ -102,6 +118,49 @@ export default function FieldDashboard() {
             <img src={selectedFieldImage} alt="Selected Farm Field" />
           </div>
         </section>
+        <section className="field-test-progress-card">
+  <div className="field-test-progress-heading">
+    <div>
+      <p className="small-title">SOIL TESTING PROGRESS</p>
+      <h2>Field Test Completion</h2>
+
+      <p>
+        Track how many required soil tests have been completed for this
+        field.
+      </p>
+    </div>
+
+    <strong className="field-test-progress-percentage">
+      {testProgressPercentage}%
+    </strong>
+  </div>
+
+  <div className="field-dashboard-progress-track">
+    <div
+      className="field-dashboard-progress-fill"
+      style={{
+        width: `${Math.max(testProgressPercentage, 6)}%`,
+      }}
+    />
+  </div>
+
+  <div className="field-test-progress-footer">
+    <p>
+      <strong>{completedTests}</strong> of{" "}
+      <strong>{REQUIRED_TESTS}</strong> required tests completed
+    </p>
+
+    {remainingTests === 0 ? (
+      <span className="field-tests-complete">
+        ✅ All required tests completed
+      </span>
+    ) : (
+      <span>
+        {remainingTests} test{remainingTests === 1 ? "" : "s"} remaining
+      </span>
+    )}
+  </div>
+</section>
 
         <section className="field-overview-card">
           <h2>📋 Field Overview</h2>
@@ -143,9 +202,41 @@ export default function FieldDashboard() {
               </div>
             </div>
 
+<div className="overview-item">
+  <span className="overview-icon">🌿</span>
+
+  <div>
+    <small>Land Use Type</small>
+    <strong>{selectedField.landUseType || "Not recorded"}</strong>
+  </div>
+</div>
+
+<div className="overview-item">
+  <span className="overview-icon">💧</span>
+
+  <div>
+    <small>Water Availability</small>
+    <strong>
+      {selectedField.waterAvailability || "Not recorded"}
+    </strong>
+  </div>
+</div>
+
+<div className="overview-item">
+  <span className="overview-icon">📏</span>
+
+  <div>
+    <small>Distance to Water Source</small>
+    <strong>
+      {selectedField.distanceToWaterSource
+        ? `${selectedField.distanceToWaterSource} km`
+        : "Not recorded"}
+    </strong>
+  </div>
+</div>
+
             <div className="overview-item">
               <span className="overview-icon">✅</span>
-
               <div>
                 <small>Status</small>
                 <strong>{selectedField.status || "Active"}</strong>
