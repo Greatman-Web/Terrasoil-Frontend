@@ -11,6 +11,7 @@ import Soiltest from "../pages/Soiltest";
 import Soiltestdetails from "../pages/Soiltestdetails";
 import HouseholdDashboard from "../pages/HouseholdDashboard";
 import HouseholdSummary from "../pages/HouseholdSummary";
+import Recommendations from "../pages/Recommendations";
 
 export default function AppRoutes() {
   return (
@@ -27,6 +28,7 @@ export default function AppRoutes() {
         <Route path="/soil-test/:testId" element={<Soiltestdetails />} />
         <Route path="/household-dashboard" element={<HouseholdDashboard />} />
         <Route path="/household-summary" element={<HouseholdSummary />} />
+        <Route path="/recommendations" element={<Recommendations />} />
       </Routes>
     </BrowserRouter>
   );

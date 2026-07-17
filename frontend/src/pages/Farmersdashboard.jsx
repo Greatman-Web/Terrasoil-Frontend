@@ -125,6 +125,26 @@ export default function Farmersdashboard() {
     });
   };
 
+  const handleDeleteField = (fieldId, event) => {
+    event.stopPropagation();
+
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this field and its saved soil test data?"
+    );
+
+    if (!confirmed) {
+      return;
+    }
+
+    setFields((prevFields) => {
+      const updatedFields = prevFields.filter((field) => field.id !== fieldId);
+      localStorage.setItem("registeredFields", JSON.stringify(updatedFields));
+      return updatedFields;
+    });
+
+    localStorage.removeItem(`soilTests_${fieldId}`);
+  };
+
   return (
     <div className="farmer-dashboard-page">
       <header className="farmer-topbar">
@@ -331,9 +351,17 @@ export default function Farmersdashboard() {
                 {progress.completedTests} of {REQUIRED_TESTS} soil tests completed
               </small>
             </div>
-            <button onClick={() => openFieldDashboard(field)}>
-              Open Field Dashboard
-            </button>
+            <div className="field-card-actions">
+              <button onClick={() => openFieldDashboard(field)}>
+                Open Field Dashboard
+              </button>
+              <button
+                className="delete-field-btn"
+                onClick={(event) => handleDeleteField(field.id, event)}
+              >
+                Delete Field
+              </button>
+            </div>
           </div>
         );
       })}

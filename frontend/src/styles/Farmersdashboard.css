@@ -245,8 +245,14 @@
   color: #4e5946;
 }
 
+.field-card-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 14px;
+}
+
 .field-card button {
-  margin-top: 12px;
   background: #3157e8;
   color: white;
   border: none;
@@ -254,6 +260,10 @@
   border-radius: 9px;
   font-weight: 700;
   cursor: pointer;
+}
+
+.delete-field-btn {
+  background: #c53b2f !important;
 }
 
 .field-progress-section {
@@ -358,4 +368,5 @@
   .field-map {
     grid-column: span 1;
   }
+}
 }
