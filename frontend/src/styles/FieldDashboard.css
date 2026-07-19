@@ -186,7 +186,8 @@
 
 .soil-health-card,
 .recent-tests-card,
-.soil-test-panel {
+.soil-test-panel,
+.satellite-card {
   background: white;
   border-radius: 22px;
   padding: 32px;
@@ -383,6 +384,91 @@
   border-radius: 20px;
 }
 
+.satellite-section {
+  margin-bottom: 28px;
+}
+
+.satellite-card {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.satellite-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.satellite-card-header h2 {
+  margin: 6px 0 0;
+}
+
+.satellite-badge {
+  background: #eef7dc;
+  color: #5f8f21;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.satellite-body {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 22px;
+  align-items: center;
+}
+
+.satellite-image-panel {
+  background: #f5f0e6;
+  border-radius: 18px;
+  padding: 16px;
+}
+
+.satellite-image-panel img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+.satellite-caption {
+  margin: 12px 0 0;
+  color: #5d6258;
+  font-weight: 700;
+}
+
+.satellite-metrics-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.satellite-metric {
+  background: #f5f0e6;
+  border-radius: 16px;
+  padding: 18px;
+}
+
+.satellite-metric small {
+  display: block;
+  color: #5d6258;
+  margin-bottom: 6px;
+}
+
+.satellite-metric strong {
+  display: block;
+  font-size: 26px;
+  color: #172014;
+  margin-bottom: 6px;
+}
+
+.satellite-metric span {
+  color: #5f8f21;
+  font-weight: 700;
+}
+
 /* MOBILE */
 
 @media (max-width: 900px) {
@@ -413,7 +499,8 @@
   .soil-dashboard-grid,
   .soil-metrics-grid,
   .test-method-grid,
-  .manual-form {
+  .manual-form,
+  .satellite-body {
     grid-template-columns: 1fr;
   }
 

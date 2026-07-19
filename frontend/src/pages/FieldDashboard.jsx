@@ -388,6 +388,44 @@ const remainingTests = REQUIRED_TESTS - completedTests;
             )}
           </div>
         </section>
+
+        <section className="satellite-section">
+          <div className="satellite-card">
+            <div className="satellite-card-header">
+              <div>
+                <p className="small-title">SATELLITE MONITORING</p>
+                <h2>🛰️ Field Imagery & Vegetation Indices</h2>
+              </div>
+            </div>
+
+            <div className="satellite-body">
+              <div className="satellite-image-panel">
+                <img src={selectedFieldImage} alt="Satellite view of the field" />
+                <p className="satellite-caption">
+                  Satellite image for {selectedField.fieldName}
+                </p>
+              </div>
+
+              <div className="satellite-metrics-grid">
+                <div className="satellite-metric">
+                  <small>NDVI</small>
+                  <strong>0.74</strong>
+                  <span>Healthy vegetation</span>
+                </div>
+                <div className="satellite-metric">
+                  <small>NDWI</small>
+                  <strong>0.18</strong>
+                  <span>Moderate moisture</span>
+                </div>
+                <div className="satellite-metric">
+                  <small>EVI</small>
+                  <strong>0.62</strong>
+                  <span>Good canopy vigor</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
     </div>
   );
