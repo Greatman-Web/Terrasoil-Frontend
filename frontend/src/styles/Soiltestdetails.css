@@ -154,6 +154,51 @@
   font-weight: 900;
 }
 
+.result-options {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.result-option {
+  border: 2px solid #e3decf;
+  background: #f7f3ea;
+  border-radius: 16px;
+  padding: 14px 16px;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.result-option:hover,
+.result-option.selected {
+  border-color: #8bb82e;
+  background: #edf6da;
+  transform: translateY(-2px);
+}
+
+.result-pill {
+  display: inline-flex;
+  width: fit-content;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: white;
+  color: #5f8f21;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.result-option strong {
+  color: #172014;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
 .result-card input {
   width: 100%;
   padding: 16px;
@@ -161,6 +206,65 @@
   border-radius: 12px;
   margin-top: 14px;
   outline: none;
+}
+
+.result-indicator {
+  margin-top: 18px;
+  border-radius: 16px;
+  padding: 16px;
+  background: #f5f0e6;
+  border: 1px solid #e3decf;
+}
+
+.result-indicator-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 10px;
+  color: #5d6258;
+  font-size: 14px;
+}
+
+.result-indicator-head strong {
+  color: #172014;
+  font-size: 14px;
+}
+
+.indicator-track {
+  width: 100%;
+  height: 10px;
+  background: #e7e0cf;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.indicator-fill {
+  height: 100%;
+  border-radius: inherit;
+  transition: width 0.2s ease;
+}
+
+.indicator-fill.low {
+  background: linear-gradient(90deg, #f59e0b, #ef4444);
+}
+
+.indicator-fill.medium {
+  background: linear-gradient(90deg, #84cc16, #38bdf8);
+}
+
+.indicator-fill.high {
+  background: linear-gradient(90deg, #22c55e, #15803d);
+}
+
+.indicator-fill.pending {
+  background: linear-gradient(90deg, #cbd5e1, #94a3b8);
+}
+
+.result-indicator p {
+  margin: 10px 0 0;
+  color: #5d6258;
+  line-height: 1.6;
 }
 
 .full-analysis-form {

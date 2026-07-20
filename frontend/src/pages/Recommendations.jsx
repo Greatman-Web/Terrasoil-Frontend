@@ -104,11 +104,6 @@ export default function Recommendations() {
               the required farm information has been processed.
             </p>
           </div>
-
-          <div className="recommendations-status">
-            <span>Current status</span>
-            <strong>Pending Integration</strong>
-          </div>
         </section>
 
         <section className="recommendations-overview">
