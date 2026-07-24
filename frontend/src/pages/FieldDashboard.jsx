@@ -2,12 +2,22 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "../styles/FieldDashboard.css";
 import selectedFieldImage from "../assets/images/selected-field.png";
 
-const REQUIRED_TESTS = 14;
+const REQUIRED_TESTS = 8;
 export default function FieldDashboard() {
   const navigate = useNavigate();
   const location = useLocation();
 
   const selectedField = location.state?.field;
+  const fieldInformation = selectedField?.fieldInformation || {};
+
+const fieldIdentification =
+  fieldInformation.fieldIdentification || {};
+
+const cropInformation =
+  fieldInformation.cropInformation || {};
+
+const irrigationInformation =
+  fieldInformation.irrigation || {};
 
   if (!selectedField) {
     return (
@@ -163,87 +173,98 @@ const remainingTests = REQUIRED_TESTS - completedTests;
 </section>
 
         <section className="field-overview-card">
-          <h2>📋 Field Overview</h2>
+  <h2>📋 Field Overview</h2>
 
-          <div className="field-overview-grid">
-            <div className="overview-item">
-              <span className="overview-icon">🌾</span>
+  <div className="field-overview-grid">
+    <div className="overview-item">
+      <span className="overview-icon">🌾</span>
 
-              <div>
-                <small>Field Name</small>
-                <strong>{selectedField.fieldName}</strong>
-              </div>
-            </div>
+      <div>
+        <small>Field Name</small>
+        <strong>{selectedField.fieldName}</strong>
+      </div>
+    </div>
 
-            <div className="overview-item">
-              <span className="overview-icon">🌽</span>
+    <div className="overview-item">
+      <span className="overview-icon">🌽</span>
 
-              <div>
-                <small>Crop Type</small>
-                <strong>{selectedField.cropType}</strong>
-              </div>
-            </div>
+      <div>
+        <small>Crop Type</small>
+        <strong>
+          {cropInformation.crop_type || "Not recorded"}
+        </strong>
+      </div>
+    </div>
 
-            <div className="overview-item">
-              <span className="overview-icon">📐</span>
+    <div className="overview-item">
+      <span className="overview-icon">📐</span>
 
-              <div>
-                <small>Total Area</small>
-                <strong>{selectedField.totalArea} ha</strong>
-              </div>
-            </div>
+      <div>
+        <small>Total Area</small>
+        <strong>
+          {fieldIdentification.field_area
+            ? `${fieldIdentification.field_area} ha`
+            : `${selectedField.totalArea} ha`}
+        </strong>
+      </div>
+    </div>
 
-            <div className="overview-item">
-              <span className="overview-icon">📍</span>
+    <div className="overview-item">
+      <span className="overview-icon">🌱</span>
 
-              <div>
-                <small>Region</small>
-                <strong>{selectedField.region}</strong>
-              </div>
-            </div>
+      <div>
+        <small>Crop Variety</small>
+        <strong>
+          {cropInformation.crop_variety || "Not recorded"}
+        </strong>
+      </div>
+    </div>
 
-<div className="overview-item">
-  <span className="overview-icon">🌿</span>
+    <div className="overview-item">
+      <span className="overview-icon">📅</span>
 
-  <div>
-    <small>Land Use Type</small>
-    <strong>{selectedField.landUseType || "Not recorded"}</strong>
+      <div>
+        <small>Crop Season</small>
+        <strong>
+          {cropInformation.crop_season || "Not recorded"}
+        </strong>
+      </div>
+    </div>
+
+    <div className="overview-item">
+      <span className="overview-icon">🚿</span>
+
+      <div>
+        <small>Irrigation Method</small>
+        <strong>
+          {irrigationInformation.irrigation_method ||
+            "Not recorded"}
+        </strong>
+      </div>
+    </div>
+
+    <div className="overview-item">
+      <span className="overview-icon">💧</span>
+
+      <div>
+        <small>Water Source</small>
+        <strong>
+          {irrigationInformation.irrigation_source ||
+            "Not recorded"}
+        </strong>
+      </div>
+    </div>
+
+    <div className="overview-item">
+      <span className="overview-icon">✅</span>
+
+      <div>
+        <small>Status</small>
+        <strong>{selectedField.status || "Active"}</strong>
+      </div>
+    </div>
   </div>
-</div>
-
-<div className="overview-item">
-  <span className="overview-icon">💧</span>
-
-  <div>
-    <small>Water Availability</small>
-    <strong>
-      {selectedField.waterAvailability || "Not recorded"}
-    </strong>
-  </div>
-</div>
-
-<div className="overview-item">
-  <span className="overview-icon">📏</span>
-
-  <div>
-    <small>Distance to Water Source</small>
-    <strong>
-      {selectedField.distanceToWaterSource
-        ? `${selectedField.distanceToWaterSource} km`
-        : "Not recorded"}
-    </strong>
-  </div>
-</div>
-
-            <div className="overview-item">
-              <span className="overview-icon">✅</span>
-              <div>
-                <small>Status</small>
-                <strong>{selectedField.status || "Active"}</strong>
-              </div>
-            </div>
-          </div>
-        </section>
+</section>
 
         <section className="soil-dashboard-grid">
           <div className="soil-health-card">
