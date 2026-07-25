@@ -369,62 +369,70 @@ const fieldInformationSections = [
       },
     ],
   },
-
   {
-    id: "organicResourceApplications",
-    title: "Organic Resource Applications",
-    description: "Record manure, compost and other organic resources applied.",
-    fields: [
-      {
-        name: "fertiliser_type",
-        label: "Organic Resource Type",
-        type: "text",
-        placeholder: "Enter organic resource type",
-      },
-      {
-        name: "application_month",
-        label: "Application Month",
-        type: "month",
-      },
-      {
-        name: "nitrogen_applied",
-        label: "Nitrogen Applied",
-        type: "number",
-        placeholder: "Enter nitrogen applied",
-      },
-      {
-        name: "phosphorus_applied",
-        label: "Phosphorus Applied",
-        type: "number",
-        placeholder: "Enter phosphorus applied",
-      },
-      {
-        name: "potassium_applied",
-        label: "Potassium Applied",
-        type: "number",
-        placeholder: "Enter potassium applied",
-      },
-      {
-        name: "application_method",
-        label: "Application Method",
-        type: "select",
-        options: [
-          "Surface Application",
-          "Incorporated into Soil",
-          "Compost Placement",
-          "Mulching",
-          "Manual Application",
-        ],
-      },
-      {
-        name: "application_cost",
-        label: "Application Cost",
-        type: "number",
-        placeholder: "Enter application cost",
-      },
-    ],
-  },
-
+  id: "organicResourceApplications",
+  title: "Organic Resource Applications",
+  description:
+    "Record manure, compost, crop residues and other organic resources applied to the field.",
+  fields: [
+    {
+      name: "waste_type",
+      label: "Organic Resource Type",
+      type: "select",
+      options: [
+        "Animal Manure",
+        "Compost",
+        "Crop Residue",
+        "Green Manure",
+        "Food Waste",
+        "Biochar",
+        "Other",
+      ],
+    },
+    {
+      name: "application_month",
+      label: "Application Month",
+      type: "month",
+    },
+    {
+      name: "amount_applied",
+      label: "Amount Applied",
+      type: "number",
+      placeholder: "Enter amount applied",
+    },
+    {
+      name: "incorporation_method",
+      label: "Incorporation Method",
+      type: "select",
+      options: [
+        "Surface Applied",
+        "Mixed into Soil",
+        "Ploughed In",
+        "Mulching",
+        "Band Placement",
+        "Other",
+      ],
+    },
+    {
+      name: "dry_matter_content",
+      label: "Dry Matter Content",
+      type: "number",
+      placeholder: "Enter dry matter content",
+    },
+    {
+      name: "carbon_content",
+      label: "Carbon Content",
+      type: "number",
+      placeholder: "Enter carbon content",
+    },
+    {
+      name: "nitrogen_content",
+      label: "Nitrogen Content",
+      type: "number",
+      placeholder: "Enter nitrogen content",
+    },
+  ],
+},
   {
     id: "irrigation",
     title: "Irrigation",
