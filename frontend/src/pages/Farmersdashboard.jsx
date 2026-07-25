@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "../styles/Farmersdashboard.css";
 import farmerWelcome from "../assets/images/farmer-welcome.png";
 
-const REQUIRED_TESTS = 8;
+const REQUIRED_TESTS = 14;
 
 const fieldInformationSections = [
   {
@@ -369,70 +369,62 @@ const fieldInformationSections = [
       },
     ],
   },
+
   {
-  id: "organicResourceApplications",
-  title: "Organic Resource Applications",
-  description:
-    "Record manure, compost, crop residues and other organic resources applied to the field.",
-  fields: [
-    {
-      name: "waste_type",
-      label: "Organic Resource Type",
-      type: "select",
-      options: [
-        "Animal Manure",
-        "Compost",
-        "Crop Residue",
-        "Green Manure",
-        "Food Waste",
-        "Biochar",
-        "Other",
-      ],
-    },
-    {
-      name: "application_month",
-      label: "Application Month",
-      type: "month",
-    },
-    {
-      name: "amount_applied",
-      label: "Amount Applied",
-      type: "number",
-      placeholder: "Enter amount applied",
-    },
-    {
-      name: "incorporation_method",
-      label: "Incorporation Method",
-      type: "select",
-      options: [
-        "Surface Applied",
-        "Mixed into Soil",
-        "Ploughed In",
-        "Mulching",
-        "Band Placement",
-        "Other",
-      ],
-    },
-    {
-      name: "dry_matter_content",
-      label: "Dry Matter Content",
-      type: "number",
-      placeholder: "Enter dry matter content",
-    },
-    {
-      name: "carbon_content",
-      label: "Carbon Content",
-      type: "number",
-      placeholder: "Enter carbon content",
-    },
-    {
-      name: "nitrogen_content",
-      label: "Nitrogen Content",
-      type: "number",
-      placeholder: "Enter nitrogen content",
-    },
-  ],
-},
+    id: "organicResourceApplications",
+    title: "Organic Resource Applications",
+    description: "Record manure, compost and other organic resources applied.",
+    fields: [
+      {
+        name: "fertiliser_type",
+        label: "Organic Resource Type",
+        type: "text",
+        placeholder: "Enter organic resource type",
+      },
+      {
+        name: "application_month",
+        label: "Application Month",
+        type: "month",
+      },
+      {
+        name: "nitrogen_applied",
+        label: "Nitrogen Applied",
+        type: "number",
+        placeholder: "Enter nitrogen applied",
+      },
+      {
+        name: "phosphorus_applied",
+        label: "Phosphorus Applied",
+        type: "number",
+        placeholder: "Enter phosphorus applied",
+      },
+      {
+        name: "potassium_applied",
+        label: "Potassium Applied",
+        type: "number",
+        placeholder: "Enter potassium applied",
+      },
+      {
+        name: "application_method",
+        label: "Application Method",
+        type: "select",
+        options: [
+          "Surface Application",
+          "Incorporated into Soil",
+          "Compost Placement",
+          "Mulching",
+          "Manual Application",
+        ],
+      },
+      {
+        name: "application_cost",
+        label: "Application Cost",
+        type: "number",
+        placeholder: "Enter application cost",
+      },
+    ],
+  },
+
   {
     id: "irrigation",
     title: "Irrigation",
@@ -536,8 +528,21 @@ const fieldInformationSections = [
   {
     id: "fieldManagement",
     title: "Field Management",
-    description: "Record conservation and residue-management practices.",
+    description: "Record tillage, conservation and residue-management practices.",
     fields: [
+      {
+        name: "tillage_type",
+        label: "Tillage Type",
+        type: "select",
+        options: [
+          "No Tillage",
+          "Minimum Tillage",
+          "Conventional Tillage",
+          "Deep Tillage",
+          "Strip Tillage",
+          "Other",
+        ],
+      },
       {
         name: "terrace_presence",
         label: "Terrace Presence",
@@ -592,7 +597,7 @@ const fieldInformationSections = [
   {
     id: "terrainAndClimate",
     title: "Terrain and Climate",
-    description: "Record terrain, rainfall, temperature and water information.",
+    description: "Record terrain, rainfall and temperature information.",
     fields: [
       {
         name: "elevation",
@@ -611,7 +616,7 @@ const fieldInformationSections = [
       {
         name: "aspect",
         label: "Aspect",
-        type: "text",
+        type: "number",
         placeholder: "Enter aspect",
         autoGenerate: true,
       },
@@ -627,48 +632,53 @@ const fieldInformationSections = [
         label: "Topographic Wetness Index",
         type: "number",
         placeholder: "Enter topographic wetness index",
+        autoGenerate: true,
       },
       {
         name: "flow_accumulation",
         label: "Flow Accumulation",
         type: "number",
         placeholder: "Enter flow accumulation",
+        autoGenerate: true,
       },
       {
         name: "annual_rainfall",
         label: "Annual Rainfall",
         type: "number",
         placeholder: "Enter annual rainfall",
+        autoGenerate: true,
       },
       {
         name: "wet_season_rainfall",
         label: "Wet Season Rainfall",
         type: "number",
         placeholder: "Enter wet season rainfall",
+        autoGenerate: true,
       },
       {
         name: "dry_season_rainfall",
         label: "Dry Season Rainfall",
         type: "number",
         placeholder: "Enter dry season rainfall",
+        autoGenerate: true,
       },
       {
-        name: "mean_monthly_temperature",
-        label: "Mean Temperature of the Month",
+        name: "mean_temperature",
+        label: "Mean Temperature",
         type: "number",
         placeholder: "Enter mean temperature",
         autoGenerate: true,
       },
       {
-        name: "maximum_monthly_temperature",
-        label: "Maximum Temperature of the Month",
+        name: "maximum_temperature",
+        label: "Maximum Temperature",
         type: "number",
         placeholder: "Enter maximum temperature",
         autoGenerate: true,
       },
       {
-        name: "minimum_monthly_temperature",
-        label: "Minimum Temperature of the Month",
+        name: "minimum_temperature",
+        label: "Minimum Temperature",
         type: "number",
         placeholder: "Enter minimum temperature",
         autoGenerate: true,
@@ -678,43 +688,42 @@ const fieldInformationSections = [
         label: "Growing Degree Days",
         type: "number",
         placeholder: "Enter growing degree days",
+        autoGenerate: true,
       },
       {
         name: "rainfall_anomaly_index",
         label: "Rainfall Anomaly Index",
         type: "number",
         placeholder: "Enter rainfall anomaly index",
+        autoGenerate: true,
       },
+    ],
+  },
+
+  {
+    id: "soilHealthAndGeneratedLayers",
+    title: "Soil Health & Generated Layers",
+    description: "Display generated soil-health and environmental indicators for the field.",
+    fields: [
       {
         name: "estimated_soc_stock",
         label: "Estimated SOC Stock",
         type: "number",
-        placeholder: "Enter estimated SOC stock",
+        placeholder: "Generated estimated SOC stock",
+        autoGenerate: true,
       },
       {
         name: "estimated_soc_percent",
-        label: "Estimated SOC Percent",
+        label: "Estimated SOC (%)",
         type: "number",
-        placeholder: "Enter estimated SOC percentage",
+        placeholder: "Generated estimated SOC percentage",
+        autoGenerate: true,
       },
       {
         name: "water_holding_capacity",
         label: "Water Holding Capacity",
         type: "number",
-        placeholder: "Enter water holding capacity",
-      },
-      {
-        name: "mean_monthly_rainfall",
-        label: "Mean Monthly Rainfall",
-        type: "number",
-        placeholder: "Enter mean monthly rainfall",
-        autoGenerate: true,
-      },
-      {
-        name: "mean_monthly_temperature_summary",
-        label: "Mean Monthly Temperature",
-        type: "number",
-        placeholder: "Enter mean monthly temperature",
+        placeholder: "Generated water holding capacity",
         autoGenerate: true,
       },
     ],
@@ -925,7 +934,7 @@ export default function Farmersdashboard() {
 
         <section className="dashboard-section">
           <div className="section-header">
-            <h2>Register Field</h2>
+            <h2>Register New Field</h2>
 
             <p>
               Register your farm field by providing the details below. Once
