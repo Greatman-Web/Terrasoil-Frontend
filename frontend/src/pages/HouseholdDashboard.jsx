@@ -1,8 +1,9 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/HouseholdDashboard.css";
+import HouseholdSummary from "./HouseholdSummary"; 
 
-const REQUIRED_TESTS = 14;
+const REQUIRED_TESTS = 8;
 
 const HOUSEHOLD_DICTIONARY = [
   {
@@ -1194,6 +1195,8 @@ export default function HouseholdDashboard() {
 
   const [activeSection, setActiveSection] = useState("demographics");
   const [saveMessage, setSaveMessage] = useState("");
+  const [showSummary, setShowSummary] = useState(false);
+  const summaryRef = useRef(null);
 
   const [householdData, setHouseholdData] = useState(() => {
     try {
@@ -1378,6 +1381,21 @@ const savePersonalInfo = (event) => {
       `${categoryTitle} information saved successfully.`
     );
   };
+
+  const handleViewSummary = () => {
+  const nextValue = !showSummary;
+
+  setShowSummary(nextValue);
+
+  if (nextValue) {
+    setTimeout(() => {
+      summaryRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }, 200);
+  }
+};
 
   const renderField = (field) => {
     const label = createReadableLabel(field.name);
@@ -1789,9 +1807,13 @@ const savePersonalInfo = (event) => {
         <button
           type="button"
           className="view-summary-btn"
-          onClick={() => navigate("/household-summary")}>
-          Continue to Household Summary →
+          onClick={handleViewSummary}>
+          {showSummary ? "Hide Summary ▲" : "📄 View Household Summary"}
         </button>
+        {showSummary && (
+        <div ref={summaryRef}>
+       <HouseholdSummary />
+       </div>)}
       </main>
     </div>
   );

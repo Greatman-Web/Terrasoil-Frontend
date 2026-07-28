@@ -286,43 +286,7 @@ export default function HouseholdSummary() {
   }).filter((category) => category.values.length > 0);
 
   return (
-    <div className="household-summary-page">
-      <header className="summary-header">
-        <div className="summary-brand">
-          <div className="summary-logo">🌱</div>
-
-          <div>
-            <h2>Farmily</h2>
-            <p>Household Summary</p>
-          </div>
-        </div>
-
-        <div className="summary-header-actions">
-          <button type="button" onClick={() => navigate(-1)}>
-            ← Back
-          </button>
-
-          <button
-            type="button"
-            onClick={() => navigate("/farmer-dashboard")}
-          >
-            Dashboard
-          </button>
-        </div>
-      </header>
-
-      <main className="household-summary-main">
-        <section className="summary-intro-card">
-          <p className="small-title">HOUSEHOLD PROFILE</p>
-
-          <h1>Your Farm Household Summary</h1>
-
-          <p>
-           Review all the household, farm resource and management information you
-           have recorded. This page provides a clear summary of your farm records,
-           allowing you to verify and manage your information in one place.
-          </p>
-        </section>
+    <div className="household-summary-page"> 
 
         <section className="summary-overview-grid">
           <article className="summary-stat-card">
@@ -481,7 +445,6 @@ export default function HouseholdSummary() {
             Continue to Recommendations →
           </button>
         </section>
-      </main>
-    </div>
+      </div>
   );
 }
