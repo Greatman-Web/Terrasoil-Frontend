@@ -24,54 +24,70 @@ const fieldInformationSections = [
       placeholder: "Enter field area",
       autoGenerate: true,
     },
+    /*
     {
       name: "corner_1_latitude",
       label: "Corner 1 Latitude",
       type: "number",
       placeholder: "Enter latitude",
     },
+    */
+    /*
     {
       name: "corner_1_longitude",
       label: "Corner 1 Longitude",
       type: "number",
       placeholder: "Enter longitude",
     },
+    */
+    /*
     {
       name: "corner_2_latitude",
       label: "Corner 2 Latitude",
       type: "number",
       placeholder: "Enter latitude",
     },
+    */
+    /*
     {
       name: "corner_2_longitude",
       label: "Corner 2 Longitude",
       type: "number",
       placeholder: "Enter longitude",
     },
+    */
+    /*
     {
       name: "corner_3_latitude",
       label: "Corner 3 Latitude",
       type: "number",
       placeholder: "Enter latitude",
     },
+    */
+    /*
     {
       name: "corner_3_longitude",
       label: "Corner 3 Longitude",
       type: "number",
       placeholder: "Enter longitude",
     },
+    */
+    /*
     {
       name: "corner_4_latitude",
       label: "Corner 4 Latitude",
       type: "number",
       placeholder: "Enter latitude",
     },
+    */
+    /*
     {
       name: "corner_4_longitude",
       label: "Corner 4 Longitude",
       type: "number",
       placeholder: "Enter longitude",
     },
+    */
     {
       name: "distance_to_homestead",
       label: "Distance to Homestead",
@@ -136,6 +152,7 @@ const fieldInformationSections = [
         placeholder: "Enter soil pH",
         autoGenerate: true,
       },
+      /*
       {
         name: "soil_salinity",
         label: "Soil Salinity",
@@ -143,6 +160,8 @@ const fieldInformationSections = [
         placeholder: "Enter soil salinity",
         autoGenerate: true,
       },
+      */
+      /*
       {
         name: "soil_texture_class",
         label: "Soil Texture Class",
@@ -157,6 +176,8 @@ const fieldInformationSections = [
           "Silty Loam",
         ],
       },
+      */
+      /*
       {
         name: "drainage_class",
         label: "Drainage Class",
@@ -169,30 +190,39 @@ const fieldInformationSections = [
           "Very Good",
         ],
       },
+      */
+      /*
       {
         name: "coarse_fragment_pct",
         label: "Coarse Fragment (%)",
         type: "number",
         placeholder: "Enter coarse fragment percentage",
       },
+      */
+      /*
       {
         name: "cec",
         label: "Cation Exchange Capacity (CEC)",
         type: "number",
         placeholder: "Enter CEC",
       },
+      */
+      /*
       {
         name: "available_water_capacity",
         label: "Available Water Capacity",
         type: "number",
         placeholder: "Enter available water capacity",
       },
+      */
+      /*
       {
         name: "rooting_depth_restriction",
         label: "Rooting Depth Restriction",
         type: "text",
         placeholder: "Enter rooting depth restriction",
       },
+      */
     ],
   },
 
@@ -201,58 +231,76 @@ const fieldInformationSections = [
     title: "Crop Information",
     description: "Record crop production and vegetation information.",
     fields: [
+      /*
       {
         name: "crop_season",
         label: "Crop Season",
         type: "text",
         placeholder: "Enter crop season",
       },
+      */
+      /*
       {
         name: "crop_type",
         label: "Crop Type",
         type: "text",
         placeholder: "Enter crop type",
       },
+      */
+      /*
       {
         name: "crop_variety",
         label: "Crop Variety",
         type: "text",
         placeholder: "Enter crop variety",
       },
+      */
+      /*
       {
         name: "sowing_month",
         label: "Sowing Month",
         type: "month",
       },
+      */
+      /*
       {
         name: "harvest_month",
         label: "Harvest Month",
         type: "month",
       },
+      */
+      /*
       {
         name: "typical_yield",
         label: "Typical Yield",
         type: "number",
         placeholder: "Enter typical yield",
       },
+      */
+      /*
       {
         name: "actual_yield",
         label: "Actual Yield",
         type: "number",
         placeholder: "Enter actual yield",
       },
+      */
+      /*
       {
         name: "crop_residue_production",
         label: "Crop Residue Production",
         type: "number",
         placeholder: "Enter crop residue production",
       },
+      */
+      /*
       {
         name: "residue_removed_pct",
         label: "Residue Removed (%)",
         type: "number",
         placeholder: "Enter residue removed percentage",
       },
+      */
       {
         name: "mean_ndvi",
         label: "Mean NDVI",
@@ -260,6 +308,7 @@ const fieldInformationSections = [
         placeholder: "Enter mean NDVI",
         autoGenerate: true,
       },
+      /*
       {
         name: "max_ndvi",
         label: "Maximum NDVI",
@@ -267,6 +316,8 @@ const fieldInformationSections = [
         placeholder: "Enter maximum NDVI",
         autoGenerate: true,
       },
+      */
+      /*
       {
         name: "mean_evi",
         label: "Mean EVI",
@@ -274,6 +325,8 @@ const fieldInformationSections = [
         placeholder: "Enter mean EVI",
         autoGenerate: true,
       },
+      */
+      /*
       {
         name: "mean_savi",
         label: "Mean SAVI",
@@ -281,39 +334,51 @@ const fieldInformationSections = [
         placeholder: "Enter mean SAVI",
         autoGenerate: true,
       },
+      */
+      /*
       {
         name: "vegetation_cover_pct",
         label: "Vegetation Cover (%)",
         type: "number",
         placeholder: "Enter vegetation cover percentage",
       },
+      */
+      /*
       {
         name: "biomass_estimate",
         label: "Biomass Estimate",
         type: "number",
         placeholder: "Enter biomass estimate",
       },
+      */
+      /*
       {
         name: "crop_vigour_score",
         label: "Crop Vigour Score",
         type: "number",
         placeholder: "Enter crop vigour score",
       },
+      */
+      /*
       {
         name: "crop_growth_stage",
         label: "Crop Growth Stage",
         type: "text",
         placeholder: "Enter crop growth stage",
       },
+      */
+      /*
       {
         name: "crop_stress_index",
         label: "Crop Stress Index",
         type: "number",
         placeholder: "Enter crop stress index",
       },
+      */
     ],
   },
 
+  /*
   {
     id: "fertiliserApplications",
     title: "Fertiliser Applications",
@@ -369,7 +434,9 @@ const fieldInformationSections = [
       },
     ],
   },
+  */
 
+  /*
   {
     id: "organicResourceApplications",
     title: "Organic Resource Applications",
@@ -424,7 +491,9 @@ const fieldInformationSections = [
       },
     ],
   },
+  */
 
+  /*
   {
     id: "irrigation",
     title: "Irrigation",
@@ -524,7 +593,9 @@ const fieldInformationSections = [
       },
     ],
   },
+  */
 
+  /*
   {
     id: "fieldManagement",
     title: "Field Management",
@@ -593,11 +664,12 @@ const fieldInformationSections = [
       },
     ],
   },
+  */
 
   {
-    id: "terrainAndClimate",
-    title: "Terrain and Climate",
-    description: "Record terrain, rainfall and temperature information.",
+    id: "terrain",
+    title: "Terrain",
+    description: "Record terrain characteristics of the field.",
     fields: [
       {
         name: "elevation",
@@ -613,6 +685,7 @@ const fieldInformationSections = [
         placeholder: "Enter slope",
         autoGenerate: true,
       },
+      /*
       {
         name: "aspect",
         label: "Aspect",
@@ -620,6 +693,8 @@ const fieldInformationSections = [
         placeholder: "Enter aspect",
         autoGenerate: true,
       },
+      */
+      /*
       {
         name: "curvature",
         label: "Curvature",
@@ -627,6 +702,8 @@ const fieldInformationSections = [
         placeholder: "Enter curvature",
         autoGenerate: true,
       },
+      */
+      /*
       {
         name: "topographic_wetness_index",
         label: "Topographic Wetness Index",
@@ -634,6 +711,8 @@ const fieldInformationSections = [
         placeholder: "Enter topographic wetness index",
         autoGenerate: true,
       },
+      */
+      /*
       {
         name: "flow_accumulation",
         label: "Flow Accumulation",
@@ -641,6 +720,16 @@ const fieldInformationSections = [
         placeholder: "Enter flow accumulation",
         autoGenerate: true,
       },
+      */
+    ],
+  },
+
+  {
+    id: "climate",
+    title: "Climate",
+    description: "Record rainfall and temperature information for the field.",
+    fields: [
+      /*
       {
         name: "annual_rainfall",
         label: "Annual Rainfall",
@@ -648,6 +737,8 @@ const fieldInformationSections = [
         placeholder: "Enter annual rainfall",
         autoGenerate: true,
       },
+      */
+      /*
       {
         name: "wet_season_rainfall",
         label: "Wet Season Rainfall",
@@ -655,6 +746,8 @@ const fieldInformationSections = [
         placeholder: "Enter wet season rainfall",
         autoGenerate: true,
       },
+      */
+      /*
       {
         name: "dry_season_rainfall",
         label: "Dry Season Rainfall",
@@ -662,6 +755,8 @@ const fieldInformationSections = [
         placeholder: "Enter dry season rainfall",
         autoGenerate: true,
       },
+      */
+      /*
       {
         name: "mean_temperature",
         label: "Mean Temperature",
@@ -669,6 +764,8 @@ const fieldInformationSections = [
         placeholder: "Enter mean temperature",
         autoGenerate: true,
       },
+      */
+      /*
       {
         name: "maximum_temperature",
         label: "Maximum Temperature",
@@ -676,6 +773,8 @@ const fieldInformationSections = [
         placeholder: "Enter maximum temperature",
         autoGenerate: true,
       },
+      */
+      /*
       {
         name: "minimum_temperature",
         label: "Minimum Temperature",
@@ -683,6 +782,8 @@ const fieldInformationSections = [
         placeholder: "Enter minimum temperature",
         autoGenerate: true,
       },
+      */
+      /*
       {
         name: "growing_degree_days",
         label: "Growing Degree Days",
@@ -690,6 +791,8 @@ const fieldInformationSections = [
         placeholder: "Enter growing degree days",
         autoGenerate: true,
       },
+      */
+      /*
       {
         name: "rainfall_anomaly_index",
         label: "Rainfall Anomaly Index",
@@ -697,9 +800,25 @@ const fieldInformationSections = [
         placeholder: "Enter rainfall anomaly index",
         autoGenerate: true,
       },
+      */
+      {
+        name: "mean_monthly_rainfall",
+        label: "Mean Monthly Rainfall",
+        type: "number",
+        placeholder: "Generated mean monthly rainfall",
+        autoGenerate: true,
+      },
+      {
+        name: "mean_monthly_temperature",
+        label: "Mean Monthly Temperature",
+        type: "number",
+        placeholder: "Generated mean monthly temperature",
+        autoGenerate: true,
+      },
     ],
   },
 
+  /*
   {
     id: "soilHealthAndGeneratedLayers",
     title: "Soil Health & Generated Layers",
@@ -728,7 +847,26 @@ const fieldInformationSections = [
       },
     ],
   },
+  */
 ];
+
+const GENERATED_FIELD_VALUES = {
+  field_name: "Generated Field",
+  field_area: 1.5,
+  distance_to_homestead: 0.8,
+  soil_depth: 30,
+  clay_content: 28,
+  silt_content: 32,
+  sand_content: 40,
+  soil_carbon: 1.9,
+  bulk_density: 1.25,
+  soil_ph: 6.5,
+  mean_ndvi: 0.72,
+  elevation: 1650,
+  slope: 5.5,
+  mean_monthly_rainfall: 110,
+  mean_monthly_temperature: 22.5,
+};
 
 const createEmptyAdditionalFieldData = () => {
   return fieldInformationSections.reduce((sectionData, section) => {
@@ -759,6 +897,52 @@ export default function Farmersdashboard() {
       [sectionId]: {
         ...previousData[sectionId],
         [fieldName]: value,
+      },
+    }));
+  };
+
+  const generateFieldValue = (field) => {
+    if (Object.prototype.hasOwnProperty.call(GENERATED_FIELD_VALUES, field.name)) {
+      return GENERATED_FIELD_VALUES[field.name];
+    }
+
+    if (field.type === "select") {
+      return field.options?.[0] || "";
+    }
+
+    if (field.type === "month") {
+      return new Date().toISOString().slice(0, 7);
+    }
+
+    if (field.type === "number") {
+      return 1;
+    }
+
+    return `Generated ${field.label}`;
+  };
+
+  const handleGenerateField = (sectionId, field) => {
+    handleAdditionalFieldChange(
+      sectionId,
+      field.name,
+      generateFieldValue(field)
+    );
+  };
+
+  const handleGenerateSection = (section) => {
+    const generatedSectionData = section.fields.reduce(
+      (generatedData, field) => ({
+        ...generatedData,
+        [field.name]: generateFieldValue(field),
+      }),
+      {}
+    );
+
+    setAdditionalFieldData((previousData) => ({
+      ...previousData,
+      [section.id]: {
+        ...previousData[section.id],
+        ...generatedSectionData,
       },
     }));
   };
@@ -958,21 +1142,41 @@ export default function Farmersdashboard() {
                     }
                     key={section.id}
                   >
-                    <button
-                      type="button"
-                      className="field-category-header"
-                      onClick={() => toggleFieldSection(section.id)}
-                      aria-expanded={isOpen}
-                    >
-                      <div>
-                        <h4>{section.title}</h4>
-                        <p>{section.description}</p>
-                      </div>
+                    <div className="field-category-header">
+                      <button
+                        type="button"
+                        className="field-category-title-button"
+                        onClick={() => toggleFieldSection(section.id)}
+                        aria-expanded={isOpen}
+                      >
+                        <div>
+                          <h4>{section.title}</h4>
+                          <p>{section.description}</p>
+                        </div>
+                      </button>
 
-                      <span className="field-category-arrow">
-                        {isOpen ? "−" : "+"}
-                      </span>
-                    </button>
+                      <div className="field-category-actions">
+                        <button
+                          type="button"
+                          className="auto-generate-section-btn"
+                          title={`Automatically populate all ${section.title} fields`}
+                          aria-label={`Automatically populate all ${section.title} fields`}
+                          onClick={() => handleGenerateSection(section)}
+                        >
+                          ↻
+                        </button>
+
+                        <button
+                          type="button"
+                          className="field-category-arrow"
+                          onClick={() => toggleFieldSection(section.id)}
+                          aria-label={`${isOpen ? "Close" : "Open"} ${section.title}`}
+                          aria-expanded={isOpen}
+                        >
+                          {isOpen ? "−" : "+"}
+                        </button>
+                      </div>
+                    </div>
 
                     {isOpen && (
                       <div className="field-category-content">
@@ -1045,6 +1249,9 @@ export default function Farmersdashboard() {
                                     className="auto-generate-field-btn"
                                     title="Generate value from the system"
                                     aria-label={`Generate ${field.label}`}
+                                    onClick={() =>
+                                      handleGenerateField(section.id, field)
+                                    }
                                   >
                                     ↻
                                   </button>

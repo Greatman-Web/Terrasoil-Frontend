@@ -19,42 +19,53 @@ const HOUSEHOLD_DICTIONARY = [
         max: 50,
         required: true,
       },
-      {
+      /*
+{
         name: "adult_males",
         dataType: "INTEGER",
         min: 0,
         max: 20,
         required: true,
       },
-      {
+*/
+      /*
+{
         name: "adult_females",
         dataType: "INTEGER",
         min: 0,
         max: 20,
         required: true,
       },
-      {
+*/
+      /*
+{
         name: "male_children",
         dataType: "INTEGER",
         min: 0,
         max: 20,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "female_children",
         dataType: "INTEGER",
         min: 0,
         max: 20,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "elderly_members",
         dataType: "INTEGER",
         min: 0,
         max: 20,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "education_level_head",
         dataType: "ENUM",
         unit: "-",
@@ -62,9 +73,11 @@ const HOUSEHOLD_DICTIONARY = [
         max: null,
         required: false,
       }
+*/
     ],
   },
-  {
+  /*
+{
     id: "labour",
     title: "Labour",
     icon: "👷",
@@ -273,6 +286,7 @@ const HOUSEHOLD_DICTIONARY = [
       }
     ],
   },
+*/
   {
     id: "finance",
     title: "Finance",
@@ -288,7 +302,8 @@ const HOUSEHOLD_DICTIONARY = [
         required: false,
        
       },
-      {
+      /*
+{
         name: "annual_income_crop",
         dataType: "FLOAT",
         unit: "ETB",
@@ -296,7 +311,9 @@ const HOUSEHOLD_DICTIONARY = [
         max: 999999999,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "annual_income_livestock",
         dataType: "FLOAT",
         unit: "ETB",
@@ -304,7 +321,9 @@ const HOUSEHOLD_DICTIONARY = [
         max: 999999999,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "annual_income_offfarm",
         dataType: "FLOAT",
         unit: "ETB",
@@ -312,7 +331,9 @@ const HOUSEHOLD_DICTIONARY = [
         max: 999999999,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "annual_expenditure_total",
         dataType: "FLOAT",
         unit: "ETB",
@@ -320,7 +341,9 @@ const HOUSEHOLD_DICTIONARY = [
         max: 999999999,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "food_expenditure",
         dataType: "FLOAT",
         unit: "ETB",
@@ -328,7 +351,9 @@ const HOUSEHOLD_DICTIONARY = [
         max: 999999999,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "farm_input_expenditure",
         dataType: "FLOAT",
         unit: "ETB",
@@ -336,7 +361,9 @@ const HOUSEHOLD_DICTIONARY = [
         max: 999999999,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "savings_available",
         dataType: "FLOAT",
         unit: "ETB",
@@ -344,9 +371,11 @@ const HOUSEHOLD_DICTIONARY = [
         max: 999999999,
         required: false,
       }
+*/
     ],
   },
-  {
+  /*
+{
     id: "purchases-sales",
     title: "Purchases & Sales",
     icon: "🛒",
@@ -434,6 +463,7 @@ const HOUSEHOLD_DICTIONARY = [
       }
     ],
   },
+*/
   {
     id: "livestock",
     title: "Livestock",
@@ -468,140 +498,179 @@ const HOUSEHOLD_DICTIONARY = [
         max: 100000,
         required: false,
       },
-      {
+      /*
+{
         name: "sheep_count",
         dataType: "FLOAT",
         min: 0,
         max: 100000,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "poultry_count",
         dataType: "FLOAT",
         min: 0,
         max: 100000,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "pigs_count",
         dataType: "FLOAT",
         min: 0,
         max: 100000,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "donkeys_count",
         dataType: "FLOAT",
         min: 0,
         max: 100000,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "horses_count",
         dataType: "FLOAT",
         min: 0,
         max: 100000,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "camels_count",
         dataType: "FLOAT",
         min: 0,
         max: 100000,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "beehive_count",
         dataType: "FLOAT",
         min: 0,
         max: 100000,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "milk_production_day",
         dataType: "FLOAT",
         min: 0,
         max: 100000,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "meat_sales_year",
         dataType: "FLOAT",
         min: 0,
         max: 100000,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "egg_production_year",
         dataType: "FLOAT",
         min: 0,
         max: 100000,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "livestock_sales_year",
         dataType: "FLOAT",
         min: 0,
         max: 100000,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "manure_production_year",
         dataType: "FLOAT",
         min: 0,
         max: 100000,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "manure_collected_pct",
         dataType: "FLOAT",
         min: 0,
         max: 100000,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "fodder_production_year",
         dataType: "FLOAT",
         min: 0,
         max: 100000,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "purchased_feed_year",
         dataType: "FLOAT",
         min: 0,
         max: 100000,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "grazing_land_area",
         dataType: "FLOAT",
         min: 0,
         max: 100000,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "communal_grazing_access",
         dataType: "FLOAT",
         min: 0,
         max: 100000,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "draft_animals",
         dataType: "FLOAT",
         min: 0,
         max: 100000,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "livestock_mortality_rate",
         dataType: "FLOAT",
         min: 0,
         max: 100000,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "feed_type_1",
         dataType: "VARCHAR",
         unit: "-",
@@ -609,7 +678,9 @@ const HOUSEHOLD_DICTIONARY = [
         max: null,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "feed_type_1_pct",
         dataType: "FLOAT",
         unit: "%",
@@ -617,7 +688,9 @@ const HOUSEHOLD_DICTIONARY = [
         max: null,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "feed_type_2",
         dataType: "VARCHAR",
         unit: "-",
@@ -625,7 +698,9 @@ const HOUSEHOLD_DICTIONARY = [
         max: null,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "feed_type_2_pct",
         dataType: "FLOAT",
         unit: "%",
@@ -633,7 +708,9 @@ const HOUSEHOLD_DICTIONARY = [
         max: null,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "feed_type_3",
         dataType: "VARCHAR",
         unit: "-",
@@ -641,7 +718,9 @@ const HOUSEHOLD_DICTIONARY = [
         max: null,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "feed_type_3_pct",
         dataType: "FLOAT",
         unit: "%",
@@ -649,7 +728,9 @@ const HOUSEHOLD_DICTIONARY = [
         max: null,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "feed_type_4",
         dataType: "VARCHAR",
         unit: "-",
@@ -657,7 +738,9 @@ const HOUSEHOLD_DICTIONARY = [
         max: null,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "feed_type_4_pct",
         dataType: "FLOAT",
         unit: "%",
@@ -665,7 +748,9 @@ const HOUSEHOLD_DICTIONARY = [
         max: null,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "feed_type_5",
         dataType: "VARCHAR",
         unit: "-",
@@ -673,7 +758,9 @@ const HOUSEHOLD_DICTIONARY = [
         max: null,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "feed_type_5_pct",
         dataType: "FLOAT",
         unit: "%",
@@ -681,7 +768,9 @@ const HOUSEHOLD_DICTIONARY = [
         max: null,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "purchased_feed_pct",
         dataType: "FLOAT",
         unit: "%",
@@ -689,7 +778,9 @@ const HOUSEHOLD_DICTIONARY = [
         max: null,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "livestock_feed_strategy",
         dataType: "ENUM",
         unit: "-",
@@ -697,9 +788,11 @@ const HOUSEHOLD_DICTIONARY = [
         max: null,
         required: false,
       }
+*/
     ],
   },
-  {
+  /*
+{
     id: "organic-resources",
     title: "Organic Resources",
     icon: "♻️",
@@ -819,13 +912,15 @@ const HOUSEHOLD_DICTIONARY = [
       }
     ],
   },
+*/
   {
     id: "water",
     title: "Water",
     icon: "💧",
     description: "Water sources, access and availability",
     fields: [
-      {
+      /*
+{
         name: "water_source_type",
         dataType: "ENUM",
         unit: "-",
@@ -833,7 +928,9 @@ const HOUSEHOLD_DICTIONARY = [
         max: null,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "drought_water_source_type",
         dataType: "ENUM",
         unit: "-",
@@ -841,20 +938,25 @@ const HOUSEHOLD_DICTIONARY = [
         max: null,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "drought_water_travel_time",
         dataType: "FLOAT",
         min: null,
         max: null,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "drought_water_queue_time",
         dataType: "FLOAT",
         min: null,
         max: null,
         required: false,
       },
+*/
       {
         name: "water_available_day",
         dataType: "FLOAT",
@@ -869,58 +971,73 @@ const HOUSEHOLD_DICTIONARY = [
         max: 100000,
         required: false,
       },
-      {
+      /*
+{
         name: "travel_time_water",
         dataType: "FLOAT",
         min: 0,
         max: 100000,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "queue_time_water",
         dataType: "FLOAT",
         min: 0,
         max: 100000,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "water_collection_trips_day",
         dataType: "FLOAT",
         min: 0,
         max: 100000,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "water_volume_trip",
         dataType: "FLOAT",
         min: 0,
         max: 100000,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "dry_season_water_availability",
         dataType: "FLOAT",
         min: 0,
         max: 100000,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "wet_season_water_availability",
         dataType: "FLOAT",
         min: 0,
         max: 100000,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "livestock_water_requirement_day",
         dataType: "FLOAT",
         min: 0,
         max: 100000,
         required: false,
       }
+*/
     ],
   },
-  {
+  /*
+{
     id: "irrigation",
     title: "Irrigation",
     icon: "🚿",
@@ -971,13 +1088,15 @@ const HOUSEHOLD_DICTIONARY = [
       }
     ],
   },
+*/
   {
     id: "energy",
     title: "Energy",
     icon: "⚡",
     description: "Fuelwood, charcoal and household energy use",
     fields: [
-      {
+      /*
+{
         name: "wood_bundle_weight",
         dataType: "FLOAT",
         unit: "tonnes",
@@ -985,7 +1104,9 @@ const HOUSEHOLD_DICTIONARY = [
         max: null,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "wood_collection_time_bundle",
         dataType: "FLOAT",
         unit: "hours",
@@ -993,7 +1114,9 @@ const HOUSEHOLD_DICTIONARY = [
         max: null,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "wood_collection_trips_week",
         dataType: "INTEGER",
         unit: "trips/week",
@@ -1001,7 +1124,9 @@ const HOUSEHOLD_DICTIONARY = [
         max: null,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "wood_collection_travel_time",
         dataType: "FLOAT",
         unit: "hours",
@@ -1009,7 +1134,9 @@ const HOUSEHOLD_DICTIONARY = [
         max: null,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "wood_collection_gathering_time",
         dataType: "FLOAT",
         unit: "hours",
@@ -1017,6 +1144,7 @@ const HOUSEHOLD_DICTIONARY = [
         max: null,
         required: false,
       },
+*/
       {
         name: "firewood_used_year",
         dataType: "FLOAT",
@@ -1045,30 +1173,37 @@ const HOUSEHOLD_DICTIONARY = [
         max: 100000,
         required: false,
       },
-      {
+      /*
+{
         name: "kerosene_used_year",
         dataType: "FLOAT",
         min: 0,
         max: 100000,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "fuel_collection_trips_week",
         dataType: "FLOAT",
         min: 0,
         max: 100000,
         required: false,
       },
-      {
+*/
+      /*
+{
         name: "fuel_purchase_cost_year",
         dataType: "FLOAT",
         min: 0,
         max: 100000,
         required: false,
       }
+*/
     ],
   },
-  {
+  /*
+{
     id: "market-access",
     title: "Market Access",
     icon: "🏪",
@@ -1090,7 +1225,9 @@ const HOUSEHOLD_DICTIONARY = [
       }
     ],
   },
-  {
+*/
+  /*
+{
     id: "objectives",
     title: "Objectives",
     icon: "🎯",
@@ -1122,6 +1259,7 @@ const HOUSEHOLD_DICTIONARY = [
       }
     ],
   }
+*/
 ];
 
 const ENUM_OPTIONS = {
