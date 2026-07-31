@@ -1,10 +1,12 @@
+//importing necessary libraries and components
 import { useMemo, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/HouseholdDashboard.css";
 import HouseholdSummary from "./HouseholdSummary"; 
 
+//Defining constants for required tests and household data structure
 const REQUIRED_TESTS = 8;
-
+//Defining the structure of household data with sections and fields
 const HOUSEHOLD_DICTIONARY = [
   {
     id: "demographics",
@@ -1296,9 +1298,9 @@ const ENUM_OPTIONS = {
     "other",
   ],
 };
-
+// Defining a set of data types that are considered numeric
 const NUMBER_TYPES = new Set(["INTEGER", "FLOAT", "DECIMAL"]);
-
+// Defining a set of data types that are considered boolean
 function createInitialHouseholdData(savedData = {}) {
   const initialData = {};
 
@@ -1311,7 +1313,7 @@ function createInitialHouseholdData(savedData = {}) {
 
   return initialData;
 }
-
+// It creates a readable label from a variable name
 function createReadableLabel(variableName) {
   return variableName
     .replaceAll("_pct", " percentage")
@@ -1320,22 +1322,17 @@ function createReadableLabel(variableName) {
     .replaceAll("_", " ")
     .replace(/\b\w/g, (character) => character.toUpperCase());
 }
-
+// It returns the appropriate input step value based on the data type
 function getInputStep(dataType) {
   return dataType === "INTEGER" ? "1" : "any";
 }
-
+//exporting the HouseholdDashboard component as the default export of the module
 export default function HouseholdDashboard() {
-  // =========================
-  // NAVIGATION AND STATE SETUP
-  // =========================
   const navigate = useNavigate();
-
   const [activeSection, setActiveSection] = useState("demographics");
   const [saveMessage, setSaveMessage] = useState("");
   const [showSummary, setShowSummary] = useState(false);
   const summaryRef = useRef(null);
-
   const [householdData, setHouseholdData] = useState(() => {
     try {
       const savedData = JSON.parse(
@@ -1401,7 +1398,7 @@ export default function HouseholdDashboard() {
     };
   }
 });
-
+// State to track if personal information has been saved
 const [personalInfoSaved, setPersonalInfoSaved] = useState(false);
 
   const fields = useMemo(() => {
@@ -1444,7 +1441,7 @@ const [personalInfoSaved, setPersonalInfoSaved] = useState(false);
       }),
     [fields]
   );
-
+// It calculates the total number of livestock.
   const totalLivestock = [
     "cattle_count",
     "dairy_cattle_count",
@@ -1461,11 +1458,11 @@ const [personalInfoSaved, setPersonalInfoSaved] = useState(false);
       total + Number(householdData[variableName] || 0),
     0
   );
-
+// It calculates the finance balance.
   const financeBalance =
     Number(householdData.annual_income_total || 0) -
     Number(householdData.annual_expenditure_total || 0);
-
+// It calculates the total energy used.
   const updateField = (name, value) => {
     setHouseholdData((currentData) => ({
       ...currentData,
@@ -1474,7 +1471,7 @@ const [personalInfoSaved, setPersonalInfoSaved] = useState(false);
 
     setSaveMessage("");
   };
-
+// It toggles the active section in the dashboard.
   const toggleSection = (sectionId) => {
     setActiveSection((currentSection) =>
       currentSection === sectionId ? "" : sectionId
@@ -1482,7 +1479,7 @@ const [personalInfoSaved, setPersonalInfoSaved] = useState(false);
 
     setSaveMessage("");
   };
-
+// It updates the personal information state.
   const updatePersonalInfo = (fieldName, value) => {
   setPersonalInfo((currentInfo) => ({
     ...currentInfo,
@@ -1491,7 +1488,7 @@ const [personalInfoSaved, setPersonalInfoSaved] = useState(false);
 
   setPersonalInfoSaved(false);
 };
-
+// It saves the personal information to local storage and updates the state.
 const savePersonalInfo = (event) => {
   event.preventDefault();
 
@@ -1508,18 +1505,18 @@ const savePersonalInfo = (event) => {
   setPersonalInfo(updatedPersonalInfo);
   setPersonalInfoSaved(true);
 };
-
+// It saves the household data to local storage and displays a success message.
   const saveHouseholdData = (categoryTitle = "Household") => {
     localStorage.setItem(
       "farmilyHouseholdData",
       JSON.stringify(householdData)
     );
-
     setSaveMessage(
       `${categoryTitle} information saved successfully.`
     );
   };
 
+  // Handles the visibility of the summary section and scrolls to it if shown.
   const handleViewSummary = () => {
   const nextValue = !showSummary;
 
@@ -1535,6 +1532,7 @@ const savePersonalInfo = (event) => {
   }
 };
 
+// It renders the appropriate input field based on the field's data type and properties.
   const renderField = (field) => {
     const label = createReadableLabel(field.name);
     const value = householdData[field.name];
@@ -1548,8 +1546,7 @@ const savePersonalInfo = (event) => {
             checked={Boolean(value)}
             onChange={(event) =>
               updateField(field.name, event.target.checked)
-            }
-          />
+            }/>
 
           <span>
             <strong>{label}</strong>
@@ -1569,8 +1566,7 @@ const savePersonalInfo = (event) => {
             required={field.required}
             onChange={(event) =>
               updateField(field.name, event.target.value)
-            }
-          >
+            }>
             <option value="">Select an option</option>
 
             {options.map((option) => (
@@ -1586,10 +1582,8 @@ const savePersonalInfo = (event) => {
         </label>
       );
     }
-
+    // Determine if the field is a number type for input attributes
     const isNumber = NUMBER_TYPES.has(field.dataType);
-
-    
     return (
       <label key={field.name}>
         {label}{field.required ? " *" : ""}
@@ -1605,8 +1599,7 @@ const savePersonalInfo = (event) => {
             placeholder={field.description}
             onChange={(event) =>
               updateField(field.name, event.target.value)
-            }
-          />
+            }/>
 
           {field.unit && field.unit !== "-" && (
             <span className="input-unit">{field.unit}</span>
@@ -1619,9 +1612,7 @@ const savePersonalInfo = (event) => {
 
   return (
     <div className="household-page">
-      {/* =========================
-          PAGE HEADER
-      ========================= */}
+      {/* Page secction */}
       <header className="household-header">
         <div className="household-brand">
           <div className="household-logo">🌱</div>
@@ -1631,7 +1622,7 @@ const savePersonalInfo = (event) => {
             <p>Farm Household Management</p>
           </div>
         </div>
-
+        {/* Header section */}
         <div className="household-header-actions">
           <button type="button" onClick={() => navigate(-1)}>
             ← Back
@@ -1643,21 +1634,17 @@ const savePersonalInfo = (event) => {
         </div>
       </header>
 
-      {/* =========================
-          MAIN NAVIGATION TABS
-      ========================= */}
+      {/* Main navigation section */}
       <nav className="household-tabs">
         <button
           type="button"
-          onClick={() => navigate("/farmer-dashboard")}
-        >
+          onClick={() => navigate("/farmer-dashboard")}>
           Dashboard
         </button>
 
         <button
           type="button"
-          onClick={() => navigate("/farmer-dashboard")}
-        >
+          onClick={() => navigate("/farmer-dashboard")}>
           My Fields
         </button>
 
@@ -1670,13 +1657,8 @@ const savePersonalInfo = (event) => {
         </button>
       </nav>
 
-      {/* =========================
-          MAIN CONTENT AREA
-      ========================= */}
+      {/*Main content Area*/}
       <main className="household-main">
-        {/* =========================
-            INTRODUCTION CARD
-        ========================= */}
         <section className="household-intro-card">
           <p className="small-title">HOUSEHOLD MANAGEMENT</p>
 
@@ -1691,9 +1673,7 @@ const savePersonalInfo = (event) => {
           </p>
         </section>
 
-        {/* =========================
-            SUMMARY STATISTICS
-        ========================= */}
+        {/* Summary Statistics */}
         <section className="household-summary-grid">
           <article className="summary-card">
             <span>🌾</span>
@@ -1732,9 +1712,7 @@ const savePersonalInfo = (event) => {
           </article>
         </section>
 
-        {/* =========================
-            FARMER PERSONAL INFORMATION FORM
-        ========================= */}
+        {/* Farmer's personal information form*/}
         <section className="farmer-personal-card">
   <div className="personal-card-heading">
     <div>
@@ -1758,10 +1736,8 @@ const savePersonalInfo = (event) => {
         required
         value={personalInfo.firstName || ""}
         onChange={(event) =>
-          updatePersonalInfo("firstName", event.target.value)
-        }
-        placeholder="eg. John, Marie, Ahmed"
-      />
+          updatePersonalInfo("firstName", event.target.value)}
+        placeholder="eg. John, Marie, Ahmed"/>
     </label>
 
     <label>
@@ -1770,10 +1746,8 @@ const savePersonalInfo = (event) => {
         type="text"
         value={personalInfo.middleName || ""}
         onChange={(event) =>
-          updatePersonalInfo("middleName", event.target.value)
-        }
-        placeholder= "eg. Doe, Ali, Bekele"
-      />
+          updatePersonalInfo("middleName", event.target.value)}
+        placeholder= "eg. Doe, Ali, Bekele" />
     </label>
 
     <label>
@@ -1783,10 +1757,8 @@ const savePersonalInfo = (event) => {
         required
         value={personalInfo.lastName || ""}
         onChange={(event) =>
-          updatePersonalInfo("lastName", event.target.value)
-        }
-        placeholder="eg. Tesfaye, Abebe, Bekele"
-      />
+          updatePersonalInfo("lastName", event.target.value)}
+        placeholder="eg. Tesfaye, Abebe, Bekele"/>
     </label>
 
     <label>
@@ -1798,10 +1770,8 @@ const savePersonalInfo = (event) => {
         pattern="[0-9+ ]+"
         value={personalInfo.phoneNumber || ""}
         onChange={(event) =>
-          updatePersonalInfo("phoneNumber", event.target.value)
-        }
-        placeholder="eg. +251912345678" 
-      />
+          updatePersonalInfo("phoneNumber", event.target.value) }
+        placeholder="eg. +251912345678" />
     </label>
 
 
@@ -1810,9 +1780,7 @@ const savePersonalInfo = (event) => {
       <select
         value={personalInfo.gender || ""}
         onChange={(event) =>
-          updatePersonalInfo("gender", event.target.value)
-        }
-      >
+          updatePersonalInfo("gender", event.target.value)}>
         <option value="">Select gender</option>
         <option value="Male">Male</option>
         <option value="Female">Female</option>
@@ -1826,10 +1794,8 @@ const savePersonalInfo = (event) => {
         type="date"
         value={personalInfo.dateOfBirth || ""}
         onChange={(event) =>
-          updatePersonalInfo("dateOfBirth", event.target.value)
-        }
-        placeholder="YYYY-MM-DD"
-      />
+          updatePersonalInfo("dateOfBirth", event.target.value)}
+        placeholder="YYYY-MM-DD"/>
     </label>
 
     <label>
@@ -1839,10 +1805,8 @@ const savePersonalInfo = (event) => {
         required
         value={personalInfo.region || ""}
         onChange={(event) =>
-          updatePersonalInfo("region", event.target.value)
-        }
-        placeholder="eg. Oromia, Amhara, Tigray"
-      />
+          updatePersonalInfo("region", event.target.value)}
+        placeholder="eg. Oromia, Amhara, Tigray"/>
     </label>
 
 
@@ -1852,10 +1816,8 @@ const savePersonalInfo = (event) => {
         type="text"
         value={personalInfo.village || ""}
         onChange={(event) =>
-          updatePersonalInfo("village", event.target.value)
-        }
-        placeholder="Enter your village"
-      />
+          updatePersonalInfo("village", event.target.value)}
+        placeholder="Enter your village"/>
     </label>
 
     <label className="personal-address-field">
@@ -1864,17 +1826,15 @@ const savePersonalInfo = (event) => {
         rows="3"
         value={personalInfo.address || ""}
         onChange={(event) =>
-          updatePersonalInfo("address", event.target.value)
-        }
-        placeholder="Enter your residential address"
-      />
+          updatePersonalInfo("address", event.target.value)}
+        placeholder="Enter your residential address"/>
     </label>
 
     <div className="personal-form-actions">
       <button type="submit" className="section-save-btn">
         Save Personal Information
       </button>
-
+  
       {personalInfoSaved && (
         <p className="personal-save-message">
           ✅ Personal information saved successfully.
@@ -1884,24 +1844,19 @@ const savePersonalInfo = (event) => {
   </form>
 </section>
 
-        {/* =========================
-            HOUSEHOLD DATA ACCORDION SECTIONS
-        ========================= */}
+        {/* Household data Accordion*/}
         <section className="household-accordion">
           {HOUSEHOLD_DICTIONARY.map((category) => (
             <article
               className="household-section"
-              key={category.id}
-            >
+              key={category.id}>
               <button
                 type="button"
                 className={
                   activeSection === category.id
                     ? "accordion-header active-accordion"
-                    : "accordion-header"
-                }
-                onClick={() => toggleSection(category.id)}
-              >
+                    : "accordion-header" }
+                onClick={() => toggleSection(category.id)}>
                 <div className="accordion-title">
                   <span className="accordion-icon">
                     {category.icon}
@@ -1927,8 +1882,7 @@ const savePersonalInfo = (event) => {
                   <button
                     type="button"
                     className="section-save-btn"
-                    onClick={() => saveHouseholdData(category.title)}
-                  >
+                    onClick={() => saveHouseholdData(category.title)}>
                     Save {category.title}
                   </button>
                 </div>

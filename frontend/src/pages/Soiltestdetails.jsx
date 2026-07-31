@@ -491,7 +491,6 @@ export default function Soiltestdetails() {
     if (fullAnalysisStep === 0) {
       return;
     }
-
     setError("");
     setFullAnalysisStep((previousStep) => previousStep - 1);
   };
@@ -525,7 +524,6 @@ export default function Soiltestdetails() {
   };
 
   const indicatorState = getIndicatorState();
-
   return (
     <div className="test-details-page">
       <header className="test-details-header">
@@ -548,8 +546,7 @@ export default function Soiltestdetails() {
                   field: selectedField,
                 },
               })
-            }
-          >
+            }>
             My Field
           </button>
         </div>
@@ -567,8 +564,7 @@ export default function Soiltestdetails() {
                       width: `${
                         ((fullAnalysisStep + 1) / soilTests.length) * 100
                       }%`,
-                    }}
-                  />
+                    }} />
                 </div>
 
                 <p className="step-progress-text">
@@ -620,8 +616,7 @@ export default function Soiltestdetails() {
                 {!started && (
                   <button
                     className="submit-result-btn"
-                    onClick={() => setStarted(true)}
-                  >
+                    onClick={() => setStarted(true)} >
                     {isFullAnalysis
                       ? "Begin Complete Analysis"
                       : "Start This Test"}
@@ -638,8 +633,7 @@ export default function Soiltestdetails() {
               isFullAnalysis
                 ? "test-content-grid full-analysis-layout"
                 : "test-content-grid"
-            }
-          >
+            }>
             <div className="instruction-card">
               <h2>Step-by-Step Instructions</h2>
 
@@ -684,8 +678,7 @@ export default function Soiltestdetails() {
                           setSelectedLevel(resultOption.level);
                           setError("");
                         }
-                      }}
-                    >
+                      }} >
                       <span className="result-pill">{resultOption.level}</span>
                       <strong>{resultOption.label}</strong>
                     </button>
@@ -742,8 +735,7 @@ export default function Soiltestdetails() {
                     <button
                       type="button"
                       className="submit-result-btn"
-                      onClick={handlePreviousTest}
-                    >
+                      onClick={handlePreviousTest}>
                       ← Previous
                     </button>
                   )}
@@ -751,8 +743,7 @@ export default function Soiltestdetails() {
                   <button
                     type="button"
                     className="submit-result-btn"
-                    onClick={handleFullAnalysisAdvance}
-                  >
+                    onClick={handleFullAnalysisAdvance}>
                     {isLastFullStep
                       ? "Finish Complete Analysis"
                       : "Next Test →"}
@@ -761,8 +752,7 @@ export default function Soiltestdetails() {
                   <button
                     type="button"
                     className="submit-result-btn"
-                    onClick={handleFullAnalysisSkip}
-                  >
+                    onClick={handleFullAnalysisSkip} >
                     Skip
                   </button>
                 </div>
@@ -770,8 +760,7 @@ export default function Soiltestdetails() {
                 <button
                   type="button"
                   className="submit-result-btn"
-                  onClick={handleSingleSubmit}
-                >
+                  onClick={handleSingleSubmit}>
                   Save Test Result
                 </button>
               )}
@@ -819,8 +808,7 @@ export default function Soiltestdetails() {
                       field: selectedField,
                     },
                   })
-                }
-              >
+                }>
                 Back to My Field
               </button>
 
@@ -831,8 +819,7 @@ export default function Soiltestdetails() {
                       field: selectedField,
                     },
                   })
-                }
-              >
+                }>
                 Perform Another Test
               </button>
 
@@ -843,8 +830,7 @@ export default function Soiltestdetails() {
                       field: selectedField,
                     },
                   })
-                }
-              >
+                }>
                 View Recommendations
               </button>
             </div>

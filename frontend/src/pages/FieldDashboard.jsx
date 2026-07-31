@@ -1,21 +1,21 @@
-import { useLocation, useNavigate } from "react-router-dom";
+// Importing necessary modules and assets for the Field Dashboard page
+import { useLocation, useNavigate } from "react-router-dom"; 
 import "../styles/FieldDashboard.css";
 import selectedFieldImage from "../assets/images/selected-field.png";
 
+// Defining a constant for the required number of soil tests
 const REQUIRED_TESTS = 8;
 export default function FieldDashboard() {
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  const selectedField = location.state?.field;
-  const fieldInformation = selectedField?.fieldInformation || {};
-
+const navigate = useNavigate();
+const location = useLocation();
+const selectedField = location.state?.field;
+const fieldInformation = selectedField?.fieldInformation || {};
 const fieldIdentification =
   fieldInformation.fieldIdentification || {};
-
 const cropInformation =
   fieldInformation.cropInformation || {};
 
+  // Defining a constant for the required number of irrigation tests
 const irrigationInformation =
   fieldInformation.irrigation || {};
 
@@ -29,12 +29,10 @@ const irrigationInformation =
 
               <p>
                 Please go back to My Fields and select a registered field.
-              </p>
-
+              </p>              
               <button
                 className="start-test-btn"
-                onClick={() => navigate("/farmer-dashboard")}
-              >
+                onClick={() => navigate("/farmer-dashboard")}>
                 Back to My Fields
               </button>
             </div>
@@ -44,15 +42,14 @@ const irrigationInformation =
     );
   }
 
+  // Retrieving soil tests for the selected field from localStorage
   const soilTests =
     JSON.parse(localStorage.getItem(`soilTests_${selectedField.id}`)) || [];
-
   const latestTest = soilTests[0];
-
   const uniqueTests = new Set(
   soilTests.map((test) => test.testName).filter(Boolean)
 );
-
+// Calculating the number of completed tests and the progress percentage
 const completedTests = Math.min(
   uniqueTests.size,
   REQUIRED_TESTS
@@ -61,9 +58,8 @@ const completedTests = Math.min(
 const testProgressPercentage = Math.round(
   (completedTests / REQUIRED_TESTS) * 100
 );
-
+// Calculating the number of remaining tests and checking if a complete analysis has been performed
 const remainingTests = REQUIRED_TESTS - completedTests;
-
   const isCompleteAnalysis =
     latestTest?.analysisType === "complete" &&
     typeof latestTest?.result === "object";
@@ -77,7 +73,7 @@ const remainingTests = REQUIRED_TESTS - completedTests;
 
     return test.result || "Recorded";
   };
-
+// Rendering the Field Dashboard page with field information, soil test progress, and recent tests
   return (
     <div className="field-dashboard-page">
       <header className="field-topbar">
@@ -110,7 +106,7 @@ const remainingTests = REQUIRED_TESTS - completedTests;
           Recommendations
         </button>
       </nav>
-
+     {/* The main content of the Field Dashboard page */}
       <main className="field-main">
         <section className="field-hero">
           <div className="field-hero-text">
@@ -128,7 +124,7 @@ const remainingTests = REQUIRED_TESTS - completedTests;
             <img src={selectedFieldImage} alt="Selected Farm Field" />
           </div>
         </section>
-        <section className="field-test-progress-card">
+        <section className="field-test-progress-card">       
   <div className="field-test-progress-heading">
     <div>
       <p className="small-title">SOIL TESTING PROGRESS</p>
@@ -139,7 +135,6 @@ const remainingTests = REQUIRED_TESTS - completedTests;
         field.
       </p>
     </div>
-
     <strong className="field-test-progress-percentage">
       {testProgressPercentage}%
     </strong>
@@ -153,7 +148,6 @@ const remainingTests = REQUIRED_TESTS - completedTests;
       }}
     />
   </div>
-
   <div className="field-test-progress-footer">
     <p>
       <strong>{completedTests}</strong> of{" "}
@@ -265,7 +259,7 @@ const remainingTests = REQUIRED_TESTS - completedTests;
     </div>
   </div>
 </section>
-
+{/* The soil health and recent tests sections of the Field Dashboard page */}
         <section className="soil-dashboard-grid">
           <div className="soil-health-card">
             <h2>🌱 Current Soil Health</h2>
@@ -409,7 +403,7 @@ const remainingTests = REQUIRED_TESTS - completedTests;
             )}
           </div>
         </section>
-
+{/* The satellite monitoring section of the Field Dashboard page */}
         <section className="satellite-section">
           <div className="satellite-card">
             <div className="satellite-card-header">

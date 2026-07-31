@@ -327,9 +327,7 @@
   }
 }
 
-/* ==========================================
-   HEADER BUTTONS
-========================================== */
+/*HEADER BUTTONS*/
 
 .recommendation-actions {
   display: flex;
@@ -358,9 +356,7 @@
   background: #f4f9eb;
 }
 
-/* ==========================================
-   FIELD RECOMMENDATIONS
-========================================== */
+/*FIELD RECOMMENDATIONS*/
 
 .field-recommendation-section {
   margin-top: 42px;
@@ -417,9 +413,7 @@
   color: #966b14;
 }
 
-/* ==========================================
-   RECOMMENDATIONS INSIDE EACH FIELD
-========================================== */
+/* RECOMMENDATIONS INSIDE EACH FIELD */
 
 .field-recommendations {
   margin-top: 18px;
@@ -448,9 +442,7 @@
   margin-bottom: 0;
 }
 
-/* ==========================================
-   VIEW FIELD BUTTON
-========================================== */
+/*VIEW FIELD BUTTON*/
 
 .view-field-btn {
   margin-top: 20px;
@@ -469,9 +461,7 @@
   background: #79a323;
 }
 
-/* ==========================================
-   EMPTY STATE
-========================================== */
+/*EMPTY STATE */
 
 .field-empty-card {
   margin-top: 20px;
@@ -487,9 +477,7 @@
   color: #6f766a;
 }
 
-/* ==========================================
-   RESPONSIVE
-========================================== */
+/*RESPONSIVE */
 
 @media (max-width: 900px) {
   .field-grid {

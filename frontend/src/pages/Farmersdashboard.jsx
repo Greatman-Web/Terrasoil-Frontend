@@ -1,10 +1,12 @@
+// Importing necessary modules and assets for the Farmers Dashboard page
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "../styles/Farmersdashboard.css";
 import farmerWelcome from "../assets/images/farmer-welcome.png";
 
-const REQUIRED_TESTS = 14;
-
+// Defining the number of required soil tests for a field
+const REQUIRED_TESTS = 8;
+// Defining the structure and fields for each section of the field information form
 const fieldInformationSections = [
   {
     id: "fieldIdentification",
@@ -850,6 +852,7 @@ const fieldInformationSections = [
   */
 ];
 
+// Defining a set of generated values for specific fields to be used when auto-generating field data
 const GENERATED_FIELD_VALUES = {
   field_name: "Generated Field",
   field_area: 1.5,
@@ -868,6 +871,7 @@ const GENERATED_FIELD_VALUES = {
   mean_monthly_temperature: 22.5,
 };
 
+// Function to create an empty structure for additional field data based on the defined sections and fields
 const createEmptyAdditionalFieldData = () => {
   return fieldInformationSections.reduce((sectionData, section) => {
     sectionData[section.id] = section.fields.reduce((fieldData, field) => {
@@ -879,6 +883,7 @@ const createEmptyAdditionalFieldData = () => {
   }, {});
 };
 
+// The main Farmersdashboard component that manages the state and behavior of the farmer's dashboard page
 export default function Farmersdashboard() {
   const navigate = useNavigate();
   const routeLocation = useLocation();
@@ -900,7 +905,7 @@ export default function Farmersdashboard() {
       },
     }));
   };
-
+// Function to navigate to the field dashboard page for a specific field
   const generateFieldValue = (field) => {
     if (Object.prototype.hasOwnProperty.call(GENERATED_FIELD_VALUES, field.name)) {
       return GENERATED_FIELD_VALUES[field.name];
@@ -920,7 +925,7 @@ export default function Farmersdashboard() {
 
     return `Generated ${field.label}`;
   };
-
+// Function to handle the generation of a specific field's value
   const handleGenerateField = (sectionId, field) => {
     handleAdditionalFieldChange(
       sectionId,
@@ -946,6 +951,7 @@ export default function Farmersdashboard() {
       },
     }));
   };
+  // Function to toggle the visibility of a specific field section in the form
   const toggleFieldSection = (sectionId) => {
     setOpenFieldSection((currentSection) =>
       currentSection === sectionId ? "" : sectionId
@@ -982,6 +988,7 @@ export default function Farmersdashboard() {
     return;
   }
 
+  // New field object to be added to the list of registered fields
   const newField = {
     id: Date.now(),
 
@@ -994,6 +1001,7 @@ export default function Farmersdashboard() {
     status: "Active",
   };
 
+ // Updating the state and local storage with the new field
   setFields((previousFields) => {
     const updatedFields = [...previousFields, newField];
 
@@ -1009,7 +1017,8 @@ export default function Farmersdashboard() {
   setOpenFieldSection("");
   setAdditionalFieldData(createEmptyAdditionalFieldData());
 };
-   
+  
+// Function to calculate the progress of soil tests for a specific field
   const getFieldProgress = (fieldId) => {
     const soilTests = JSON.parse(
       localStorage.getItem(`soilTests_${fieldId}`) || "[]"
@@ -1026,7 +1035,7 @@ export default function Farmersdashboard() {
       percentage: Math.min(percentage, 100),
     };
   };
-
+// It navigates to the field dashboard page for a specific field
   const openFieldDashboard = (field) => {
     navigate("/field-dashboard", {
       state: {
@@ -1035,9 +1044,9 @@ export default function Farmersdashboard() {
     });
   };
 
+  // Function to handle the deletion of a specific field.
   const handleDeleteField = (fieldId, event) => {
     event.stopPropagation();
-
     const confirmed = window.confirm(
       "Are you sure you want to delete this field and its saved soil test data?"
     );
@@ -1045,7 +1054,7 @@ export default function Farmersdashboard() {
     if (!confirmed) {
       return;
     }
-
+// Updating the state and local storage to remove the deleted field
     setFields((prevFields) => {
       const updatedFields = prevFields.filter((field) => field.id !== fieldId);
       localStorage.setItem("registeredFields", JSON.stringify(updatedFields));
@@ -1055,6 +1064,7 @@ export default function Farmersdashboard() {
     localStorage.removeItem(`soilTests_${fieldId}`);
   };
 
+  // The Farmers Dashboard page with header, navigation tabs, welcome card, and field registration form
   return (
     <div className="farmer-dashboard-page">
       <header className="farmer-topbar">
@@ -1080,8 +1090,7 @@ export default function Farmersdashboard() {
             document
               .querySelector(".registered-fields")
               ?.scrollIntoView({ behavior: "smooth" })
-          }
-        >
+          }>
           My Fields
         </button>
 
@@ -1091,7 +1100,7 @@ export default function Farmersdashboard() {
 
         <button>Recommendations</button>
       </nav>
-
+      {/* Main content area of the farmer's dashboard page*/}
       <main className="farmer-dashboard-main">
         <section className="welcome-card">
           <div className="welcome-content">
@@ -1115,7 +1124,7 @@ export default function Farmersdashboard() {
             </div>
           </div>
         </section>
-
+          
         <section className="dashboard-section">
           <div className="section-header">
             <h2>Register New Field</h2>
@@ -1127,7 +1136,7 @@ export default function Farmersdashboard() {
               recommendations tailored to your field.
             </p>
           </div>
-
+          {/* Field registration form with accordion sections for different field information categories */}
           <form className="field-form" onSubmit={handleRegisterField}>
             <div className="field-information-accordion">
               {fieldInformationSections.map((section) => {
@@ -1140,29 +1149,26 @@ export default function Farmersdashboard() {
                         ? "field-category active"
                         : "field-category"
                     }
-                    key={section.id}
-                  >
+                    key={section.id} >
                     <div className="field-category-header">
                       <button
                         type="button"
                         className="field-category-title-button"
                         onClick={() => toggleFieldSection(section.id)}
-                        aria-expanded={isOpen}
-                      >
+                        aria-expanded={isOpen}>
                         <div>
                           <h4>{section.title}</h4>
                           <p>{section.description}</p>
                         </div>
                       </button>
-
+                      {/* Render the auto-generate button and toggle button for the section */}
                       <div className="field-category-actions">
                         <button
                           type="button"
                           className="auto-generate-section-btn"
                           title={`Automatically populate all ${section.title} fields`}
                           aria-label={`Automatically populate all ${section.title} fields`}
-                          onClick={() => handleGenerateSection(section)}
-                        >
+                          onClick={() => handleGenerateSection(section)}>
                           ↻
                         </button>
 
@@ -1177,7 +1183,7 @@ export default function Farmersdashboard() {
                         </button>
                       </div>
                     </div>
-
+                     {/* Render the fields for the section if it is open */}
                     {isOpen && (
                       <div className="field-category-content">
                         {section.fields.map((field) => {
@@ -1210,7 +1216,7 @@ export default function Farmersdashboard() {
                                     <option value="">
                                       Select {field.label}
                                     </option>
-
+                                    {/* Render options for select fields */}
                                     {field.options.map((option) => (
                                       <option value={option} key={option}>
                                         {option}
@@ -1242,7 +1248,7 @@ export default function Farmersdashboard() {
                                     }
                                   />
                                 )}
-
+                               {/* Display the auto-generate button for fields that support it */}
                                 {field.autoGenerate && (
                                   <button
                                     type="button"

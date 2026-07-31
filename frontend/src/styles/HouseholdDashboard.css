@@ -1,9 +1,4 @@
-/* ==========================
-   HOUSEHOLD DASHBOARD PAGE
-========================== */
-
-/* MAIN PAGE CONTAINER */
-
+/*HOUSEHOLD DASHBOARD PAGE*/
 .household-page {
   min-height: 100vh;
   background: #f5f0e6;
@@ -11,12 +6,7 @@
   padding: 24px 0 60px;
 }
 
-/* ==========================
-   HEADER
-========================== */
-
 /* TOP HEADER BAR */
-
 .household-header {
   width: 92%;
   max-width: 1280px;
@@ -85,12 +75,7 @@
   color: #ffffff;
 }
 
-/* ==========================
-   NAVIGATION TABS
-========================== */
-
 /* SECTION TABS FOR DASHBOARD NAVIGATION */
-
 .household-tabs {
   width: 92%;
   max-width: 1280px;
@@ -117,24 +102,14 @@
   border-bottom: 4px solid #8bb82e;
 }
 
-/* ==========================
-   MAIN CONTENT
-========================== */
-
-/* CONTENT WRAPPER FOR ALL MAJOR SECTIONS */
-
+/*MAIN CONTENT*/
 .household-main {
   width: 92%;
   max-width: 1280px;
   margin: 0 auto;
 }
 
-/* ==========================
-   INTRO CARD
-========================== */
-
 /* WELCOME / INTRODUCTION SECTION */
-
 .household-intro-card {
   background: #ffffff;
   border-radius: 24px;
@@ -163,12 +138,7 @@
   font-size: 17px;
 }
 
-/* ==========================
-   SUMMARY CARDS
-========================== */
-
 /* QUICK STATISTICS SUMMARY BLOCKS */
-
 .household-summary-grid {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -206,12 +176,7 @@
   overflow-wrap: anywhere;
 }
 
-/* ==========================
-   MANAGEMENT CARDS
-========================== */
-
 /* FORM SECTION STYLING FOR HOUSEHOLD INPUTS */
-
 .household-management-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -284,12 +249,7 @@
   font-size: 20px;
 }
 
-/* ==========================
-   SAVE BUTTON
-========================== */
-
 /* BUTTON STYLES FOR SECTION SAVE ACTIONS */
-
 .save-household-btn {
   width: 100%;
   margin: 0 0 30px;
@@ -309,12 +269,7 @@
   transform: translateY(-2px);
 }
 
-/* ==========================
-   FIELD TEST PROGRESS
-========================== */
-
 /* SOIL-TEST PROGRESS DISPLAY FOR REGISTERED FIELDS */
-
 .field-progress-card {
   background: #ffffff;
   border-radius: 24px;
@@ -413,9 +368,7 @@
   text-align: center;
 }
 
-/* ==========================
-   TABLET
-========================== */
+/*TABLET*/
 
 @media (max-width: 1000px) {
   .household-summary-grid {
@@ -428,9 +381,7 @@
   }
 }
 
-/* ==========================
-   MOBILE
-========================== */
+/*MOBILE*/
 
 @media (max-width: 700px) {
   .household-page {
@@ -489,10 +440,7 @@
 
 }
 
-/* ==========================
-   FARMER PERSONAL INFORMATION
-========================== */
-
+/*FARMER PERSONAL INFORMATION */
 .farmer-personal-card {
   background: #ffffff;
   border-radius: 24px;
@@ -632,12 +580,7 @@
   }
 }
 
-/* ==========================
-   HOUSEHOLD ACCORDION
-========================== */
-
 /* COLLAPSIBLE HOUSEHOLD DATA SECTION STYLES */
-
 .household-accordion {
   display: flex;
   flex-direction: column;
@@ -722,12 +665,7 @@
   background: #fffdfa;
 }
 
-/* ==========================
-   GENERATED FORM FIELDS
-========================== */
-
 /* INPUT LAYOUT AND UNIT LABELS FOR DYNAMIC FIELDS */
-
 .field-help {
   display: block;
   margin-top: 6px;
@@ -776,12 +714,7 @@
   border-color: #8bb82e;
 }
 
-/* ==========================
-   BOOLEAN / CHECKBOX FIELDS
-========================== */
-
 /* STYLES FOR TRUE/FALSE HOUSEHOLD OPTIONS */
-
 .household-checkbox-field {
   background: #f5f0e6;
   border: 1px solid #e3decf;
@@ -820,12 +753,7 @@
   font-weight: 500;
 }
 
-/* ==========================
-   SECTION SAVE BUTTON
-========================== */
-
-/* BUTTON STYLE FOR SAVING EACH HOUSEHOLD SECTION */
-
+/*SECTION SAVE BUTTON*/
 .section-save-btn {
   margin-top: 24px;
   padding: 14px 24px;

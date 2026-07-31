@@ -563,10 +563,7 @@
   }
 }
 
-/* ==========================
-   FIELD SOIL-TEST PROGRESS
-========================== */
-
+/*FIELD SOIL-TEST PROGRESS*/
 .field-test-progress-card {
   display: block;
   background: #ffffff;

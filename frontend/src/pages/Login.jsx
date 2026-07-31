@@ -1,10 +1,10 @@
+//
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "../styles/Login.css";
 
 export default function Login() {
   const navigate = useNavigate();
-
   const [role, setRole] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
@@ -48,15 +48,13 @@ export default function Login() {
               type="tel"
               placeholder="+251 9XXXXXXXX"
               value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-            />
+              onChange={(e) => setPhoneNumber(e.target.value)}/>
 
             <input
               type="password"
               placeholder="Password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+              onChange={(e) => setPassword(e.target.value)}/>
           </div>
 
           <h3>Select dashboard role:</h3>
@@ -64,22 +62,19 @@ export default function Login() {
           <div className="role-buttons">
             <button
               className={role === "farmer" ? "active-role" : ""}
-              onClick={() => setRole("farmer")}
-            >
+              onClick={() => setRole("farmer")}>
               Farmer
             </button>
 
             <button
               className={role === "advisor" ? "active-role" : ""}
-              onClick={() => setRole("advisor")}
-            >
+              onClick={() => setRole("advisor")}>
               Advisor
             </button>
 
             <button
               className={role === "researcher" ? "active-role" : ""}
-              onClick={() => setRole("researcher")}
-            >
+              onClick={() => setRole("researcher")}>
               Researcher
             </button>
           </div>

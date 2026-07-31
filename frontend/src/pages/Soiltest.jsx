@@ -1,3 +1,4 @@
+//
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "../styles/Soiltest.css";
@@ -110,8 +111,7 @@ export default function Soiltest() {
                   field: selectedField,
                 },
               })
-            }
-          >
+            }>
             My Field
           </button>
         </div>
@@ -151,8 +151,7 @@ export default function Soiltest() {
                 ? "choice-card active"
                 : "choice-card"
             }
-            onClick={() => setTestType("single")}
-          >
+            onClick={() => setTestType("single")}>
             <span>⚡</span>
             <h2>Single Test</h2>
 
@@ -167,8 +166,7 @@ export default function Soiltest() {
                 ? "choice-card active"
                 : "choice-card"
             }
-            onClick={() => setTestType("full")}
-          >
+            onClick={() => setTestType("full")}>
             <span>🧪</span>
             <h2>Complete Soil Analysis</h2>
 
@@ -184,8 +182,7 @@ export default function Soiltest() {
                 ? "choice-card active"
                 : "choice-card"
             }
-            onClick={() => setTestType("compare")}
-          >
+            onClick={() => setTestType("compare")}>
             <span>📊</span>
             <h2>Comparative Analysis</h2>
 
@@ -211,8 +208,7 @@ export default function Soiltest() {
                     key={item.title}
                     className="test-card"
                     onClick={() => goToTest(item.title)}
-                    disabled={!selectedField}
-                  >
+                    disabled={!selectedField}>
                     <div className="test-card-body">
                       <span className="test-card-badge">{item.focus}</span>
                       <strong>{item.title}</strong>
@@ -238,8 +234,7 @@ export default function Soiltest() {
               <button
                 className="continue-btn"
                 onClick={goToFullAnalysis}
-                disabled={!selectedField}
-              >
+                disabled={!selectedField}>
                 Start Complete Analysis →
               </button>
             </section>

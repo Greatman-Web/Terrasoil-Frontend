@@ -1,3 +1,4 @@
+//Importing necessary modules and assets for the About page
 import { useNavigate } from "react-router-dom";
 import "../styles/About.css";
 import aboutHero from "../assets/images/about hero.png";
@@ -39,7 +40,7 @@ export default function About() {
 
       </header>
 
-      {/* Hero */}
+      {/* Hero Section */}
 
       <section className="about-hero">
 

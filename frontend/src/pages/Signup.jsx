@@ -113,8 +113,7 @@ export default function Signup() {
                   isNewUser: true,
                 },
               })
-            }
-          >
+            }>
             Continue to Dashboard →
           </button>
 
@@ -156,36 +155,31 @@ export default function Signup() {
               type="text"
               placeholder="First Name *"
               value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-            />
+              onChange={(e) => setFirstName(e.target.value)}/>
 
             <input
               type="text"
               placeholder="Middle Name (Optional)"
               value={middleName}
-              onChange={(e) => setMiddleName(e.target.value)}
-            />
+              onChange={(e) => setMiddleName(e.target.value)}/>
 
             <input
               type="text"
               placeholder="Last Name *"
               value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-            />
+              onChange={(e) => setLastName(e.target.value)}/>
 
             <input
               type="tel"
               placeholder="+251 9XXXXXXXX"
               value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-            />
+              onChange={(e) => setPhoneNumber(e.target.value)}/>
 
             <input
               type="password"
               placeholder="Password *"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+              onChange={(e) => setPassword(e.target.value)}/>
           </div>
 
           <h3>Select Your Role</h3>
@@ -194,8 +188,7 @@ export default function Signup() {
             <button
               type="button"
               className={role === "farmer" ? "role-card active-role" : "role-card"}
-              onClick={() => setRole("farmer")}
-            >
+              onClick={() => setRole("farmer")}>
               <h4>🌾 Farmer</h4>
               <p>Track your farm, crops and soil health.</p>
             </button>
@@ -203,8 +196,7 @@ export default function Signup() {
             <button
               type="button"
               className={role === "advisor" ? "role-card active-role" : "role-card"}
-              onClick={() => setRole("advisor")}
-            >
+              onClick={() => setRole("advisor")}>
               <h4>👨‍🌾 Advisor</h4>
               <p>Help farmers with recommendations.</p>
             </button>
@@ -214,8 +206,7 @@ export default function Signup() {
               className={
                 role === "researcher" ? "role-card active-role" : "role-card"
               }
-              onClick={() => setRole("researcher")}
-            >
+              onClick={() => setRole("researcher")}>
               <h4>🔬 Researcher</h4>
               <p>Analyse agricultural data and trends.</p>
             </button>

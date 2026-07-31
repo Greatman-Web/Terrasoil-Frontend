@@ -1,3 +1,4 @@
+//
 import { useNavigate } from "react-router-dom";
 import "../styles/Landing.css";
 import heroImage from "../assets/images/terrasoil-hero.png";
@@ -32,22 +33,19 @@ export default function Landing() {
 
   <button
     className="text-btn"
-    onClick={() => navigate("/about")}
-  >
+    onClick={() => navigate("/about")}>
     About
   </button>
 
   <button
     className="nav-link"
-    onClick={() => navigate("/login")}
-  >
+    onClick={() => navigate("/login")}>
     Login
   </button>
 
   <button
     className="blue-btn"
-    onClick={() => navigate("/signup")}
-  >
+    onClick={() => navigate("/signup")}>
     Sign Up
   </button>
 

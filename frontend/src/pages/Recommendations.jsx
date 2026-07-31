@@ -91,16 +91,14 @@ export default function Recommendations() {
           <button
             type="button"
             className="refresh-btn"
-            onClick={handleRefresh}
-          >
+            onClick={handleRefresh}>
             ↻ Refresh
           </button>
 
           <button
             type="button"
             className="back-dashboard-btn"
-            onClick={() => navigate("/farmer-dashboard")}
-          >
+            onClick={() => navigate("/farmer-dashboard")}>
             ← Dashboard
           </button>
         </div>
@@ -197,8 +195,7 @@ export default function Recommendations() {
                           latestSoilTest
                             ? "field-status ready"
                             : "field-status pending"
-                        }
-                      >
+                        }>
                         {latestSoilTest ? "Ready" : "Pending"}
                       </span>
                     </div>
@@ -239,8 +236,7 @@ export default function Recommendations() {
                             fieldId: field.id,
                           },
                         })
-                      }
-                    >
+                      }>
                       View Field
                     </button>
                   </article>
@@ -260,8 +256,7 @@ export default function Recommendations() {
             {recommendationCategories.map((category) => (
               <article
                 className="recommendation-card"
-                key={category.title}
-              >
+                key={category.title} >
                 <div className="recommendation-icon">
                   {category.icon}
                 </div>
@@ -293,15 +288,13 @@ export default function Recommendations() {
             {requirements.map((requirement) => (
               <div
                 className="requirement-item"
-                key={requirement.title}
-              >
+                key={requirement.title}>
                 <span
                   className={
                     requirement.completed
                       ? "requirement-icon completed"
                       : "requirement-icon pending"
-                  }
-                >
+                  }>
                   {requirement.completed ? "✓" : "○"}
                 </span>
 
@@ -324,3 +317,4 @@ export default function Recommendations() {
     </div>
   );
 }
+
