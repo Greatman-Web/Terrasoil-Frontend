@@ -1,4 +1,3 @@
-//
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "../styles/Soiltest.css";
@@ -14,42 +13,50 @@ export default function Soiltest() {
   const tests = [
     {
       title: "Infiltration Test",
-      summary: "Check how quickly water enters the soil surface.",
-      focus: "Water movement",
+      summary:
+        "Assess the soil's ability to absorb, store, and supply water to plants.",
+      focus: "Water infiltration",
     },
     {
       title: "Penetration Resistance Test",
-      summary: "Measure how easy the soil is to penetrate.",
-      focus: "Root comfort",
+      summary:
+        "Assess soil structure and compaction by checking how easily a tool enters the soil.",
+      focus: "Soil compaction",
     },
     {
       title: "Root Development Test",
-      summary: "Observe root depth and spread for soil structure clues.",
-      focus: "Rooting health",
+      summary:
+        "Assess root length, number, density, and diversity for clues about soil condition.",
+      focus: "Rooting system",
     },
     {
       title: "Soil Fauna Test",
-      summary: "Look for visible earthworms and other soil organisms.",
-      focus: "Soil life",
+      summary:
+        "Assess the abundance and diversity of visible soil animals that support soil functions.",
+      focus: "Soil organisms",
     },
     {
       title: "Visual Evaluation of Soil Structure (VESS)",
-      summary: "Inspect aggregates, pores and compaction by eye.",
-      focus: "Structure",
+      summary:
+        "Assess soil structure and how it supports roots, water, air, and biological activity.",
+      focus: "Soil structure",
     },
     {
       title: "Soil Smell Test",
-      summary: "Use the aroma of freshly exposed soil as a clue.",
+      summary:
+        "Use the smell of freshly exposed soil to assess its biological condition.",
       focus: "Biological activity",
     },
     {
       title: "Soil Colour Test",
-      summary: "Compare surface colour for organic matter clues.",
+      summary:
+        "Use soil colour to estimate organic matter content and drainage condition.",
       focus: "Soil colour",
     },
     {
       title: "Slake Test",
-      summary: "See how stable soil aggregates are when wet.",
+      summary:
+        "Assess aggregate stability, erosion resistance, and soil breakdown in water.",
       focus: "Aggregate stability",
     },
   ];
@@ -171,8 +178,8 @@ export default function Soiltest() {
             <h2>Complete Soil Analysis</h2>
 
             <p>
-              Complete all recommended soil health tests to create a broader
-              assessment of the selected field.
+              Complete all eight recommended soil health tests to create a
+              broader assessment of the selected field.
             </p>
           </div>
 
@@ -187,7 +194,8 @@ export default function Soiltest() {
             <h2>Comparative Analysis</h2>
 
             <p>
-              Compare soil test results from two or more registered fields.
+              Compare soil test observations from selected sampling areas or
+              registered fields.
             </p>
           </div>
         </div>
@@ -247,7 +255,8 @@ export default function Soiltest() {
 
                 <p>
                   Comparative analysis will allow farmers to review soil health
-                  differences between their registered fields.
+                  differences between their selected sampling areas or
+                  registered fields.
                 </p>
               </div>
 

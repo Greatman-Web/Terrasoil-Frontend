@@ -110,48 +110,93 @@
   grid-template-columns: 1fr 1fr;
   gap: 28px;
 }
+
 .full-analysis-layout {
   grid-template-columns: 1fr;
 }
+
 .full-analysis-layout .instruction-card,
 .full-analysis-layout .result-card {
   width: 100%;
 }
+
 .instruction-card h2,
 .result-card h2 {
   margin-top: 0;
 }
 
-.instruction-card ol {
-  list-style: none;
-  padding: 0;
-  margin: 24px 0 0;
-  counter-reset: step;
+/* ==========================
+   STEP-BY-STEP INSTRUCTIONS
+========================== */
+
+.instruction-card {
+  padding: 26px;
 }
 
-.instruction-card li {
-  counter-increment: step;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  background: #f5f0e6;
-  margin-bottom: 14px;
-  padding: 16px;
+.instruction-list {
+  display: grid;
+  gap: 14px;
+  margin: 18px 0 0;
+  padding: 0;
+}
+
+.instruction-item {
+  padding: 14px 16px;
+  margin: 0;
+  background: #f7f3ea;
+  border: 2px solid #e3decf;
   border-radius: 14px;
   color: #4e5946;
+}
+
+.instruction-item:hover {
+  border-color: #cbd9ac;
+  background: #f3f7ea;
+}
+
+.preparation-item {
+  background: #f7f3ea;
+  border: 2px dashed #d8cfbd;
+}
+
+.instruction-step-heading {
+  margin-bottom: 8px;
+}
+
+.step-label,
+.preparation-label {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: white;
+  color: #5f8f21;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.preparation-label {
+  color: #6d604e;
+}
+
+.instruction-text {
+  margin: 0;
+  color: #5d6258;
+  font-size: 14px;
   line-height: 1.6;
 }
 
-.instruction-card li::before {
-  content: counter(step);
-  min-width: 34px;
-  height: 34px;
-  background: #8bb82e;
-  color: white;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  font-weight: 900;
+.instruction-image {
+  display: block;
+  width: auto;
+  max-width: min(100%, 280px);
+  max-height: 210px;
+  margin: 12px auto 0;
+  object-fit: contain;
+  border-radius: 10px;
 }
 
 .result-options {
@@ -197,6 +242,15 @@
   color: #172014;
   font-size: 15px;
   line-height: 1.45;
+}
+
+.result-option-text {
+  margin: 0;
+  color: #5d6258;
+  font-size: 13px;
+  line-height: 1.6;
+  font-weight: 500;
+  text-align: left;
 }
 
 .result-card input {
@@ -461,5 +515,25 @@
 
   .success-actions {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 650px) {
+  .instruction-card {
+    padding: 20px 16px;
+  }
+
+  .instruction-list {
+    gap: 12px;
+  }
+
+  .instruction-item {
+    padding: 13px;
+  }
+
+  .instruction-image {
+    width: 100%;
+    max-width: 260px;
+    max-height: 190px;
   }
 }

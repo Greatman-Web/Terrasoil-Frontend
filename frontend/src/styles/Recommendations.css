@@ -477,6 +477,68 @@
   color: #6f766a;
 }
 
+.field-score-circle {
+  width: 82px;
+  height: 82px;
+  min-width: 82px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 7px solid;
+  background: white;
+  box-shadow: 0 5px 14px rgba(32, 52, 27, 0.08);
+}
+
+.field-score-circle strong {
+  color: #172014;
+  font-size: 21px;
+  line-height: 1;
+}
+
+.field-score-circle span {
+  margin-top: 4px;
+  color: #6f766a;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.field-score-circle.score-good {
+  border-color: #68a520;
+  background: #f1f8e8;
+}
+
+.field-score-circle.score-warning {
+  border-color: #d7a325;
+  background: #fff9e8;
+}
+
+.field-score-circle.score-poor {
+  border-color: #c84a3f;
+  background: #fff3f1;
+}
+
+.field-score-circle.score-empty {
+  border-color: #c7c9c3;
+  background: #f5f5f3;
+}
+
+@media (max-width: 650px) {
+  .field-score-circle {
+    width: 72px;
+    height: 72px;
+    min-width: 72px;
+    border-width: 6px;
+  }
+
+  .field-score-circle strong {
+    font-size: 18px;
+  }
+}
+
 /*RESPONSIVE */
 
 @media (max-width: 900px) {

@@ -71,6 +71,53 @@ export default function Recommendations() {
     },
   ];
 
+  // Calculate the average soil-health score for a registered field.
+  const calculateFieldScore = (fieldId) => {
+    const soilTests =
+      JSON.parse(localStorage.getItem(`soilTests_${fieldId}`)) || [];
+
+    if (soilTests.length === 0) {
+      return null;
+    }
+
+    const scoreByLevel = {
+      Low: 35,
+      Medium: 60,
+      High: 85,
+    };
+
+    const scores = [];
+
+    soilTests.forEach((test) => {
+      if (
+        test.analysisType === "complete" &&
+        Array.isArray(test.result)
+      ) {
+        test.result.forEach((resultItem) => {
+          if (scoreByLevel[resultItem.level] !== undefined) {
+            scores.push(scoreByLevel[resultItem.level]);
+          }
+        });
+      } else if (
+        test.result?.level &&
+        scoreByLevel[test.result.level] !== undefined
+      ) {
+        scores.push(scoreByLevel[test.result.level]);
+      }
+    });
+
+    if (scores.length === 0) {
+      return null;
+    }
+
+    const totalScore = scores.reduce(
+      (total, score) => total + score,
+      0
+    );
+
+    return Math.round(totalScore / scores.length);
+  };
+
   const handleRefresh = () => {
     setRefreshKey((currentKey) => currentKey + 1);
   };
@@ -121,7 +168,7 @@ export default function Recommendations() {
           </div>
         </section>
 
-        <section className="recommendations-overview">
+        {/*<section className="recommendations-overview">
           <div className="overview-card">
             <span>Registered Fields</span>
             <strong>{registeredFields.length}</strong>
@@ -143,7 +190,7 @@ export default function Recommendations() {
               {registeredFields.length > 0 ? registeredFields.length : "Pending"}
             </strong>
           </div>
-        </section>
+        </section>*/}
 
         <section className="field-recommendation-section">
           <div className="section-heading">
@@ -167,6 +214,7 @@ export default function Recommendations() {
                   soilTests.length > 0
                     ? soilTests[soilTests.length - 1]
                     : null;
+                const fieldScore = calculateFieldScore(field.id);
 
                 const fieldName =
                   field.field_name ||
@@ -180,6 +228,7 @@ export default function Recommendations() {
                   field.crop ||
                   "Not recorded";
 
+
                 return (
                   <article className="field-card" key={field.id}>
                     <div className="field-card-header">
@@ -190,16 +239,22 @@ export default function Recommendations() {
                         </p>
                       </div>
 
-                      <span
+                      <div
                         className={
-                          latestSoilTest
-                            ? "field-status ready"
-                            : "field-status pending"
+                          fieldScore === null
+                            ? "field-score-circle score-empty"
+                            : fieldScore >= 70
+                            ? "field-score-circle score-good"
+                            : fieldScore >= 50
+                            ? "field-score-circle score-warning"
+                            : "field-score-circle score-poor"
                         }>
-                        {latestSoilTest ? "Ready" : "Pending"}
-                      </span>
+                        <strong>
+                          {fieldScore === null ? "--" : `${fieldScore}%`}
+                        </strong>
+                        <span>Score</span>
+                      </div>
                     </div>
-
                     <p>
                       <strong>Soil Test:</strong>{" "}
                       {latestSoilTest ? "Available" : "Not Recorded"}
@@ -246,7 +301,7 @@ export default function Recommendations() {
           )}
         </section>
 
-        <section className="recommendation-section">
+        {/*<section className="recommendation-section">
           <div className="section-heading">
             <p>RECOMMENDATION AREAS</p>
             <h2>Farm Management Guidance</h2>
@@ -268,9 +323,9 @@ export default function Recommendations() {
               </article>
             ))}
           </div>
-        </section>
+        </section>*/}
 
-        <section className="requirements-card">
+        {/*<section className="requirements-card">
           <div className="requirements-heading">
             <div>
               <p>RECOMMENDATION STATUS</p>
@@ -312,9 +367,8 @@ export default function Recommendations() {
             service is connected to the recorded field, household and soil
             test information.
           </p>
-        </section>
+        </section>*/}
       </main>
     </div>
   );
 }
-
