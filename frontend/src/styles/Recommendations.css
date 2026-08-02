@@ -568,3 +568,250 @@
     margin-top: 5px;
   }
 }
+/* =====================================================
+   STATIC FIELD RECOMMENDATION DEMONSTRATION
+   Add this to the bottom of Recommendations.css
+===================================================== */
+
+.field-grid {
+  grid-template-columns: repeat(auto-fit, minmax(430px, 1fr));
+  gap: 24px;
+}
+
+.field-card {
+  min-height: 560px;
+  padding: 26px;
+}
+
+.field-card-header {
+  align-items: flex-start;
+  gap: 22px;
+}
+
+.demo-label {
+  display: inline-flex;
+  width: fit-content;
+  margin-bottom: 8px;
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: #edf6da;
+  color: #5f8f21;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.field-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 5px 18px;
+  margin-top: 10px;
+}
+
+.field-details-grid p {
+  margin: 0;
+  color: #5d6258;
+  line-height: 1.55;
+}
+
+/* Circular score designed like a progress indicator */
+.field-score-progress {
+  flex: 0 0 auto;
+  text-align: center;
+}
+
+.field-score-ring {
+  --field-score: 42;
+  --score-colour: #c84a3f;
+  width: 104px;
+  height: 104px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background:
+    conic-gradient(
+      var(--score-colour)
+      calc(var(--field-score) * 1%),
+      #e6dfd2 0
+    );
+  box-shadow: 0 6px 18px rgba(32, 52, 27, 0.1);
+}
+
+.field-score-ring-inner {
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #fff8f6;
+}
+
+.field-score-ring-inner strong {
+  color: #172014;
+  font-size: 25px;
+  line-height: 1;
+}
+
+.field-score-ring-inner span {
+  margin-top: 4px;
+  color: #6f766a;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.field-score-progress > p {
+  margin: 7px 0 0;
+  color: #c84a3f;
+  font-size: 13px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.static-recommendation {
+  display: grid;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.recommendation-summary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.recommendation-summary-item {
+  padding: 13px 14px;
+  border: 1px solid #e3decf;
+  border-radius: 13px;
+  background: #f7f3ea;
+}
+
+.recommendation-summary-item span {
+  display: block;
+  margin-bottom: 5px;
+  color: #73796d;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.recommendation-summary-item strong {
+  color: #172014;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.recommendation-message,
+.household-resource-card {
+  padding: 16px;
+  border: 1px solid #e3decf;
+  border-radius: 14px;
+  background: #f7f3ea;
+}
+
+.recommendation-message h4,
+.household-resource-card h4 {
+  margin: 0 0 8px;
+  color: #315f2a;
+  font-size: 16px;
+}
+
+.recommendation-message p,
+.household-resource-card p {
+  margin: 0;
+  color: #50594b;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.recommendation-message p + p {
+  margin-top: 9px;
+}
+
+.recommendation-message.primary {
+  border-left: 4px solid #8bb82e;
+}
+
+.recommendation-message.secondary {
+  border-left: 4px solid #d7a325;
+}
+
+.household-resource-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  background: #edf6da;
+  border-color: #cfdfae;
+}
+
+.household-resource-card .resource-icon {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: white;
+  font-size: 21px;
+}
+
+.household-resource-card span {
+  display: block;
+  margin-bottom: 3px;
+  color: #5f8f21;
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.household-resource-card h4 {
+  margin-bottom: 5px;
+}
+
+.field-card .view-field-btn {
+  margin-top: auto;
+}
+
+.refresh-btn:disabled {
+  cursor: default;
+  opacity: 0.9;
+}
+
+@media (max-width: 650px) {
+  .field-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .field-card {
+    min-height: auto;
+    padding: 20px;
+  }
+
+  .field-card-header {
+    flex-direction: column;
+  }
+
+  .field-score-progress {
+    align-self: flex-start;
+  }
+
+  .field-score-ring {
+    width: 92px;
+    height: 92px;
+  }
+
+  .field-score-ring-inner {
+    width: 68px;
+    height: 68px;
+  }
+
+  .field-details-grid,
+  .recommendation-summary {
+    grid-template-columns: 1fr;
+  }
+}

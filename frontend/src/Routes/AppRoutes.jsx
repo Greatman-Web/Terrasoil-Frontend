@@ -11,7 +11,7 @@ import Soiltestdetails from "../pages/Soiltestdetails";
 import HouseholdDashboard from "../pages/HouseholdDashboard";
 import HouseholdSummary from "../pages/HouseholdSummary";
 import Recommendations from "../pages/Recommendations";
-
+// This component defines the routes for the application using React Router.
 export default function AppRoutes() {
   return (
     <BrowserRouter>

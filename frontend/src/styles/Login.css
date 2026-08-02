@@ -1,10 +1,11 @@
-/* Login page layout and form styling */
+/* PAGE LAYOUT */
 .login-page {
   min-height: 100vh;
   background: #f5f0e6;
   color: #1f2f1f;
 }
 
+/* HEADER */
 .login-header {
   width: 88%;
   max-width: 1180px;
@@ -16,6 +17,7 @@
   align-items: center;
 }
 
+/* BRAND */
 .login-brand {
   display: flex;
   align-items: center;
@@ -43,6 +45,7 @@
   margin: 0;
 }
 
+/* NAVIGATION */
 .login-nav {
   display: flex;
   gap: 14px;
@@ -58,6 +61,7 @@
   cursor: pointer;
 }
 
+/* FORM CONTAINER */
 .login-container {
   width: 88%;
   max-width: 1180px;
@@ -76,6 +80,7 @@
   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
 }
 
+/* CARD HEADER */
 .login-card h1 {
   font-size: 42px;
   margin-bottom: 12px;
@@ -88,6 +93,7 @@
   margin-bottom: 30px;
 }
 
+/* LOGIN FORM */
 .login-form {
   display: flex;
   flex-direction: column;
@@ -110,6 +116,7 @@
   margin: 30px 0 16px;
 }
 
+/* ROLE SELECTORS */
 .role-buttons {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -136,6 +143,7 @@
   color: #4e5946;
 }
 
+/* ACTION BUTTON */
 .login-btn {
   width: 100%;
   background: #3157e8;
@@ -153,6 +161,7 @@
   cursor: not-allowed;
 }
 
+/* SIGNUP LINK */
 .signup-text {
   text-align: center;
   margin-top: 24px;
@@ -164,6 +173,7 @@
   text-decoration: none;
 }
 
+/* RESPONSIVE ADJUSTMENTS */
 @media (max-width: 700px) {
   .login-header {
     flex-direction: column;

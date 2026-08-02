@@ -1,7 +1,8 @@
+//import necessary modules and components
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "../styles/Soiltest.css";
-
+// Soil test page content and sections
 export default function Soiltest() {
   const [testType, setTestType] = useState("");
 
@@ -9,7 +10,7 @@ export default function Soiltest() {
   const location = useLocation();
 
   const selectedField = location.state?.field;
-
+  // This section defines the available soil tests and their details.
   const tests = [
     {
       title: "Infiltration Test",
@@ -60,7 +61,7 @@ export default function Soiltest() {
       focus: "Aggregate stability",
     },
   ];
-
+// This function creates a route for the selected soil test.
   const createTestRoute = (testName) => {
     return testName
       .toLowerCase()
@@ -68,7 +69,7 @@ export default function Soiltest() {
       .replaceAll("(", "")
       .replaceAll(")", "");
   };
-
+// This function navigates to the selected soil test page. 
   const goToTest = (testName) => {
     if (!selectedField) {
       return;
@@ -80,7 +81,7 @@ export default function Soiltest() {
       },
     });
   };
-
+// This function navigates to the complete soil analysis. 
   const goToFullAnalysis = () => {
     if (!selectedField) {
       return;

@@ -1,9 +1,10 @@
-/* Signup page layout and form styling */
+/* PAGE LAYOUT */
 .signup-page{
     min-height:100vh;
     background:#f5f0e6;
 }
 
+/* HEADER */
 .signup-header{
 
     width:88%;
@@ -19,6 +20,7 @@
 
 }
 
+/* BRAND */
 .signup-brand{
 
     display:flex;
@@ -83,6 +85,7 @@
 
 }
 
+/* FORM CONTAINER */
 .signup-container{
 
     display:flex;
@@ -125,6 +128,7 @@
 
 }
 
+/* FORM */
 .signup-form{
 
     display:flex;
@@ -256,6 +260,7 @@
 
 }
 
+/* LOGIN LINK */
 .login-link a{
 
     color:#3157e8;

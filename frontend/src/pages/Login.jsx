@@ -1,15 +1,15 @@
-//
+//import necessary modules and assets for the login page
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "../styles/Login.css";
-
+// Login page content and sections
 export default function Login() {
   const navigate = useNavigate();
   const [role, setRole] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-
+  // Function to handle login action
   const handleLogin = () => {
   navigate("/farmer-dashboard", {
     state: {
@@ -18,7 +18,7 @@ export default function Login() {
     },
   });
 };
-
+// This section renders the login page with input fields.
   return (
     <div className="login-page">
       <header className="login-header">
@@ -40,7 +40,7 @@ export default function Login() {
           <p className="login-subtitle">
             Login to monitor your soil health and manage your farm insights.
           </p>
-
+          
           {error && <p className="login-error">{error}</p>}
 
           <div className="login-form">
@@ -78,7 +78,7 @@ export default function Login() {
               Researcher
             </button>
           </div>
-
+          
           <p className="selected-role">
             Selected Role: <strong>{role || "None"}</strong>
           </p>

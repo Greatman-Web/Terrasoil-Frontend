@@ -1098,7 +1098,11 @@ export default function Farmersdashboard() {
           Household
         </button>
 
-        <button>Recommendations</button>
+        <button
+           type="button"
+           onClick={() => navigate("/recommendations")}>
+           Recommendations
+         </button>
       </nav>
       {/* Main content area of the farmer's dashboard page*/}
       <main className="farmer-dashboard-main">

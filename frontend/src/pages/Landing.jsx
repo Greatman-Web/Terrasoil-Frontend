@@ -1,11 +1,11 @@
-//
+//import necessary modules and assets for the landing page
 import { useNavigate } from "react-router-dom";
 import "../styles/Landing.css";
 import heroImage from "../assets/images/terrasoil-hero.png";
 import footerImage from "../assets/images/footer.png";
 
+// Landing page content and sections
 export default function Landing() {
-  // Navigation hook for the landing page actions
   const navigate = useNavigate();
 
   return (
@@ -84,15 +84,13 @@ export default function Landing() {
           <div className="hero-actions">
             <button
               className="blue-btn"
-              onClick={() => navigate("/signup")}
-            >
+              onClick={() => navigate("/signup")}>
               Get Started
             </button>
 
            <button
              className="text-btn"
-             onClick={() => navigate("/about")}
-             >
+             onClick={() => navigate("/about")}>
             Learn More
            </button>
           </div>
@@ -108,8 +106,7 @@ export default function Landing() {
 
       </section>
 
-      {/* FEATURES*/}
-
+      {/* FEATURES */}
       <section className="features">
 
         <h2>Everything your farm needs</h2>

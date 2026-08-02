@@ -1,3 +1,4 @@
+/* This CSS file styles the About page */
 .about-page {
   min-height: 100vh;
   background: #f5f0e6;
@@ -17,7 +18,7 @@
   margin-left: auto;
   margin-right: auto;
 }
-
+/* HEADER */
 .about-header {
   margin-top: 18px;
   background: white;
@@ -57,7 +58,7 @@
   margin: 2px 0 0;
   color: #5d6258;
 }
-
+/* BUTTONS */
 .blue-btn {
   background: #3157e8;
   color: white;
@@ -103,7 +104,7 @@
   font-weight: 900;
   text-transform: uppercase;
 }
-
+/* IMAGES */
 .about-image img,
 .mission-image img,
 .vision-image img {
@@ -112,7 +113,7 @@
   object-fit: cover;
   border-radius: 20px;
 }
-
+/* CARDS */
 .mission-text h2,
 .vision-text h2,
 .about-section h2 {
@@ -174,7 +175,7 @@
   color: #0f3d24;
   margin-top: 0;
 }
-
+/* CALL TO ACTION */
 .about-cta {
   background: #172014;
   color: white;
@@ -197,7 +198,7 @@
   object-fit: cover;
   border-radius: 20px;
 }
-
+/* FOOTER */
 .about-footer {
   width: 92%;
   max-width: 1280px;
@@ -229,7 +230,7 @@
   color: #cfcfcf;
   background: transparent;
 }
-
+/*MOBILE RESPONSIVENESS*/
 @media (max-width: 900px) {
   .about-header,
   .about-hero,

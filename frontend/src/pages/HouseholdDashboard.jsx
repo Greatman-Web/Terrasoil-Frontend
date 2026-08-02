@@ -1652,7 +1652,9 @@ const savePersonalInfo = (event) => {
           Household
         </button>
 
-        <button type="button">
+        <button
+          type="button"
+          onClick={() => navigate("/recommendations")}>
           Recommendations
         </button>
       </nav>

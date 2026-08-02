@@ -1,7 +1,8 @@
+// import necessary modules and components
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "../styles/Signup.css";
-
+// Signup page content and sections
 export default function Signup() {
   const navigate = useNavigate();
 
@@ -14,7 +15,7 @@ export default function Signup() {
 
   const [error, setError] = useState("");
   const [accountCreated, setAccountCreated] = useState(false);
-
+// Function to handle account creation and validation
  const handleCreateAccount = () => {
   if (!firstName || !lastName || !phoneNumber || !password || !role) {
     setError("Please complete all required fields.");
@@ -35,7 +36,7 @@ export default function Signup() {
     setError("Password must be at least 6 characters long.");
     return;
   }
-
+// Store user data in local storage for demonstration purposes
   const userData = {
     firstName,
     middleName,

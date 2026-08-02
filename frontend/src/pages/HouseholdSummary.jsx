@@ -2,7 +2,7 @@
 import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/HouseholdSummary.css";
-
+// This helps to create a readable label from a variable name
 function createReadableLabel(variableName) {
   return variableName
     .replaceAll("_pct", " percentage")
@@ -11,7 +11,7 @@ function createReadableLabel(variableName) {
     .replaceAll("_", " ")
     .replace(/\b\w/g, (character) => character.toUpperCase());
 }
-
+// This function checks if a value is considered "present" or "valid"
 function hasValue(value) {
   if (typeof value === "boolean") {
     return value === true;
@@ -19,7 +19,7 @@ function hasValue(value) {
 
   return value !== "" && value !== null && value !== undefined;
 }
-
+// This defines categories and their fields
 const SUMMARY_CATEGORIES = [
   {
     id: "demographics",
@@ -188,10 +188,10 @@ const SUMMARY_CATEGORIES = [
     ],
   },
 ];
-
+// This component displays a summary of the farmer's household information
 export default function HouseholdSummary() {
   const navigate = useNavigate();
-
+// This helps to retrieve and parse data from localStorage for Personal info.
   const personalInfo = useMemo(() => {
     try {
       return JSON.parse(
@@ -201,7 +201,7 @@ export default function HouseholdSummary() {
       return {};
     }
   }, []);
-
+// This helps to retrieve and parse data from localStorage for Household data.
   const householdData = useMemo(() => {
     try {
       return JSON.parse(
@@ -211,7 +211,7 @@ export default function HouseholdSummary() {
       return {};
     }
   }, []);
-
+// This helps to retrieve and parse data from localStorage for Registered fields.
   const fields = useMemo(() => {
     try {
       return JSON.parse(
@@ -221,11 +221,11 @@ export default function HouseholdSummary() {
       return [];
     }
   }, []);
-
+// This calculates the financial balance based on income and expenditure.
   const financeBalance =
     Number(householdData.annual_income_total || 0) -
     Number(householdData.annual_expenditure_total || 0);
-
+// This prepares the personal details for display.
   const personalDetails = [
     {
       label: "Full Name",
@@ -285,7 +285,7 @@ export default function HouseholdSummary() {
       values,
     };
   }).filter((category) => category.values.length > 0);
-
+// This renders the household summary page with all the relevant information.
   return (
     <div className="household-summary-page"> 
 
@@ -316,7 +316,7 @@ export default function HouseholdSummary() {
             </strong>
           </article>
         </section>
-
+        
         <section className="summary-content-grid">
           <article className="summary-section-card">
             <div className="summary-section-heading">
@@ -347,8 +347,7 @@ export default function HouseholdSummary() {
           {categorySummaries.map((category) => (
             <article
               className="summary-section-card"
-              key={category.id}
-            >
+              key={category.id}>
               <div className="summary-section-heading">
                 <span>{category.icon}</span>
 
@@ -365,8 +364,7 @@ export default function HouseholdSummary() {
                 {category.values.map((item) => (
                   <div
                     className="summary-detail-item"
-                    key={item.name}
-                  >
+                    key={item.name}>
                     <small>{item.label}</small>
 
                     <strong>
@@ -381,7 +379,7 @@ export default function HouseholdSummary() {
               </div>
             </article>
           ))}
-
+          
           <article className="summary-section-card full-width-summary">
             <div className="summary-section-heading">
               <span>🌾</span>
@@ -401,8 +399,8 @@ export default function HouseholdSummary() {
                 {fields.map((field) => (
                   <article
                     className="summary-field-card"
-                    key={field.id}
-                  >
+                    key={field.id}>
+
                     <h3>{field.fieldName}</h3>
                     <p>Crop: {field.cropType}</p>
                     <p>Area: {field.totalArea} ha</p>
@@ -417,8 +415,7 @@ export default function HouseholdSummary() {
                             field,
                           },
                         })
-                      }
-                    >
+                      }>
                       Open Field
                     </button>
                   </article>
@@ -427,7 +424,7 @@ export default function HouseholdSummary() {
             )}
           </article>
         </section>
-
+       
         <section className="summary-next-step-card">
           <div>
             <p className="small-title">NEXT STEP</p>
@@ -441,8 +438,7 @@ export default function HouseholdSummary() {
 
           <button
             type="button"
-            onClick={() => navigate("/recommendations")}
-          >
+            onClick={() => navigate("/recommendations")}>
             Continue to Recommendations →
           </button>
         </section>

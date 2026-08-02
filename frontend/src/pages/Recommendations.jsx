@@ -1,129 +1,20 @@
+//import all necessary modules and components
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Recommendations.css";
-
+// Recommendations page content and sections
 export default function Recommendations() {
   const navigate = useNavigate();
-  const [refreshKey, setRefreshKey] = useState(0);
-
-  const registeredFields =
-    JSON.parse(localStorage.getItem("registeredFields")) || [];
-
-  const householdData =
-    JSON.parse(localStorage.getItem("farmilyHouseholdData")) || {};
-
-  const householdCompleted = Object.values(householdData).some((value) => {
-    if (typeof value === "object" && value !== null) {
-      return Object.values(value).some(
-        (item) => String(item || "").trim() !== ""
-      );
-    }
-
-    return String(value || "").trim() !== "";
-  });
-
-  const totalSoilTests = registeredFields.reduce((total, field) => {
-    const tests =
-      JSON.parse(localStorage.getItem(`soilTests_${field.id}`)) || [];
-
-    return total + tests.length;
-  }, 0);
-
-  const requirements = [
-    {
-      title: "Field Registered",
-      completed: registeredFields.length > 0,
-    },
-    {
-      title: "Household Information Added",
-      completed: householdCompleted,
-    },
-    {
-      title: "Soil Test Recorded",
-      completed: totalSoilTests > 0,
-    },
-  ];
-
-  const recommendationCategories = [
-    {
-      icon: "🌱",
-      title: "Soil Management",
-      description:
-        "Recommendations about soil structure, soil fertility, organic matter and compaction will appear here.",
-    },
-    {
-      icon: "💧",
-      title: "Water Management",
-      description:
-        "Guidance about irrigation, water availability, infiltration and runoff will appear here.",
-    },
-    {
-      icon: "🌾",
-      title: "Crop Management",
-      description:
-        "Crop selection, crop performance, rotation and productivity guidance will appear here.",
-    },
-    {
-      icon: "🏡",
-      title: "Household & Farm Management",
-      description:
-        "Recommendations based on household resources, labour and farm management records will appear here.",
-    },
-  ];
-
-  // Calculate the average soil-health score for a registered field.
-  const calculateFieldScore = (fieldId) => {
-    const soilTests =
-      JSON.parse(localStorage.getItem(`soilTests_${fieldId}`)) || [];
-
-    if (soilTests.length === 0) {
-      return null;
-    }
-
-    const scoreByLevel = {
-      Low: 35,
-      Medium: 60,
-      High: 85,
-    };
-
-    const scores = [];
-
-    soilTests.forEach((test) => {
-      if (
-        test.analysisType === "complete" &&
-        Array.isArray(test.result)
-      ) {
-        test.result.forEach((resultItem) => {
-          if (scoreByLevel[resultItem.level] !== undefined) {
-            scores.push(scoreByLevel[resultItem.level]);
-          }
-        });
-      } else if (
-        test.result?.level &&
-        scoreByLevel[test.result.level] !== undefined
-      ) {
-        scores.push(scoreByLevel[test.result.level]);
-      }
-    });
-
-    if (scores.length === 0) {
-      return null;
-    }
-
-    const totalScore = scores.reduce(
-      (total, score) => total + score,
-      0
-    );
-
-    return Math.round(totalScore / scores.length);
-  };
+  // Controls the state of whether recommendations have been refreshed or not
+  const [recommendationsRefreshed, setRecommendationsRefreshed] =
+    useState(false);
 
   const handleRefresh = () => {
-    setRefreshKey((currentKey) => currentKey + 1);
+    setRecommendationsRefreshed(true);
   };
-
+  // This section renders the recommendations page with field-specific recommendations. 
   return (
-    <div className="recommendations-page" key={refreshKey}>
+    <div className="recommendations-page">
       <header className="recommendations-header">
         <div className="recommendations-brand">
           <div className="recommendations-logo">🌱</div>
@@ -139,7 +30,9 @@ export default function Recommendations() {
             type="button"
             className="refresh-btn"
             onClick={handleRefresh}>
-            ↻ Refresh
+            {recommendationsRefreshed
+              ? "✅ Refreshed"
+              : "↻ Refresh"}
           </button>
 
           <button
@@ -150,224 +43,244 @@ export default function Recommendations() {
           </button>
         </div>
       </header>
-
+     
       <main className="recommendations-container">
         <section className="recommendations-hero">
           <div>
             <p className="recommendations-small-title">
               FARM RECOMMENDATIONS
             </p>
-
             <h1>Recommendations Dashboard</h1>
-
             <p>
-              This page provides a summary of the recommendation areas
-              supported by Farmily. Recommendations will be displayed after
-              the required farm information has been processed.
+              Review practical soil and crop management guidance for each
+              demonstration field.
             </p>
           </div>
         </section>
-
-        {/*<section className="recommendations-overview">
-          <div className="overview-card">
-            <span>Registered Fields</span>
-            <strong>{registeredFields.length}</strong>
-          </div>
-
-          <div className="overview-card">
-            <span>Household Data</span>
-            <strong>{householdCompleted ? "Added" : "Pending"}</strong>
-          </div>
-
-          <div className="overview-card">
-            <span>Soil Tests</span>
-            <strong>{totalSoilTests}</strong>
-          </div>
-
-          <div className="overview-card">
-            <span>Recommendations</span>
-            <strong>
-              {registeredFields.length > 0 ? registeredFields.length : "Pending"}
-            </strong>
-          </div>
-        </section>*/}
-
+       
         <section className="field-recommendation-section">
           <div className="section-heading">
             <p>FIELD-SPECIFIC RECOMMENDATIONS</p>
             <h2>Recommendations by Field</h2>
           </div>
 
-          {registeredFields.length === 0 ? (
-            <div className="field-empty-card">
-              <p>No registered fields available.</p>
-            </div>
-          ) : (
-            <div className="field-grid">
-              {registeredFields.map((field) => {
-                const soilTests =
-                  JSON.parse(
-                    localStorage.getItem(`soilTests_${field.id}`)
-                  ) || [];
-
-                const latestSoilTest =
-                  soilTests.length > 0
-                    ? soilTests[soilTests.length - 1]
-                    : null;
-                const fieldScore = calculateFieldScore(field.id);
-
-                const fieldName =
-                  field.field_name ||
-                  field.fieldName ||
-                  field.name ||
-                  "Unnamed Field";
-
-                const cropName =
-                  field.crop_type ||
-                  field.cropType ||
-                  field.crop ||
-                  "Not recorded";
-
-
-                return (
-                  <article className="field-card" key={field.id}>
-                    <div className="field-card-header">
-                      <div>
-                        <h3>{fieldName}</h3>
-                        <p>
-                          <strong>Crop:</strong> {cropName}
-                        </p>
-                      </div>
-
-                      <div
-                        className={
-                          fieldScore === null
-                            ? "field-score-circle score-empty"
-                            : fieldScore >= 70
-                            ? "field-score-circle score-good"
-                            : fieldScore >= 50
-                            ? "field-score-circle score-warning"
-                            : "field-score-circle score-poor"
-                        }>
-                        <strong>
-                          {fieldScore === null ? "--" : `${fieldScore}%`}
-                        </strong>
-                        <span>Score</span>
-                      </div>
-                    </div>
+          <div className="field-grid">
+            <article className="field-card">
+              <div className="field-card-header">
+                <div>
+                  <h3>Enset</h3>
+                  <div className="field-details-grid">
                     <p>
-                      <strong>Soil Test:</strong>{" "}
-                      {latestSoilTest ? "Available" : "Not Recorded"}
+                      <strong>Crop:</strong> Enset
                     </p>
-
-                    <div className="field-recommendations">
-                      {latestSoilTest ? (
-                        <>
-                          <div className="field-recommendation-item">
-                            ✓ Recommendations for this field will use its
-                            latest soil test.
-                          </div>
-
-                          <div className="field-recommendation-item">
-                            ✓ Household resources will be considered when
-                            deciding the most practical farm action.
-                          </div>
-                        </>
-                      ) : (
-                        <div className="field-recommendation-item pending">
-                          ○ Record a soil test for this field to receive
-                          recommendations.
-                        </div>
-                      )}
-                    </div>
-
-                    <button
-                      type="button"
-                      className="view-field-btn"
-                      onClick={() =>
-                        navigate("/field-dashboard", {
-                          state: {
-                            field,
-                            fieldId: field.id,
-                          },
-                        })
-                      }>
-                      View Field
-                    </button>
-                  </article>
-                );
-              })}
-            </div>
-          )}
-        </section>
-
-        {/*<section className="recommendation-section">
-          <div className="section-heading">
-            <p>RECOMMENDATION AREAS</p>
-            <h2>Farm Management Guidance</h2>
-          </div>
-
-          <div className="recommendation-grid">
-            {recommendationCategories.map((category) => (
-              <article
-                className="recommendation-card"
-                key={category.title} >
-                <div className="recommendation-icon">
-                  {category.icon}
+                    <p>
+                      <strong>Field size:</strong> 1 hectare
+                    </p>
+                    <p>
+                      <strong>Location:</strong> Hawassa
+                    </p>
+                    <p>
+                      <strong>Assessment:</strong> Complete
+                    </p>
+                  </div>
                 </div>
 
-                <h3>{category.title}</h3>
-                <p>{category.description}</p>
+                <div className="field-score-progress score-good">
+                  <div
+                    className="field-score-ring"
+                    style={{
+                      "--field-score": 82,
+                      "--score-colour": "#68a520",
+                    }}
+                    aria-label="Field score 82 out of 100">
+                    <div className="field-score-ring-inner">
+                      <strong>82</strong>
+                      <span>out of 100</span>
+                    </div>
+                  </div>
 
-                <span className="pending-label">Pending</span>
-              </article>
-            ))}
-          </div>
-        </section>*/}
-
-        {/*<section className="requirements-card">
-          <div className="requirements-heading">
-            <div>
-              <p>RECOMMENDATION STATUS</p>
-              <h2>Information Checklist</h2>
-            </div>
-
-            <span className="status-badge">
-              {requirements.every((item) => item.completed)
-                ? "Available"
-                : "Not Available Yet"}
-            </span>
-          </div>
-
-          <div className="requirements-list">
-            {requirements.map((requirement) => (
-              <div
-                className="requirement-item"
-                key={requirement.title}>
-                <span
-                  className={
-                    requirement.completed
-                      ? "requirement-icon completed"
-                      : "requirement-icon pending"
-                  }>
-                  {requirement.completed ? "✓" : "○"}
-                </span>
-
-                <span>{requirement.title}</span>
-
-                <strong>
-                  {requirement.completed ? "Completed" : "Pending"}
-                </strong>
+                  <p>Good</p>
+                </div>
               </div>
-            ))}
-          </div>
 
-          <p className="requirements-message">
-            Farm recommendations will appear here after the recommendation
-            service is connected to the recorded field, household and soil
-            test information.
-          </p>
-        </section>*/}
+              <div className="static-recommendation">
+                <section className="recommendation-summary">
+                  <div className="recommendation-summary-item">
+                    <span>Soil health</span>
+                    <strong>Good</strong>
+                  </div>
+
+                  <div className="recommendation-summary-item">
+                    <span>Estimated harvest</span>
+                    <strong>3.0-8.0 tonnes from one hectare</strong>
+                  </div>
+                </section>
+
+                <section className="recommendation-message primary">
+                  <h4>🌱 Recommendation</h4>
+
+                  <p>
+                    This field is in good condition and is responding well
+                    to the current soil management practices.
+                  </p>
+
+                  <p>
+                    Continue applying organic manure before each planting
+                    season and maintain crop rotation to preserve soil
+                    fertility and support a stable harvest.
+                  </p>
+                </section>
+              </div>
+
+              <button
+                type="button"
+                className="view-field-btn"
+                onClick={() => navigate("/field-dashboard")}>
+                View Field
+              </button>
+            </article>
+
+           
+            <article className="field-card">
+              <div className="field-card-header">
+                <div>
+                  <h3>Wheat</h3>
+
+                  <div className="field-details-grid">
+                    <p>
+                      <strong>Crop:</strong> Wheat
+                    </p>
+
+                    <p>
+                      <strong>Field size:</strong> 1 hectare
+                    </p>
+
+                    <p>
+                      <strong>Location:</strong> Hawassa
+                    </p>
+
+                    <p>
+                      <strong>Assessment:</strong> Complete
+                    </p>
+                  </div>
+                </div>
+
+                <div className="field-score-progress score-poor">
+                  <div
+                    className="field-score-ring"
+                    style={{
+                      "--field-score": 42,
+                      "--score-colour": "#c84a3f",
+                    }}
+                    aria-label="Field score 42 out of 100">
+                    <div className="field-score-ring-inner">
+                      <strong>42</strong>
+                      <span>out of 100</span>
+                    </div>
+                  </div>
+
+                  <p>Low</p>
+                </div>
+              </div>
+
+              <div className="static-recommendation">
+                <section className="recommendation-summary">
+                  <div className="recommendation-summary-item">
+                    <span>Soil health</span>
+                    <strong>Low</strong>
+                  </div>
+
+                  <div className="recommendation-summary-item">
+                    <span>Estimated harvest</span>
+                    <strong>2.0-2.4 tonnes from one hectare</strong>
+                  </div>
+                </section>
+
+                {!recommendationsRefreshed ? (
+                  <section className="recommendation-message">
+                    <h4>🌱 Recommendation</h4>
+
+                    <p>
+                      This field currently shows low soil health because
+                      only limited organic material has been added to the
+                      soil.
+                    </p>
+
+                    <p>
+                      Apply more organic manure to improve soil fertility
+                      and support stronger crop growth. This could increase
+                      the harvest to about{" "}
+                      <strong>3.4 tonnes from one hectare of land</strong>,
+                      approximately{" "}
+                      <strong>33% more than the current harvest</strong>.
+                    </p>
+                  </section>
+                ) : (
+                  <>
+                    <section className="household-resource-card">
+                      <div className="resource-icon">🐄</div>
+
+                      <div>
+                        <span>Household resource available</span>
+                        <h4>5 cattle</h4>
+
+                        <p>
+                          Manure from these cattle can be composted and
+                          applied to this field as a low cost organic
+                          fertilizer.
+                        </p>
+                      </div>
+                    </section>
+
+                    <section className="recommendation-message primary">
+                      <h4>🌱 Primary recommendation</h4>
+
+                      <p>
+                        Apply composted manure from your own cattle to this
+                        field. This could increase the harvest to about{" "}
+                        <strong>2.9-3.0 tonnes from one hectare of land</strong>,
+                        approximately{" "}
+                        <strong>15% more than the current harvest</strong>.
+                      </p>
+                    </section>
+
+                    <section className="recommendation-message secondary">
+                      <h4>🌾 Additional recommendation</h4>
+
+                      <p>
+                        For greater improvement, combine the composted
+                        cattle manure with additional organic manure. This
+                        could increase the harvest to about{" "}
+                        <strong>3.4-6.0 tonnes from one hectare of land</strong>,
+                        approximately{" "}
+                        <strong>33% more than the current harvest</strong>.
+                      </p>
+                    </section>
+                  </>
+                )}
+              </div>
+
+              <button
+                type="button"
+                className="view-field-btn"
+                onClick={() => navigate("/field-dashboard")}>
+                View Field
+              </button>
+            </article>
+          </div>
+        </section>
+
+        {/*
+        <section className="recommendation-section">
+          Farm Management Guidance remains commented out.
+        </section>
+        */}
+
+        {/*
+        <section className="requirements-card">
+          Information Checklist remains commented out.
+        </section>
+        */}
       </main>
     </div>
   );

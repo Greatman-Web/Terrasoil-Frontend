@@ -252,7 +252,7 @@
   cursor: pointer;
   align-self: flex-start;
 }
-
+/* RESPONSIVENESS */
 @media (max-width: 900px) {
   .soil-header {
     flex-direction: column;

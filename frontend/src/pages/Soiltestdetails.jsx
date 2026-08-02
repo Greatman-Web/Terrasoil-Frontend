@@ -1,7 +1,8 @@
+//import necessary modules and components
 import { useState } from "react";
 import {useParams,useNavigate,useLocation,} from "react-router-dom";
 import "../styles/Soiltestdetails.css";
-
+//import images for soil test instructions
 import colour01 from "../assets/soiltestinstructions/colour_01.png";
 import colour02 from "../assets/soiltestinstructions/colour_02.png";
 import colour03 from "../assets/soiltestinstructions/colour_03.png";
@@ -22,7 +23,7 @@ import smell02 from "../assets/soiltestinstructions/smell_02.png";
 import vess01 from "../assets/soiltestinstructions/vess_01.png";
 import vess02 from "../assets/soiltestinstructions/vess_02.png";
 
-
+// The 8 soil tests available in the application, along with their details.
 const soilTests = [
   {
     route: "infiltration-test",
@@ -340,7 +341,7 @@ const soilTests = [
     ],
   },
 ];
-
+// This object maps each soil test to its corresponding instruction images
 const instructionImages = {
   INFIL_001: {
     1: infil01,
@@ -385,7 +386,7 @@ const instructionImages = {
     2: slake02,
   },
 };
-
+// This function creates a route for the selected soil test.
 export default function Soiltestdetails() {
   const { testId } = useParams();
   const navigate = useNavigate();
@@ -401,7 +402,7 @@ export default function Soiltestdetails() {
   const [success, setSuccess] = useState(false);
 
   const isFullAnalysis = testId === "full-analysis";
-
+  // This section defines the available soil tests and their details.
   const currentTest = isFullAnalysis
     ? soilTests[fullAnalysisStep]
     : soilTests.find((test) => test.route === testId) || soilTests[0];
@@ -409,13 +410,13 @@ export default function Soiltestdetails() {
   const selectedResult = currentTest.results.find(
     (item) => item.level === selectedLevel
   );
-
+  // This section retrieves the current result for the full analysis.
   const currentFullAnswer = fullResults[currentTest.testId];
   const activeResult = isFullAnalysis ? currentFullAnswer : selectedResult;
-
+  // This section checks if the current step is the last step in the full analysis.
   const isLastFullStep =
     isFullAnalysis && fullAnalysisStep === soilTests.length - 1;
-
+  // This section retrieves the name of the selected field.
   const fieldName =
     selectedField?.fieldName ||
     selectedField?.name ||
@@ -423,7 +424,7 @@ export default function Soiltestdetails() {
 
   const saveTestToLocalStorage = (newTest) => {
     const storageKey = `soilTests_${selectedField.id}`;
-
+// This section retrieves existing tests from local storage and updates them with the new test.
     const existingTests =
       JSON.parse(localStorage.getItem(storageKey)) || [];
 
@@ -431,7 +432,7 @@ export default function Soiltestdetails() {
 
     localStorage.setItem(storageKey, JSON.stringify(updatedTests));
   };
-
+  // This function handles the submission of a single soil test result.
   const handleSingleSubmit = () => {
     if (!selectedField) {
       setError("No field selected. Please go back and select a field first.");
@@ -442,7 +443,7 @@ export default function Soiltestdetails() {
       setError("Please select the result that best matches your observation.");
       return;
     }
-
+    // This section creates a new test object with the selected result and saves it to local storage.
     const newTest = {
       id: Date.now(),
       fieldId: selectedField.id,
@@ -465,7 +466,7 @@ export default function Soiltestdetails() {
     setError("");
     setSuccess(true);
   };
-
+  // This function handles the selection of a result option for the full analysis.
   const handleFullResultSelection = (resultOption) => {
     setFullResults((previousResults) => ({
       ...previousResults,
@@ -495,7 +496,7 @@ export default function Soiltestdetails() {
       setError("Please complete at least one test before saving.");
       return;
     }
-
+    // This section creates a new test object for the complete soil analysis and saves it to local storage.
     const newTest = {
       id: Date.now(),
       fieldId: selectedField.id,
@@ -530,7 +531,7 @@ export default function Soiltestdetails() {
       setFullAnalysisStep((previousStep) => previousStep + 1);
     }
   };
-
+ // This function handles skipping a test in the full analysis.
   const handleFullAnalysisSkip = () => {
     setError("");
 
@@ -540,7 +541,7 @@ export default function Soiltestdetails() {
       setFullAnalysisStep((previousStep) => previousStep + 1);
     }
   };
-
+  // This function handles going back to the previous test in the full analysis.
   const handlePreviousTest = () => {
     if (fullAnalysisStep === 0) {
       return;
@@ -553,7 +554,7 @@ export default function Soiltestdetails() {
   const getResultClass = (level) => {
     return `result-option result-${level.toLowerCase()}`;
   };
-
+  // This function determines the state of the indicator based on the selected result.
   const getIndicatorState = () => {
     if (!activeResult) {
       return {
@@ -563,7 +564,7 @@ export default function Soiltestdetails() {
         tone: "pending",
       };
     }
-
+    // This object maps the result levels to corresponding scores.
     const scoreByLevel = {
       Low: 35,
       Medium: 60,
@@ -577,7 +578,7 @@ export default function Soiltestdetails() {
       tone: activeResult.level.toLowerCase(),
     };
   };
-
+ 
   const indicatorState = getIndicatorState();
 
   return (
@@ -696,6 +697,7 @@ export default function Soiltestdetails() {
 
               <div className="instruction-list">
   {currentTest.instructions.map((step, index) => {
+    // Retrieve the corresponding instruction image for the current step.
     const instructionImage =
       instructionImages[currentTest.testId]?.[index];
 
