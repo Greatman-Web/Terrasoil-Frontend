@@ -568,10 +568,7 @@
     margin-top: 5px;
   }
 }
-/* =====================================================
-   STATIC FIELD RECOMMENDATION DEMONSTRATION
-   Add this to the bottom of Recommendations.css
-===================================================== */
+/*STATIC FIELD RECOMMENDATION DEMONSTRATION */
 
 .field-grid {
   grid-template-columns: repeat(auto-fit, minmax(430px, 1fr));
@@ -798,6 +795,7 @@
 
   .field-score-progress {
     align-self: flex-start;
+  
   }
 
   .field-score-ring {
