@@ -5,6 +5,8 @@ import "../styles/Recommendations.css";
 // Recommendations page content and sections
 export default function Recommendations() {
   const navigate = useNavigate();
+  const [language, setLanguage] = useState("en");
+  const [showLanguageMenu, setShowLanguageMenu] = useState(false);
   // Controls the state of whether recommendations have been refreshed or not
   const [recommendationsRefreshed, setRecommendationsRefreshed] =
     useState(false);
@@ -26,6 +28,40 @@ export default function Recommendations() {
         </div>
 
         <div className="recommendation-actions">
+          <div className="language-toggle" aria-label="Language selector">
+            <button
+              type="button"
+              className="lang-btn"
+              onClick={() => setShowLanguageMenu((current) => !current)}
+              aria-label="Language selector"
+            >
+              {language === "en" ? "🇬🇧" : "🇪🇹"}
+            </button>
+
+            {showLanguageMenu && (
+              <div className="language-menu">
+                <button
+                  type="button"
+                  className={`lang-option ${language === "en" ? "active" : ""}`}
+                  onClick={() => {
+                    setLanguage("en");
+                    setShowLanguageMenu(false);
+                  }}>
+                  🇬🇧 English
+                </button>
+                <button
+                  type="button"
+                  className={`lang-option ${language === "et" ? "active" : ""}`}
+                  onClick={() => {
+                    setLanguage("et");
+                    setShowLanguageMenu(false);
+                  }}>
+                  🇪🇹 Amharic
+                </button>
+              </div>
+            )}
+          </div>
+
           <button
             type="button"
             className="refresh-btn"
@@ -124,12 +160,12 @@ export default function Recommendations() {
                 </section>
               </div>
 
-              <button
+              {/*<button
                 type="button"
                 className="view-field-btn"
                 onClick={() => navigate("/field-dashboard")}>
                 View Field
-              </button>
+              </button>*/}
             </article>
 
            
@@ -220,6 +256,10 @@ export default function Recommendations() {
                       </p>
                     </section>
 
+                    <p className="recommendation-note">
+                      <strong>After five (5) years</strong>
+                    </p>
+
                     <section className="refreshed-summary-cards">
                       <div className="refreshed-summary-card">
                         <div className="summary-card-label">
@@ -252,12 +292,12 @@ export default function Recommendations() {
                 )}
               </div>
 
-              <button
+             {/*<button
                 type="button"
                 className="view-field-btn"
                 onClick={() => navigate("/field-dashboard")}>
                 View Field
-              </button>
+              </button>*/}
             </article>
           </div>
         </section>

@@ -50,6 +50,78 @@
   gap: 18px;
 }
 
+.landing-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.language-picker {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.language-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border: 2px solid #d8d3c6;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #243322;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: 0.25s ease;
+}
+
+.language-pill:hover {
+  border-color: #8bb82e;
+  transform: translateY(-1px);
+}
+
+.language-flag {
+  font-size: 16px;
+}
+
+.language-label {
+  letter-spacing: 0.2px;
+}
+
+.language-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px;
+  border: 1px solid #e3decf;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+  z-index: 10;
+}
+
+.language-option {
+  border: none;
+  background: transparent;
+  padding: 7px 10px;
+  border-radius: 8px;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 600;
+  color: #243322;
+  cursor: pointer;
+}
+
+.language-option.active {
+  background: #eef7dc;
+}
+
 .nav-link {
   background: transparent;
   color: #243322;
@@ -68,15 +140,22 @@
 .blue-btn {
   background: #3157e8;
   color: white;
+
   border: none;
-  padding: 14px 30px;
-  border-radius: 9px;
-  font-weight: 800;
+
+  padding: 13px 28px;
+
+  border-radius: 8px;
+
+  font-weight: 700;
+
   cursor: pointer;
+
+  transition: .3s ease;
 }
 
 .blue-btn:hover {
-  background: #2446c9;
+  background: #2345c7;
 }
 
 /*NAVIGATION*/
@@ -145,29 +224,6 @@
 .nav-link:hover {
   background: #5f8f21;
   color: white;
-}
-
-/* Signup */
-
-.blue-btn {
-  background: #3157e8;
-  color: white;
-
-  border: none;
-
-  padding: 13px 28px;
-
-  border-radius: 8px;
-
-  font-weight: 700;
-
-  cursor: pointer;
-
-  transition: .3s ease;
-}
-
-.blue-btn:hover {
-  background: #2345c7;
 }
 
 /* Learn More */

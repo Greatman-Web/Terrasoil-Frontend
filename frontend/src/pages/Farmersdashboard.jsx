@@ -90,13 +90,13 @@ const fieldInformationSections = [
       placeholder: "Enter longitude",
     },
     */
-    /*{
+    {
       name: "distance_to_homestead",
-      label: "Distance to Homestead",
+      label: "Distance to Homestead (m)",
       type: "number",
       placeholder: "Enter distance to homestead",
       autoGenerate: true,
-    },*/
+    },
     ],
   },
 
@@ -107,7 +107,7 @@ const fieldInformationSections = [
     fields: [
       {
         name: "soil_depth",
-        label: "Soil Depth",
+        label: "Soil Depth (cm)",
         type: "number",
         placeholder: "Enter soil depth",
         autoGenerate: true,
@@ -135,21 +135,21 @@ const fieldInformationSections = [
       },
       {
         name: "soil_carbon",
-        label: "Soil Carbon",
+        label: "Soil Carbon (%)",
         type: "number",
         placeholder: "Enter soil carbon",
         autoGenerate: true,
       },
       {
         name: "bulk_density",
-        label: "Bulk Density",
+        label: "Bulk Density (g/cm³)",
         type: "number",
         placeholder: "Enter bulk density",
         autoGenerate: true,
       },
       {
         name: "soil_ph",
-        label: "Soil pH",
+        label: "Soil pH" ,
         type: "number",
         placeholder: "Enter soil pH",
         autoGenerate: true,
@@ -675,14 +675,14 @@ const fieldInformationSections = [
     fields: [
       {
         name: "elevation",
-        label: "Elevation",
+        label: "Elevation (m)",
         type: "number",
         placeholder: "Enter elevation",
         autoGenerate: true,
       },
       {
         name: "slope",
-        label: "Slope",
+        label: "Slope (%)",
         type: "number",
         placeholder: "Enter slope",
         autoGenerate: true,
@@ -805,14 +805,14 @@ const fieldInformationSections = [
       */
       {
         name: "mean_monthly_rainfall",
-        label: "Mean Monthly Rainfall",
+        label: "Mean Monthly Rainfall (mm/month)",
         type: "number",
         placeholder: "Generated mean monthly rainfall",
         autoGenerate: true,
       },
       {
         name: "mean_monthly_temperature",
-        label: "Mean Monthly Temperature",
+        label: "Mean Monthly Temperature (°C)",
         type: "number",
         placeholder: "Generated mean monthly temperature",
         autoGenerate: true,
@@ -889,12 +889,14 @@ export default function Farmersdashboard() {
   const routeLocation = useLocation();
   const username = routeLocation.state?.username || "Farmer";
   const isNewUser = routeLocation.state?.isNewUser || false;
+  const [language, setLanguage] = useState("en");
+  const [showLanguageMenu, setShowLanguageMenu] = useState(false);
   const [fields, setFields] = useState(() => {
     const savedFields = localStorage.getItem("registeredFields");
     return savedFields ? JSON.parse(savedFields) : [];
   });
   const [error, setError] = useState("");
-  const [openFieldSection, setOpenFieldSection] = useState("");
+  const [openFieldSection, setOpenFieldSection] = useState("fieldIdentification");
   const [additionalFieldData, setAdditionalFieldData] = useState(createEmptyAdditionalFieldData);
   const handleAdditionalFieldChange = (sectionId, fieldName, value) => {
     setAdditionalFieldData((previousData) => ({
@@ -1074,6 +1076,39 @@ export default function Farmersdashboard() {
         </div>
 
         <div className="topbar-actions">
+          <div className="language-toggle" aria-label="Language selector">
+            <button
+              type="button"
+              className="lang-btn"
+              onClick={() => setShowLanguageMenu((current) => !current)}
+              aria-label="Language selector">
+              {language === "en" ? "🇬🇧" : "🇪🇹"}
+            </button>
+
+            {showLanguageMenu && (
+              <div className="language-menu">
+                <button
+                  type="button"
+                  className={`lang-option ${language === "en" ? "active" : ""}`}
+                  onClick={() => {
+                    setLanguage("en");
+                    setShowLanguageMenu(false);
+                  }}>
+                  🇬🇧 English
+                </button>
+                <button
+                  type="button"
+                  className={`lang-option ${language === "et" ? "active" : ""}`}
+                  onClick={() => {
+                    setLanguage("et");
+                    setShowLanguageMenu(false);
+                  }}>
+                  🇪🇹 Amharic
+                </button>
+              </div>
+            )}
+          </div>
+
           <div className="user-circle">{username.charAt(0).toUpperCase()}</div>
 
           <button className="logout-btn" onClick={() => navigate("/")}>

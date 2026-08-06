@@ -20,6 +20,7 @@ const HOUSEHOLD_DICTIONARY = [
         min: 1,
         max: 50,
         required: true,
+        placeholder: "Enter household size"
       },
       /*
 {
@@ -473,11 +474,12 @@ const HOUSEHOLD_DICTIONARY = [
     description: "Animal numbers, production and feeding",
     fields: [
       {
-        name: "cattle_count",
+        name: "Number_of_Cattle",
         dataType: "FLOAT",
         min: 0,
         max: 100000,
         required: false,
+        placeholder: "Enter number of cattle",
       },
       {
         name: "dairy_cattle_count",
@@ -485,20 +487,23 @@ const HOUSEHOLD_DICTIONARY = [
         min: 0,
         max: 100000,
         required: false,
+        Placeholder: "Enter number of dairy cattle",
       },
       {
-        name: "oxen_count",
+        name: "Number_of_Oxen",
         dataType: "FLOAT",
         min: 0,
         max: 100000,
         required: false,
+        placeholder: "Enter number of oxen",
       },
       {
-        name: "goats_count",
+        name: "Number_of_Goats",
         dataType: "FLOAT",
         min: 0,
         max: 100000,
         required: false,
+        placeholder: "Enter number of goats",
       },
       /*
 {
@@ -961,17 +966,21 @@ const HOUSEHOLD_DICTIONARY = [
 */
       {
         name: "water_available_day",
+        label: "Water available (litres/day)",
         dataType: "FLOAT",
         min: 0,
         max: 100000,
         required: false,
+        placeholder: "Enter water availability (litres/day)"
       },
       {
         name: "distance_to_water_source",
+        label: "Distance to water source (km)",
         dataType: "FLOAT",
         min: 0,
         max: 100000,
         required: false,
+        placeholder: "Enter distance to water source (km)"
       },
       /*
 {
@@ -1153,6 +1162,7 @@ const HOUSEHOLD_DICTIONARY = [
         min: 0,
         max: 100000,
         required: false,
+        placeholder: "Enter firewood used per year"
       },
       {
         name: "charcoal_used_year",
@@ -1160,6 +1170,7 @@ const HOUSEHOLD_DICTIONARY = [
         min: 0,
         max: 100000,
         required: false,
+        placeholder: "Enter charcoal used per year"
       },
       {
         name: "crop_residue_used_fuel",
@@ -1167,6 +1178,7 @@ const HOUSEHOLD_DICTIONARY = [
         min: 0,
         max: 100000,
         required: false,
+        placeholder: "Enter crop residue used per year"
       },
       {
         name: "dung_used_fuel",
@@ -1174,6 +1186,7 @@ const HOUSEHOLD_DICTIONARY = [
         min: 0,
         max: 100000,
         required: false,
+        placeholder: "Enter dung used per year"
       },
       /*
 {
@@ -1329,7 +1342,9 @@ function getInputStep(dataType) {
 //exporting the HouseholdDashboard component as the default export of the module
 export default function HouseholdDashboard() {
   const navigate = useNavigate();
-  const [activeSection, setActiveSection] = useState("demographics");
+  const [language, setLanguage] = useState("en");
+  const [showLanguageMenu, setShowLanguageMenu] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
   const [saveMessage, setSaveMessage] = useState("");
   const [showSummary, setShowSummary] = useState(false);
   const summaryRef = useRef(null);
@@ -1596,7 +1611,7 @@ const savePersonalInfo = (event) => {
             max={isNumber && field.max !== null ? field.max : undefined}
             value={value}
             required={field.required}
-            placeholder={field.description}
+            placeholder={field.placeholder || field.description}
             onChange={(event) =>
               updateField(field.name, event.target.value)
             }/>
@@ -1624,6 +1639,39 @@ const savePersonalInfo = (event) => {
         </div>
         {/* Header section */}
         <div className="household-header-actions">
+          <div className="language-toggle" aria-label="Language selector">
+            <button
+              type="button"
+              className="lang-btn"
+              onClick={() => setShowLanguageMenu((current) => !current)}
+              aria-label="Language selector">
+              {language === "en" ? "🇬🇧" : "🇪🇹"}
+            </button>
+
+            {showLanguageMenu && (
+              <div className="language-menu">
+                <button
+                  type="button"
+                  className={`lang-option ${language === "en" ? "active" : ""}`}
+                  onClick={() => {
+                    setLanguage("en");
+                    setShowLanguageMenu(false);
+                  }}>
+                  🇬🇧 English
+                </button>
+                <button
+                  type="button"
+                  className={`lang-option ${language === "et" ? "active" : ""}`}
+                  onClick={() => {
+                    setLanguage("et");
+                    setShowLanguageMenu(false);
+                  }}>
+                  🇪🇹 Amharic
+                </button>
+              </div>
+            )}
+          </div>
+
           <button type="button" onClick={() => navigate(-1)}>
             ← Back
           </button>
@@ -1793,8 +1841,16 @@ const savePersonalInfo = (event) => {
     <label>
       Date of Birth
       <input
-        type="date"
+        type="text"
         value={personalInfo.dateOfBirth || ""}
+        onFocus={(event) => {
+          event.target.type = "date";
+        }}
+        onBlur={(event) => {
+          if (!event.target.value) {
+            event.target.type = "text";
+          }
+        }}
         onChange={(event) =>
           updatePersonalInfo("dateOfBirth", event.target.value)}
         placeholder="YYYY-MM-DD"/>

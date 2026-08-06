@@ -59,6 +59,51 @@
   gap: 14px;
 }
 
+.language-toggle {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.lang-btn {
+  border: 2px solid #e3decf;
+  background: #ffffff;
+  border-radius: 999px;
+  padding: 7px 10px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.language-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: #ffffff;
+  border: 1px solid #e3decf;
+  border-radius: 10px;
+  padding: 8px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+  z-index: 10;
+}
+
+.lang-option {
+  border: none;
+  background: transparent;
+  padding: 7px 10px;
+  border-radius: 8px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.lang-option.active {
+  background: #eef7dc;
+}
+
 .household-header-actions button {
   background: #ffffff;
   color: #5f8f21;
@@ -517,6 +562,14 @@
   transition: 0.2s ease;
 }
 
+.personal-info-form input::placeholder,
+.personal-info-form textarea::placeholder,
+.management-form input::placeholder,
+.management-form textarea::placeholder {
+  color: #8f968d;
+  opacity: 1;
+}
+
 .personal-info-form textarea {
   resize: vertical;
 }
@@ -810,7 +863,7 @@
 
 .management-form input:invalid:not(:placeholder-shown),
 .management-form select:invalid {
-  border-color: #d98b82;
+  border-color: #e3decf;
 }
 
 .management-form input:valid:not(:placeholder-shown),

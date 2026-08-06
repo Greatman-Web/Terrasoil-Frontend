@@ -23,13 +23,12 @@ export default function Landing() {
         </div>
 
         <nav className="landing-nav">
+          <select className="language-select" defaultValue="en">
+            <option value="en">🇬🇧 English</option>
+            <option value="am">🇪🇹 Amharic</option>
+          </select>
 
-  <select className="language-select" defaultValue="en">
-    <option value="en">🇬🇧 English</option>
-    <option value="am">🇪🇹 አማርኛ (Amharic)</option>
-  </select>
-
-  <div className="landing-nav">
+          <div className="landing-nav-links">
 
   <button
     className="text-btn"
