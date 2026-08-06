@@ -90,13 +90,13 @@ const fieldInformationSections = [
       placeholder: "Enter longitude",
     },
     */
-    {
+    /*{
       name: "distance_to_homestead",
       label: "Distance to Homestead",
       type: "number",
       placeholder: "Enter distance to homestead",
       autoGenerate: true,
-    },
+    },*/
     ],
   },
 
@@ -1215,8 +1215,7 @@ export default function Farmersdashboard() {
                                         field.name,
                                         event.target.value
                                       )
-                                    }
-                                  >
+                                    }>
                                     <option value="">
                                       Select {field.label}
                                     </option>
@@ -1261,8 +1260,7 @@ export default function Farmersdashboard() {
                                     aria-label={`Generate ${field.label}`}
                                     onClick={() =>
                                       handleGenerateField(section.id, field)
-                                    }
-                                  >
+                                    }>
                                     ↻
                                   </button>
                                 )}
@@ -1342,8 +1340,7 @@ export default function Farmersdashboard() {
                         className="delete-field-btn"
                         onClick={(event) =>
                           handleDeleteField(field.id, event)
-                        }
-                      >
+                        }>
                         Delete Field
                       </button>
                     </div>

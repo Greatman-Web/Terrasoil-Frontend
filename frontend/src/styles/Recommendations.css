@@ -813,3 +813,125 @@
     grid-template-columns: 1fr;
   }
 }
+
+.soil-health-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.soil-health-label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.soil-health-label span {
+  display: block;
+  margin-bottom: 8px;
+  color: #73796d;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.soil-health-label strong {
+  color: #172014;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.soil-health-score {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.refreshed-summary-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 18px 0 0;
+}
+
+.refreshed-summary-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 86px;
+  padding: 14px;
+  background: #f7f3ea;
+  border: 1px solid #e3decf;
+  border-radius: 13px;
+}
+
+.field-score-ring.small {
+  width: 80px;
+  height: 80px;
+  flex: 0 0 80px;
+}
+
+.field-score-ring.small .field-score-ring-inner {
+  width: 54px;
+  height: 54px;
+}
+
+.field-score-ring.small .field-score-ring-inner strong {
+  font-size: 16px;
+}
+
+.field-score-ring.small .field-score-ring-inner span {
+  font-size: 10px;
+}
+
+.summary-card-label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.summary-card-label span {
+  margin-bottom: 8px;
+  color: #73796d;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.summary-card-label strong {
+  color: #172014;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.summary-card-value p {
+  margin: 0;
+  color: #50594b;
+  font-size: 13px;
+}
+
+@media (max-width: 650px) {
+  .soil-health-card {
+    gap: 12px;
+  }
+
+  .field-score-ring.small {
+    width: 74px;
+    height: 74px;
+    flex-basis: 74px;
+  }
+
+  .field-score-ring.small .field-score-ring-inner {
+    width: 56px;
+    height: 56px;
+  }
+}
+.refreshed-summary {
+  margin-top: 2px;
+  padding-top: 14px;
+  border-top: 1px solid #e3decf;
+}

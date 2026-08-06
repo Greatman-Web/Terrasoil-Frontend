@@ -292,7 +292,7 @@ const remainingTests = REQUIRED_TESTS - completedTests;
                     <strong>{latestTest.status || "Recorded"}</strong>
                   </div>
                 </div>
-
+            {/* Displaying complete analysis summary if available */}
                 {isCompleteAnalysis && (
                   <div className="analysis-summary">
                     <h3>Complete Analysis Summary</h3>
@@ -369,7 +369,7 @@ const remainingTests = REQUIRED_TESTS - completedTests;
               🌱 Start Soil Test
             </button>
           </div>
-
+      {/* The recent soil tests section of the Field Dashboard page */}
           <div className="recent-tests-card">
             <h2>🧪 Recent Soil Tests</h2>
 
@@ -420,7 +420,7 @@ const remainingTests = REQUIRED_TESTS - completedTests;
                   Satellite image for {selectedField.fieldName}
                 </p>
               </div>
-
+        {/* Displaying satellite metrics for the selected field */}
               <div className="satellite-metrics-grid">
                 <div className="satellite-metric">
                   <small>NDVI</small>

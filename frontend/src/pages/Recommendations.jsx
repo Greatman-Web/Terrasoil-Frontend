@@ -84,48 +84,40 @@ export default function Recommendations() {
                     </p>
                   </div>
                 </div>
-
-                <div className="field-score-progress score-good">
-                  <div
-                    className="field-score-ring"
-                    style={{
-                      "--field-score": 82,
-                      "--score-colour": "#68a520",
-                    }}
-                    aria-label="Field score 82 out of 100">
-                    <div className="field-score-ring-inner">
-                      <strong>82</strong>
-                      <span>out of 100</span>
-                    </div>
-                  </div>
-
-                  <p>Good</p>
-                </div>
               </div>
 
               <div className="static-recommendation">
                 <section className="recommendation-summary">
-                  <div className="recommendation-summary-item">
-                    <span>Soil health</span>
-                    <strong>Good</strong>
+                  <div className="recommendation-summary-item soil-health-item">
+                    <div className="soil-health-label">
+                      <span>Soil health</span>
+                      <strong>Good</strong>
+                    </div>
+                    <div className="soil-health-score">
+                      <div
+                        className="field-score-ring small"
+                        style={{
+                          "--field-score": 82,
+                          "--score-colour": "#65da41",
+                        }}
+                        aria-label="Field score 82%">
+                        <div className="field-score-ring-inner">
+                          <strong>82%</strong>
+                        </div>
+                      </div>
+                    </div>
                   </div>
 
                   <div className="recommendation-summary-item">
                     <span>Estimated harvest</span>
-                    <strong>3.0-8.0 tonnes from one hectare</strong>
+                    <strong>3.0-8.0 tonnes per hectare</strong>
                   </div>
                 </section>
 
                 <section className="recommendation-message primary">
                   <h4>🌱 Recommendation</h4>
-
                   <p>
-                    This field is in good condition and is responding well
-                    to the current soil management practices.
-                  </p>
-
-                  <p>
-                    Continue applying organic manure before each planting
+                    Continue applying <strong>organic manure</strong> before each planting
                     season and maintain crop rotation to preserve soil
                     fertility and support a stable harvest.
                   </p>
@@ -165,34 +157,33 @@ export default function Recommendations() {
                   </div>
                 </div>
 
-                <div className="field-score-progress score-poor">
-                  <div
-                    className="field-score-ring"
-                    style={{
-                      "--field-score": 42,
-                      "--score-colour": "#c84a3f",
-                    }}
-                    aria-label="Field score 42 out of 100">
-                    <div className="field-score-ring-inner">
-                      <strong>42</strong>
-                      <span>out of 100</span>
-                    </div>
-                  </div>
-
-                  <p>Low</p>
-                </div>
               </div>
 
               <div className="static-recommendation">
                 <section className="recommendation-summary">
-                  <div className="recommendation-summary-item">
-                    <span>Soil health</span>
-                    <strong>Low</strong>
+                  <div className="recommendation-summary-item soil-health-item">
+                    <div className="soil-health-label">
+                      <span>Soil health</span>
+                      <strong>Low</strong>
+                    </div>
+                    <div className="soil-health-score">
+                      <div
+                        className="field-score-ring small"
+                        style={{
+                          "--field-score": 42,
+                          "--score-colour": "#c84a3f",
+                        }}
+                        aria-label="Field score 42%">
+                        <div className="field-score-ring-inner">
+                          <strong>42%</strong>
+                        </div>
+                      </div>
+                    </div>
                   </div>
 
                   <div className="recommendation-summary-item">
                     <span>Estimated harvest</span>
-                    <strong>2.0-2.4 tonnes from one hectare</strong>
+                    <strong>2.0-2.4 tonnes per hectare</strong>
                   </div>
                 </section>
 
@@ -200,20 +191,7 @@ export default function Recommendations() {
                   <section className="recommendation-message">
                     <h4>🌱 Recommendation</h4>
 
-                    <p>
-                      This field currently shows low soil health because
-                      only limited organic material has been added to the
-                      soil.
-                    </p>
-
-                    <p>
-                      Apply more organic manure to improve soil fertility
-                      and support stronger crop growth. This could increase
-                      the harvest to about{" "}
-                      <strong>3.4 tonnes from one hectare of land</strong>,
-                      approximately{" "}
-                      <strong>33% more than the current harvest</strong>.
-                    </p>
+                    <p>If you apply <strong>organic manure</strong>, you can improve soil health and support crop growth.</p>
                   </section>
                 ) : (
                   <>
@@ -221,40 +199,54 @@ export default function Recommendations() {
                       <div className="resource-icon">🐄</div>
 
                       <div>
-                        <span>Household resource available</span>
+                        <span>HOUSEHOLD INFORMATION UPDATE: </span>
                         <h4>5 cattle</h4>
 
                         <p>
-                          Manure from these cattle can be composted and
-                          applied to this field as a low cost organic
-                          fertilizer.
+                         Manure produced from these cattle is applied to Field "Enset". 
+                         <strong>No more manure available </strong>
                         </p>
                       </div>
                     </section>
 
                     <section className="recommendation-message primary">
-                      <h4>🌱 Primary recommendation</h4>
+                      <h4>🌱 Recommendation</h4>
 
                       <p>
-                        Apply composted manure from your own cattle to this
-                        field. This could increase the harvest to about{" "}
-                        <strong>2.9-3.0 tonnes from one hectare of land</strong>,
-                        approximately{" "}
-                        <strong>15% more than the current harvest</strong>.
+                       To increase availability of <strong>organic matter</strong> on your farm, 
+                       produce vermicompost from Korch leaves, 
+                       which you can then apply to this field 
+                       to improve soil health and support crop growth. 
                       </p>
                     </section>
 
-                    <section className="recommendation-message secondary">
-                      <h4>🌾 Additional recommendation</h4>
+                    <section className="refreshed-summary-cards">
+                      <div className="refreshed-summary-card">
+                        <div className="summary-card-label">
+                          <span>Soil health</span>
+                          <strong>Medium</strong>
+                        </div>
+                        <div className="summary-card-score">
+                          <div
+                            className="field-score-ring small"
+                            style={{
+                              "--field-score": 60,
+                              "--score-colour": "#dbdf22",
+                            }}
+                            aria-label="Field score 60%">
+                            <div className="field-score-ring-inner">
+                              <strong>60%</strong>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
 
-                      <p>
-                        For greater improvement, combine the composted
-                        cattle manure with additional organic manure. This
-                        could increase the harvest to about{" "}
-                        <strong>3.4-6.0 tonnes from one hectare of land</strong>,
-                        approximately{" "}
-                        <strong>33% more than the current harvest</strong>.
-                      </p>
+                      <div className="refreshed-summary-card">
+                        <div className="summary-card-label">
+                          <span>Estimated harvest</span>
+                          <strong>Improvement: 33% or more. 3.0 - 3.4 tonnes per hectare</strong>
+                        </div>
+                      </div>
                     </section>
                   </>
                 )}
