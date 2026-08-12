@@ -1114,6 +1114,11 @@ export default function Farmersdashboard() {
           <button className="logout-btn" onClick={() => navigate("/")}>
             Logout
           </button>
+          <button
+           className="top-link-btn"
+           onClick={() => navigate("/help")}>
+           Help
+        </button>
         </div>
       </header>
 

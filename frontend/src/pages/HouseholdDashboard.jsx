@@ -1679,6 +1679,11 @@ const savePersonalInfo = (event) => {
           <button type="button" onClick={() => navigate("/")}>
             Logout
           </button>
+          <button
+           className="top-link-btn"
+           onClick={() => navigate("/help")}>
+           Help
+        </button>
         </div>
       </header>
 

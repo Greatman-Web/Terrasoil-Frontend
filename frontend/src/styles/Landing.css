@@ -167,29 +167,32 @@
 }
 
 .language-select {
+  width: 65px;
+  min-width: 65px;
 
-    background: white;
+  background: white;
+  border: 1px solid #d8d3c6;
+  color: #243322;
 
-    border: 2px solid #d8d3c6;
+  padding: 7px 8px;
+  border-radius: 8px;
 
-    color: #243322;
+  font-size: 13px;
+  font-weight: 700;
 
-    padding: 11px 16px;
+  cursor: pointer;
+  outline: none;
 
-    border-radius: 10px;
-
-    font-size: 15px;
-
-    font-weight: 600;
-
-    cursor: pointer;
-
-    outline: none;
-
-    transition: .3s ease;
-
+  transition: 0.2s ease;
 }
 
+.language-select:hover {
+  border-color: #8bb82e;
+}
+
+.language-select:focus {
+  border-color: #8bb82e;
+}
 .language-select:hover {
 
     border-color: #8bb82e;
@@ -200,6 +203,22 @@
 
     border-color: #3157e8;
 
+}
+.top-link-btn {
+  background: transparent;
+  color: #243322;
+  border: none;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.top-link-btn:hover {
+  background: #eef4df;
+  color: #5f8f21;
 }
 
 /* Login */
@@ -526,10 +545,10 @@
     gap: 12px;
   }
 
-  .landing-nav button,
   .landing-nav select {
-    width: 100%;
-  }
+  width: 65px;
+  min-width: 65px;
+}
 
   .hero {
     width: 92%;

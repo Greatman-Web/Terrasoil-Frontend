@@ -33,8 +33,7 @@ export default function About() {
 
         <button
           className="blue-btn"
-          onClick={() => navigate("/")}
-        >
+          onClick={() => navigate("/")}>
           Back Home
         </button>
 
@@ -266,6 +265,7 @@ export default function About() {
     <h3>Quick Links</h3>
     <a href="/">Home</a>
     <a href="/about">About Us</a>
+    <a href="/features">Help</a>
     <a href="/signup">Sign Up</a>
     <a href="/login">Login</a>
   </div>

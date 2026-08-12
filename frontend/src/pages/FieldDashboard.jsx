@@ -88,6 +88,11 @@ const remainingTests = REQUIRED_TESTS - completedTests;
           <button className="logout-btn" onClick={() => navigate("/")}>
             Logout
           </button>
+          <button
+           className="top-link-btn"
+           onClick={() => navigate("/help")}>
+           Help
+        </button>
         </div>
       </header>
 

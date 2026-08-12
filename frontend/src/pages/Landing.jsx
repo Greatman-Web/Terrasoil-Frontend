@@ -24,16 +24,22 @@ export default function Landing() {
 
         <nav className="landing-nav">
           <select className="language-select" defaultValue="en">
-            <option value="en">🇬🇧 English</option>
-            <option value="am">🇪🇹 Amharic</option>
+            <option value="en">🇬🇧 EN</option>
+            <option value="am">🇪🇹 AM</option>
           </select>
 
           <div className="landing-nav-links">
 
   <button
-    className="text-btn"
+    className="top-link-btn"
     onClick={() => navigate("/about")}>
     About
+  </button>
+
+  <button
+    className="top-link-btn"
+    onClick={() => navigate("/help")}>
+    Help
   </button>
 
   <button
@@ -159,6 +165,7 @@ export default function Landing() {
     <h3>Quick Links</h3>
     <a href="/">Home</a>
     <a href="/about">About Us</a>
+    <a href="/help">Help</a>
     <a href="/signup">Sign Up</a>
     <a href="/login">Login</a>
   </div>

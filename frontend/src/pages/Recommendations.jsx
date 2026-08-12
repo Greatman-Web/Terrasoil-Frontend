@@ -77,6 +77,11 @@ export default function Recommendations() {
             onClick={() => navigate("/farmer-dashboard")}>
             ← Dashboard
           </button>
+          <button
+           className="top-link-btn"
+           onClick={() => navigate("/help")}>
+           Help
+        </button>
         </div>
       </header>
      

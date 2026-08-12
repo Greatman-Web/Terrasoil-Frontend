@@ -1,0 +1,361 @@
+.help-page {
+  min-height: 100vh;
+  background: #f5f0e6;
+  color: #172014;
+  padding-bottom: 60px;
+}
+
+/* HEADER */
+
+.help-header {
+  width: 92%;
+  max-width: 1180px;
+  margin: 0 auto 28px;
+  padding: 22px 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.help-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.help-logo {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #8bb82e;
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+}
+
+.help-brand h2 {
+  margin: 0;
+  color: #6f9f24;
+  font-size: 26px;
+}
+
+.help-brand p {
+  margin: 3px 0 0;
+  color: #6f766a;
+  font-size: 14px;
+}
+
+.help-back-btn {
+  background: white;
+  color: #5f8f21;
+  border: 2px solid #8bb82e;
+  padding: 10px 18px;
+  border-radius: 9px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.help-back-btn:hover {
+  background: #f0f7e3;
+}
+
+/* MAIN CONTAINER */
+
+.help-container {
+  width: 90%;
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* HERO */
+
+.help-hero {
+  background: white;
+  padding: 32px;
+  border-radius: 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 8px 24px rgba(32, 52, 27, 0.07);
+}
+
+.help-small-title {
+  margin: 0 0 8px;
+  color: #6c9d25;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.help-hero h1 {
+  margin: 0 0 12px;
+  font-size: 34px;
+}
+
+.help-hero p {
+  margin: 0;
+  color: #667061;
+  line-height: 1.7;
+}
+
+/* ACCORDION SECTION */
+
+.help-section {
+  margin-bottom: 14px;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 5px 18px rgba(32, 52, 27, 0.05);
+}
+
+.help-section-header {
+  width: 100%;
+  border: none;
+  background: white;
+  padding: 18px 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  color: #172014;
+  font-size: 16px;
+  font-weight: 800;
+
+  cursor: pointer;
+  text-align: left;
+
+  transition: 0.2s ease;
+}
+
+.help-section-header:hover {
+  background: #f7f3ea;
+}
+
+.help-section-header span:last-child {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #edf6da;
+  color: #5f8f21;
+
+  display: grid;
+  place-items: center;
+
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.help-section-content {
+  padding: 0 20px 22px;
+  border-top: 1px solid #eee7da;
+}
+
+.help-section-content h3 {
+  margin: 20px 0 8px;
+  color: #315f2a;
+  font-size: 17px;
+}
+
+.help-section-content h4 {
+  margin: 0 0 8px;
+  color: #315f2a;
+}
+
+.help-section-content p {
+  color: #5b6257;
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+/* ACTION BUTTONS */
+
+.help-action-btn,
+.help-secondary-btn {
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 800;
+  cursor: pointer;
+  margin: 6px 8px 8px 0;
+}
+
+.help-action-btn {
+  background: #3157e8;
+  color: white;
+}
+
+.help-action-btn:hover {
+  background: #2447c6;
+}
+
+.help-secondary-btn {
+  background: #edf6da;
+  color: #5f8f21;
+  border: 1px solid #cfe1ad;
+}
+
+.help-secondary-btn:hover {
+  background: #e3f0ca;
+}
+
+/* STEP LISTS */
+
+.help-steps {
+  margin: 16px 0 0;
+  padding-left: 22px;
+}
+
+.help-steps li {
+  margin-bottom: 12px;
+  color: #535d4f;
+  line-height: 1.7;
+  padding-left: 4px;
+}
+
+/* INDICATOR GRID */
+
+.indicator-help-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.indicator-help-card {
+  padding: 16px;
+  background: #f7f3ea;
+  border: 1px solid #e3decf;
+  border-radius: 12px;
+}
+
+.indicator-help-card h4 {
+  margin-bottom: 7px;
+  color: #315f2a;
+}
+
+.indicator-help-card p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* NOTE */
+
+.help-note {
+  margin-top: 18px;
+  padding: 14px 16px;
+  background: #eef6df;
+  border-left: 4px solid #8bb82e;
+  border-radius: 9px;
+}
+
+/* FAQ */
+
+.faq-item {
+  padding: 16px 0;
+  border-bottom: 1px solid #ece7dc;
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+}
+
+.faq-item h4 {
+  margin-bottom: 6px;
+}
+
+.faq-item p {
+  margin: 0;
+}
+
+/* SUPPORT */
+
+.support-section {
+  border: 1px solid #d9e6c2;
+}
+
+.support-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  margin-top: 14px;
+  padding: 14px;
+
+  background: #f7f3ea;
+  border-radius: 10px;
+}
+
+.support-contact strong {
+  color: #172014;
+}
+
+.support-contact a {
+  color: #3157e8;
+  text-decoration: none;
+  word-break: break-word;
+}
+
+.support-contact a:hover {
+  text-decoration: underline;
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+  .help-header {
+    width: 92%;
+    padding: 18px 0;
+  }
+
+  .help-logo {
+    width: 46px;
+    height: 46px;
+    font-size: 21px;
+  }
+
+  .help-brand h2 {
+    font-size: 22px;
+  }
+
+  .help-brand p {
+    font-size: 12px;
+  }
+
+  .help-back-btn {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  .help-container {
+    width: 92%;
+  }
+
+  .help-hero {
+    padding: 24px 20px;
+  }
+
+  .help-hero h1 {
+    font-size: 28px;
+  }
+
+  .help-section-header {
+    padding: 16px;
+    font-size: 15px;
+  }
+
+  .help-section-content {
+    padding: 0 16px 18px;
+  }
+
+  .indicator-help-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .help-action-btn,
+  .help-secondary-btn {
+    width: 100%;
+    margin-right: 0;
+  }
+}
