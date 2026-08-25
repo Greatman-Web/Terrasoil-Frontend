@@ -173,6 +173,30 @@
   text-decoration: none;
 }
 
+.forgot-password-link {
+  width: 100%;
+  text-align: right;
+  margin-top: 8px;
+  margin-bottom: 15px;
+}
+
+.forgot-password-link button {
+  background: transparent;
+  border: none;
+  padding: 0;
+
+  color: #3157e8;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.forgot-password-link button:hover {
+  text-decoration: underline;
+}
+
 /* RESPONSIVE ADJUSTMENTS */
 @media (max-width: 700px) {
   .login-header {

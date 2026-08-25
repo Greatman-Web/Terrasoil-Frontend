@@ -56,6 +56,13 @@ export default function Login() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}/>
           </div>
+          <div className="forgot-password-link">
+          <button
+             type="button"
+             onClick={() => navigate("/forgot-password")}>
+             Forgot Password?
+          </button>
+          </div>
 
           <h3>Select dashboard role:</h3>
 
