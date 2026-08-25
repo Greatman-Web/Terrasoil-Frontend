@@ -9,6 +9,7 @@ export default function ForgotPassword() {
   const [code, setCode] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [passwordError, setPasswordError] = useState("");
 
   const [step, setStep] = useState(1);
 
@@ -25,18 +26,21 @@ export default function ForgotPassword() {
     console.log("Verification code:", code);
     setStep(3);
   };
-
-  // STEP 3 - Reset password
   const handleResetPassword = (e) => {
-    e.preventDefault();
-    if (newPassword !== confirmPassword) {
-      alert("Passwords do not match.");
-      return;
-    }
-    console.log("Password reset");
-    alert("Password reset successful.");
+  e.preventDefault();
+  if (newPassword !== confirmPassword) {
+    setPasswordError("Passwords do not match. Please try again.");
+    return;
+  }
+  setPasswordError("");
+  console.log("Password reset successfully");
+  // Move to success screen
+  setStep(4);
+  // Wait 3 seconds, then return to login
+  setTimeout(() => {
     navigate("/login");
-  };
+  }, 3000);
+};
 
   return (
     <div className="forgot-password-page">
@@ -44,7 +48,6 @@ export default function ForgotPassword() {
         <h1>Forgot Password?</h1>
 
         {/* STEP 1 */}
-
         {step === 1 && (
           <>
             <p>
@@ -76,7 +79,6 @@ export default function ForgotPassword() {
 
 
         {/* STEP 2 */}
-
         {step === 2 && (
           <>
             <p>
@@ -109,7 +111,6 @@ export default function ForgotPassword() {
 
 
         {/* STEP 3 */}
-
         {step === 3 && (
           <>
            <div className="verification-success">
@@ -122,7 +123,6 @@ export default function ForgotPassword() {
           </div>
 
             <form onSubmit={handleResetPassword}>
-
               <label htmlFor="new-password">
                 New Password
               </label>
@@ -157,7 +157,19 @@ export default function ForgotPassword() {
           </>
         )}
 
-
+          {/* STEP 4*/}
+          {step === 4 && (
+        <div className="password-reset-success">
+            <div className="reset-success-icon">
+                    ✓
+            </div>
+          <h2>Password Reset Successfully</h2>
+         <p>
+           Your password has been changed successfully.
+           Redirecting you to the login page...
+         </p>
+        </div>
+        )}
         <button
           className="back-login-btn"
           onClick={() => navigate("/login")}>
